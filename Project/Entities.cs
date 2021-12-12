@@ -174,7 +174,7 @@ namespace ProjectOop
         public class TransactionContents
         {
             public int ID { get; set; }
-            public RawMaterialPuchaseTransaction RawMaterialPuchaseTransaction { get; set }
+            public RawMaterialPuchaseTransaction RawMaterialPuchaseTransaction { get; set; }
             public Article Article { get; set; }
             [Required] public int Quantity { get; set; }
             [Required] public decimal Price { get; set; }
