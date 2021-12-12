@@ -84,7 +84,7 @@ namespace ProjectOop
             [MaxLength(50)] public string MiddleName { get; set; }
 
             [Required] public DateTime DeviceDate { get; set; }
-            [Required] [Column(TypeName = "money")] public decimal Salary { get; set; }
+            [Required] public decimal Salary { get; set; }
 
             public Post post { get; set; }
         }
