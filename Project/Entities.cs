@@ -127,6 +127,7 @@ namespace ProjectOop
             [Required] public DateTime PurchaseDate { get; set; }
 
             //ид поставщика, склада, сотрудника
+            public Employee employee { get; set; }
         }
         public class Shop
         {
