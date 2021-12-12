@@ -3,37 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project", "Project\Project.csproj", "{DDF3136D-2DD3-45F6-9679-A6AA53275433}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Classes", "Classes", "{5C5692BD-D31D-43AC-BE83-56DE457F3EB5}"
-	ProjectSection(SolutionItems) = preProject
-		Article.cs = Article.cs
-		Defect.cs = Defect.cs
-		Division.cs = Division.cs
-		Employee.cs = Employee.cs
-		Finishes_product_warehouse.cs = Finishes_product_warehouse.cs
-		Material_cutting.cs = Material_cutting.cs
-		Material_for_sketch.cs = Material_for_sketch.cs
-		Post.cs = Post.cs
-		Product.cs = Product.cs
-		Product_Delivery.cs = Product_Delivery.cs
-		Product_in_warehouse.cs = Product_in_warehouse.cs
-		Raw_material_puchase_transaction.cs = Raw_material_puchase_transaction.cs
-		Raw_material_warehouse.cs = Raw_material_warehouse.cs
-		Row_stock.cs = Row_stock.cs
-		Shop.cs = Shop.cs
-		Shop_Emloyeer.cs = Shop_Emloyeer.cs
-		Sketch.cs = Sketch.cs
-		Sketch_Materialization.cs = Sketch_Materialization.cs
-		Supplier.cs = Supplier.cs
-		The_goods_delivery.cs = The_goods_delivery.cs
-		Transaction_Contents.cs = Transaction_Contents.cs
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{578C0CC3-2CAB-44A0-8698-ECF7649858D8}"
-	ProjectSection(SolutionItems) = preProject
-		App.Context.cs = App.Context.cs
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project", "Project\Project.csproj", "{DDF3136D-2DD3-45F6-9679-A6AA53275433}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
