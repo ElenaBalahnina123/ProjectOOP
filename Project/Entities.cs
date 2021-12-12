@@ -15,7 +15,7 @@ namespace ProjectOop
         {
             public int ID { get; set; }
             [Required] public DateTime Date { get; set; }
-            // ид склада
+            public RawMaterialWarehouse Warehouse { get; set; }
         }
 
         public class ResourceRequestItem
@@ -23,13 +23,22 @@ namespace ProjectOop
             public int ID { get; set; }
 
             public int Quantity { get; set; }
-            // ид запроса, артикула
+
+            public Article Article { get; set; }
+
+            public ResourceRequestHistoryItem Request { get; set; }
+
+ 
         }
 
         public class GoodsDelivery
         {
             public int ID { get; set; }
-            // ид товара, поствки товара, склада готовой продукции
+
+            public Product Product { get; set; }
+            public ProductDelivery ProductDelivery { get; set; }
+            public FinishesProductWarehouse FinishesProductWarehouse { get; set; }
+
             public int Quantity { get; set; }
             [Required] [MaxLength(15)] public string Size { get; set; }
             [Required] public string Color { get; set; }
@@ -38,7 +47,7 @@ namespace ProjectOop
         public class ShopEmployeer
         {
             public int ID { get; set; }
-            // ид магазина
+            public Shop Shop{ get; set; }
         }
 
         public class Post
@@ -56,16 +65,12 @@ namespace ProjectOop
         public class RawMaterialItem
         {
             public int ID { get; set; }
-
             public RawMaterialWarehouse Warehouse { get; set; }
-
-            public Article article { get; set; }
-
-            //ид склада, артикула
+            public Article Article { get; set; }
             public int Quantity { get; set; }
         }
 
-        public class Division //подразделение
+        public class Division 
         {
             public int ID { get; set; }
             [Required] public string NamePost { get; set; }
@@ -93,30 +98,35 @@ namespace ProjectOop
         {
 
             public int ID { get; set; }
-            // ид материализации, материала для эскиза
+            public MaterialForSketch MaterialForSketch { get; set; }
+            public SketchMaterialization SketchMaterialization { get; set; }
             public int Quantity { get; set; }
         }
 
         public class MaterialForSketch
         {
             public int ID { get; set; }
-            //ид артикула, эскиза
+            public Article Article { get; set; }
+            public Sketch Sketch { get; set; }
+
         }
         public class Product
         {
             public int ID { get; set; }
-            // ид материализации
+            public SketchMaterialization SketchMaterialization { get; set; }
         }
         public class ProductDelivery
         {
             public int ID { get; set; }
-            // ид магазина
+            public Shop Shop { get; set; }
             [Required] public DateTime DeliveryDate { get; set; }
         }
         public class ProductInWarehouse
         {
             public int ID { get; set; }
-            // ид товара, склада
+
+            public FinishesProductWarehouse FinishesProductWarehouse { get; set; }
+            public Product Product { get; set; }
             public int Quantity { get; set; }
             [Required] [MaxLength(15)] public string Size { get; set; }
             [Required] public string Color { get; set; }
@@ -125,8 +135,10 @@ namespace ProjectOop
         {
             public int ID { get; set; }
             [Required] public DateTime PurchaseDate { get; set; }
+            public Employee Employee { get; set; }
+            public Supplier Supplier { get; set; }
+            public RawMaterialWarehouse RawMaterialWarehouse { get; set; }
 
-            //ид поставщика, склада, сотрудника
         }
         public class Shop
         {
@@ -138,7 +150,7 @@ namespace ProjectOop
         {
             public int ID { get; set; }
             [Required] [MaxLength(50)] public string Name { get; set; }
-            //id сотрудника
+            public Employee Employee { get; set; }
             [Required] public DateTime CreationDate { get; set; }
             [Required] [MaxLength(70)] public string DegreeDevelopment { get; set; }
         }
@@ -146,9 +158,8 @@ namespace ProjectOop
         {
             public int ID { get; set; }
             [Required] [MaxLength(15)] public string Size { get; set; }
-            // ид артикула, сотрудника
-
-            public Employee employee { get; set; }
+            public Article Article { get; set; }
+            public Employee Employee { get; set; }
 
             [Required] public DateTime CreationDate { get; set; }
             [Required] public string DegreeDevelopment { get; set; }
@@ -163,8 +174,8 @@ namespace ProjectOop
         public class TransactionContents
         {
             public int ID { get; set; }
-            // id транзакции
-            // ид артикула
+            public RawMaterialPuchaseTransaction RawMaterialPuchaseTransaction { get; set }
+            public Article Article { get; set; }
             [Required] public int Quantity { get; set; }
             [Required] public decimal Price { get; set; }
             [Required] public int INN { get; set; }
