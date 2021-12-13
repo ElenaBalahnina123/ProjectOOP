@@ -42,4 +42,30 @@ public class AppDbContext : DbContext
         var password = "1234";
         optionsBuilder.UseNpgsql($"Host={host};Port={port};Database={databaseName};Username={username};Password={password}");
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Article>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Division>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Employee>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<FinishesProductWarehouse>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<MaterialCutting>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<MaterialForSketch>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Post>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Product>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<ProductDelivery>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<ProductInWarehouse>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<RawMaterialPuchaseTransaction>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<RawMaterialWarehouse>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<RawMaterialItem>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Shop>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<ShopEmployeer>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Sketch>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<SketchMaterialization>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Supplier>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<GoodsDelivery>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<TransactionContents>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<ResourceRequestHistoryItem>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<ResourceRequestItem>().HasIndex(e => e.ID).IsUnique();
+    }
 }
