@@ -10,11 +10,14 @@ namespace Project
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            using(var ctx = new AppDbContext()) {
+            /*using(var ctx = new AppDbContext()) {
 
-            }
+            }*/
+
+            var name = await new PositionEditorForm(null).getPostNameAsync();
+            MessageBox.Show(name);
         }
     }
 }
