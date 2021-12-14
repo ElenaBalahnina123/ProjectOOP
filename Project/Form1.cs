@@ -19,5 +19,18 @@ namespace Project
             var name = await new PositionEditorForm(null).getPostNameAsync();
             MessageBox.Show(name);
         }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            var name = await new SubdivisionEditorForm(null).getSubdivisionNameAsync();
+            MessageBox.Show(name);
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            var name = await new EmployeeEditorForm(null).getEmployeeNameAsync();
+            MessageBox.Show(name);
+
+        }
     }
 }

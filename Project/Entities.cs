@@ -70,10 +70,10 @@ namespace ProjectOop
             public int Quantity { get; set; }
         }
 
-        public class Division 
+        public class Subdivision 
         {
             public int ID { get; set; }
-            [Required] public string NamePost { get; set; }
+            [Required] public string Name { get; set; }
         }
 
         public class Employee

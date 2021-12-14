@@ -5,7 +5,7 @@ public class AppDbContext : DbContext
 {
 
     public DbSet<Article> Articles { get; set; }
-    public DbSet<Division> Divisions { get; set; }
+    public DbSet<Subdivision> Divisions { get; set; }
     public DbSet<Employee> Employees { get; set; }
     public DbSet<FinishesProductWarehouse> Finishes_product_warehouses { get; set; }
     public DbSet<MaterialCutting> Material_cuttings { get; set; }
@@ -46,7 +46,7 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Article>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<Division>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Subdivision>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Employee>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<FinishesProductWarehouse>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<MaterialCutting>().HasIndex(e => e.ID).IsUnique();
