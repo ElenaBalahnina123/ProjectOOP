@@ -63,7 +63,7 @@ namespace Project
             this.Controls.Add(this.name_post);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PositionEditorForm";
-            this.Text = "PositionEditorForm";
+            this.Text = "S";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PositionEditorForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

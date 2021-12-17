@@ -56,5 +56,19 @@ namespace Project
                 MessageBox.Show("Отменено");
             }
         }
+
+        private async void save_product_warehouse_Click(object sender, EventArgs e)
+        {
+            var productOnWarehouse = await ProductOnWarehouseEditor.EditPrOnWarehouse();
+            if (productOnWarehouse != null)
+            {
+                MessageBox.Show(productOnWarehouse.Size.ToString() + " " + productOnWarehouse.Quantity.ToString());
+
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+        }
     }
 }

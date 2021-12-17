@@ -38,9 +38,10 @@ namespace Project
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(12, 214);
+            this.btn_save.Location = new System.Drawing.Point(8, 113);
+            this.btn_save.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(112, 34);
+            this.btn_save.Size = new System.Drawing.Size(94, 25);
             this.btn_save.TabIndex = 0;
             this.btn_save.Text = "Сохранить";
             this.btn_save.UseVisualStyleBackColor = true;
@@ -48,46 +49,51 @@ namespace Project
             // 
             // color_string_name
             // 
-            this.color_string_name.Location = new System.Drawing.Point(12, 37);
+            this.color_string_name.Location = new System.Drawing.Point(8, 22);
+            this.color_string_name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.color_string_name.Name = "color_string_name";
-            this.color_string_name.Size = new System.Drawing.Size(437, 31);
+            this.color_string_name.Size = new System.Drawing.Size(307, 23);
             this.color_string_name.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(8, 5);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(364, 25);
+            this.label1.Size = new System.Drawing.Size(240, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Текстовое название цвета (напр. розовый)";
             // 
             // rgb_value
             // 
-            this.rgb_value.Location = new System.Drawing.Point(12, 127);
+            this.rgb_value.Location = new System.Drawing.Point(8, 76);
+            this.rgb_value.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rgb_value.Name = "rgb_value";
-            this.rgb_value.Size = new System.Drawing.Size(437, 31);
+            this.rgb_value.Size = new System.Drawing.Size(307, 23);
             this.rgb_value.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 99);
+            this.label2.Location = new System.Drawing.Point(8, 59);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(275, 25);
+            this.label2.Size = new System.Drawing.Size(187, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "Машинное представление (RGB)";
             // 
             // ColorEditorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(358, 157);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rgb_value);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.color_string_name);
             this.Controls.Add(this.btn_save);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ColorEditorForm";
             this.Text = "ColorEditorForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ColorEditorForm_FormClosed);

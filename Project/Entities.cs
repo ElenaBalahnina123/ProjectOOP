@@ -42,7 +42,7 @@ namespace ProjectOop
 
             public int Quantity { get; set; }
             [Required] [MaxLength(15)] public string Size { get; set; }
-            [Required] public string Color { get; set; }
+            public ModelColor Color { get; set; }
         }
 
         public class ShopEmployeer
@@ -122,15 +122,15 @@ namespace ProjectOop
             public Shop Shop { get; set; }
             [Required] public DateTime DeliveryDate { get; set; }
         }
-        public class ProductInWarehouse
+        public class ProductOnWarehouse
         {
             public int ID { get; set; }
 
             public FinishesProductWarehouse FinishesProductWarehouse { get; set; }
             public Product Product { get; set; }
             public int Quantity { get; set; }
-            [Required] [MaxLength(15)] public string Size { get; set; }
-            [Required] public string Color { get; set; }
+            [Required] public int Size { get; set; }
+            public ModelColor Color { get; set; }
         }
         public class RawMaterialPuchaseTransaction
         {

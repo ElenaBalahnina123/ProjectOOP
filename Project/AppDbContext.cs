@@ -13,7 +13,7 @@ public class AppDbContext : DbContext
     public DbSet<Position> Posts { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductDelivery> Product_Deliverys { get; set; }
-    public DbSet<ProductInWarehouse> Product_in_warehouses { get; set; }
+    public DbSet<ProductOnWarehouse> Product_in_warehouses { get; set; }
     public DbSet<RawMaterialPuchaseTransaction> Raw_material_puchase_transactions { get; set; }
     public DbSet<RawMaterialWarehouse> Raw_material_warehouses { get; set; }
     public DbSet<RawMaterialItem> Row_stocks { get; set; }
@@ -54,7 +54,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Position>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Product>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<ProductDelivery>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<ProductInWarehouse>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<ProductOnWarehouse>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<RawMaterialPuchaseTransaction>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<RawMaterialWarehouse>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<RawMaterialItem>().HasIndex(e => e.ID).IsUnique();
