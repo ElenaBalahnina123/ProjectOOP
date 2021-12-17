@@ -26,7 +26,7 @@ public class AppDbContext : DbContext
     public DbSet<TransactionContents> Transaction_Contentss { get; set; }
     public DbSet<ResourceRequestHistoryItem> ResourceRequestHistoryItems { get; set; }
     public DbSet<ResourceRequestItem> ResourceRequestItems { get; set; }
-
+    public DbSet<ModelColor> Colors { get; set; }
 
     public AppDbContext()
     {
@@ -67,5 +67,6 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<TransactionContents>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<ResourceRequestHistoryItem>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<ResourceRequestItem>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<ModelColor>().HasIndex(e => e.ID).IsUnique();
     }
 }

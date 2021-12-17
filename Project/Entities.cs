@@ -180,5 +180,12 @@ namespace ProjectOop
             [Required] public decimal Price { get; set; }
             [Required] public int INN { get; set; }
         }
+
+        public class ModelColor
+        {
+            public int ID { get; set; }
+            public string RgbValue { get; set; }
+            public string TextName { get; set; }
+        }
     }
 }

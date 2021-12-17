@@ -32,5 +32,17 @@ namespace Project
             MessageBox.Show(name);
 
         }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            var color = await ColorEditorForm.EditColorAsync();
+            if(color != null)
+            {
+                MessageBox.Show(color.TextName);
+            } else
+            {
+                MessageBox.Show("Отменено");
+            }
+        }
     }
 }
