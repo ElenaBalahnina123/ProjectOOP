@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectOop
@@ -50,7 +51,7 @@ namespace ProjectOop
             public Shop Shop{ get; set; }
         }
 
-        public class Post
+        public class Position
         {
             public int ID { get; set; }
             [Required] public string NamePost { get; set; }
@@ -86,7 +87,7 @@ namespace ProjectOop
             [Required] public DateTime DeviceDate { get; set; }
             [Required] public decimal Salary { get; set; }
 
-            public Post post { get; set; }
+            public Position post { get; set; }
         }
 
         public class FinishesProductWarehouse

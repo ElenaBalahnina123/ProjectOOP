@@ -10,7 +10,7 @@ public class AppDbContext : DbContext
     public DbSet<FinishesProductWarehouse> Finishes_product_warehouses { get; set; }
     public DbSet<MaterialCutting> Material_cuttings { get; set; }
     public DbSet<MaterialForSketch> Material_for_sketchs { get; set; }
-    public DbSet<Post> Posts { get; set; }
+    public DbSet<Position> Posts { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductDelivery> Product_Deliverys { get; set; }
     public DbSet<ProductInWarehouse> Product_in_warehouses { get; set; }
@@ -51,7 +51,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<FinishesProductWarehouse>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<MaterialCutting>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<MaterialForSketch>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<Post>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Position>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Product>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<ProductDelivery>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<ProductInWarehouse>().HasIndex(e => e.ID).IsUnique();

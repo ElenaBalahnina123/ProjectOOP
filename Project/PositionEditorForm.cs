@@ -12,31 +12,89 @@ using System.Windows.Forms;
 namespace Project
 {
     public partial class PositionEditorForm : Form
-    {
-        private TaskCompletionSource<string?> onReady = new TaskCompletionSource<string>();
 
-        public PositionEditorForm(string? post)
+    {
+        
+        private Position? InitialPosition;
+
+        private TaskCompletionSource<Position> onReady = new TaskCompletionSource<Position>();
+
+        public PositionEditorForm(Position? post)
         {
             InitializeComponent();
+            InitialPosition = post;
 
-            if(post != null) 
+            if(post != null)
             {
-                textBox1.Text = post;
+                name_post.Text = post.NamePost;
+            }
+            
+        }
+
+
+        private void save_btn_position_Click(object sender, EventArgs e)
+        {
+            var trimmedNamePost = name_post.Text.Trim();
+
+            if (trimmedNamePost.Length == 0)
+            {
+                MessageBox.Show("Не указана должность");
+                return;
+            }
+
+            Position resultPosition;
+            if (InitialPosition != null)
+            {
+                resultPosition = new Position()
+                {
+                    ID = InitialPosition.ID,
+                    NamePost = trimmedNamePost
+
+                };
+            }
+            else
+            {
+                resultPosition = new Position()
+                {
+                    NamePost = trimmedNamePost
+                };
+            };
+
+            onReady.SetResult(resultPosition);
+        }
+
+        public static async Task<Position?> EditPosition(Position? initialPosition = null)
+        {
+            var form = new PositionEditorForm(initialPosition);
+            form.Show();
+            try
+            {
+                var post_name = await form.onReady.Task;
+                return post_name;
+            }
+            catch (OperationCanceledException e)
+            {
+                return null;
+            }
+            finally
+            {
+                if (!form.IsDisposed)
+                {
+                    form.Close();
+                }
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void PositionEditorForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            /*postReadyEventHandler.Invoke(this, textBox1.Text);*/
-            onReady.SetResult(textBox1.Text);
-        }
+            try
+            {
+                onReady.TrySetCanceled();
+            }
+            catch (Exception error)
+            {
 
-        public async Task<string?> getPostNameAsync()
-        {
-            Show();
-            var result = await onReady.Task;
-            Close();
-            return result;
+            }
         }
     }
 }

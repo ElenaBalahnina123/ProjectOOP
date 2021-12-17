@@ -10,20 +10,32 @@ namespace Project
             InitializeComponent();
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void save_post(object sender, EventArgs e)
         {
-            /*using(var ctx = new AppDbContext()) {
 
-            }*/
+            var post_name = await PositionEditorForm.EditPosition();
+            if (post_name != null)
+            {
+                MessageBox.Show(post_name.NamePost);
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
 
-            var name = await new PositionEditorForm(null).getPostNameAsync();
-            MessageBox.Show(name);
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+        private async void save_subdivision(object sender, EventArgs e)
         {
-            var name = await new SubdivisionEditorForm(null).getSubdivisionNameAsync();
-            MessageBox.Show(name);
+            var subdivision_name = await SubdivisionEditorForm.EditSubdivision();
+            if (subdivision_name != null)
+            {
+                MessageBox.Show(subdivision_name.Name);
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
         }
 
         private async void button3_Click(object sender, EventArgs e)

@@ -21,6 +21,11 @@ namespace Project
         {
             InitializeComponent();
             InitialModelColor = color;
+            if(color != null)
+            {
+                color_string_name.Text = color.TextName;
+                rgb_value.Text = color.RgbValue;
+            }
         }
 
         private void btn_save_Click(object sender, EventArgs e)

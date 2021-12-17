@@ -7,34 +7,89 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjectOop.Entities;
 
 namespace Project
 {
     public partial class SubdivisionEditorForm : Form
-    {
-        private TaskCompletionSource<string?> onReady = new TaskCompletionSource<string>();
 
-        public SubdivisionEditorForm(string? subdivision)
+    {
+        private Subdivision? InitialSubdivision;
+        private TaskCompletionSource<Subdivision> onReady = new TaskCompletionSource<Subdivision>();
+
+        public SubdivisionEditorForm(Subdivision subdivision)
         {
             InitializeComponent();
+            InitialSubdivision = subdivision;
 
             if (subdivision != null)
             {
-                textBox1.Text = subdivision;
+                name_subdivision.Text = subdivision.Name;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void save_btn_subdivision_Click_1(object sender, EventArgs e)
         {
-            onReady.SetResult(textBox1.Text);
+            var trimmedName = name_subdivision.Text.Trim();
+            if(trimmedName.Length == 0)
+            {
+
+                MessageBox.Show("Не указано название подразделения");
+                return;
+            }
+
+             Subdivision resultSublivision;
+            if (InitialSubdivision != null)
+            {
+                resultSublivision = new Subdivision()
+                {
+                    ID = InitialSubdivision.ID,
+                    Name = trimmedName
+                };
+            }
+            else
+            {
+                resultSublivision = new Subdivision()
+                {
+                    Name = trimmedName
+                };
+            };
+            onReady.SetResult(resultSublivision);
         }
 
-        public async Task<string?> getSubdivisionNameAsync()
+        public static async Task<Subdivision?> EditSubdivision(Subdivision? initialSublivision = null)
         {
-            Show();
-            var result = await onReady.Task;
-            Close();
-            return result;
+            var form = new SubdivisionEditorForm(initialSublivision);
+            form.Show();
+            try
+            {
+                var subdivision = await form.onReady.Task;
+                return subdivision;
+            }
+            catch (OperationCanceledException e)
+            {
+                return null;
+            }
+            finally
+            {
+                if (!form.IsDisposed)
+                {
+                    form.Close();
+                }
+            }
+        }
+
+
+        private void SubdivisionEditorForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                onReady.TrySetCanceled();
+            }
+            catch (Exception error)
+            {
+
+            }
         }
     }
 }
