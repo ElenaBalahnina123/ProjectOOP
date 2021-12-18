@@ -61,6 +61,7 @@ namespace Project
             this.Name = "SubdivisionEditorForm";
             this.Text = "SubdivisionEditorForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SubdivisionEditorForm_FormClosed);
+            this.Load += new System.EventHandler(this.SubdivisionEditorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

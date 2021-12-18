@@ -65,6 +65,7 @@ namespace Project
             this.Name = "PositionEditorForm";
             this.Text = "S";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PositionEditorForm_FormClosed);
+            this.Load += new System.EventHandler(this.PositionEditorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class PositionEditorForm : Form
+    public partial class PositionEditorForm : Form // должность
 
     {
         
@@ -95,6 +95,11 @@ namespace Project
             {
 
             }
+        }
+
+        private void PositionEditorForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

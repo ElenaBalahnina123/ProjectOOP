@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class EmployeeEditorForm : Form
+    public partial class EmployeeEditorForm : Form // сотрудник
     {
 
         private TaskCompletionSource<string?> onReady = new TaskCompletionSource<string>();
@@ -50,5 +50,9 @@ namespace Project
             public int Price { get; set; }
         }
 
+        private void EmployeeEditorForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

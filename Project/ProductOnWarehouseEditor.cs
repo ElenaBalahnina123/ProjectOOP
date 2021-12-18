@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using ProjectOop.Entities;
 namespace Project
 {
-    public partial class ProductOnWarehouseEditor : Form
+    public partial class ProductOnWarehouseEditor : Form // товар на складе
 
         
     {
@@ -105,6 +105,11 @@ namespace Project
             {
 
             }
+        }
+
+        private void ProductOnWarehouseEditor_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -95,7 +95,7 @@ namespace Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(168, 163);
+            this.ClientSize = new System.Drawing.Size(305, 163);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.amountInput);
@@ -105,6 +105,7 @@ namespace Project
             this.Name = "ProductOnWarehouseEditor";
             this.Text = "ProductOnWarehouseEditor";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProductOnWarehouseEditor_FormClosed);
+            this.Load += new System.EventHandler(this.ProductOnWarehouseEditor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
