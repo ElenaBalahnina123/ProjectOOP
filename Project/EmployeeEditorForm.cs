@@ -50,6 +50,7 @@ namespace Project
             public int Price { get; set; }
         }
 
+
         private void EmployeeEditorForm_Load(object sender, EventArgs e)
         {
 

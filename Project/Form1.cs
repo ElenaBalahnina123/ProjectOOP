@@ -70,5 +70,16 @@ namespace Project
                 MessageBox.Show("Отменено");
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void button5_Click(object sender, EventArgs e)
+        {
+            var name = await new SupplierEditorForm(null).getSupplierEditorForm();
+            MessageBox.Show(name);
+        }
     }
 }
