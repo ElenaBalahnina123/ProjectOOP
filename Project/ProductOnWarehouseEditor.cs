@@ -42,6 +42,8 @@ namespace Project
 
             var size = Int32.Parse((sizeBox.SelectedItem as string));
 
+
+
             var trimmedAmount = amountInput.Text.Trim();
             if (trimmedAmount.Length == 0)
             {
