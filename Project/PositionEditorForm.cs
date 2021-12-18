@@ -101,5 +101,10 @@ namespace Project
         {
 
         }
+
+        private void name_post_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

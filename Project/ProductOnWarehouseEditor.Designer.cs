@@ -34,6 +34,7 @@ namespace Project
             this.amountInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // sizeBox
@@ -91,11 +92,22 @@ namespace Project
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.save_btn_prOnWerehouse);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(176, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 15);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Название товара?";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // ProductOnWarehouseEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(305, 163);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.amountInput);
@@ -118,5 +130,6 @@ namespace Project
         private System.Windows.Forms.TextBox amountInput;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
     }
 }

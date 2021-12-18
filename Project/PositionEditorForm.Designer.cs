@@ -31,6 +31,7 @@ namespace Project
         {
             this.name_post = new System.Windows.Forms.TextBox();
             this.save_btn_position = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // name_post
@@ -38,15 +39,16 @@ namespace Project
             this.name_post.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.name_post.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.name_post.Location = new System.Drawing.Point(8, 7);
+            this.name_post.Location = new System.Drawing.Point(9, 45);
             this.name_post.Margin = new System.Windows.Forms.Padding(2);
             this.name_post.Name = "name_post";
-            this.name_post.Size = new System.Drawing.Size(326, 32);
+            this.name_post.Size = new System.Drawing.Size(346, 32);
             this.name_post.TabIndex = 0;
+            this.name_post.TextChanged += new System.EventHandler(this.name_post_TextChanged);
             // 
             // save_btn_position
             // 
-            this.save_btn_position.Location = new System.Drawing.Point(15, 51);
+            this.save_btn_position.Location = new System.Drawing.Point(12, 82);
             this.save_btn_position.Name = "save_btn_position";
             this.save_btn_position.Size = new System.Drawing.Size(75, 23);
             this.save_btn_position.TabIndex = 1;
@@ -54,11 +56,21 @@ namespace Project
             this.save_btn_position.UseVisualStyleBackColor = true;
             this.save_btn_position.Click += new System.EventHandler(this.save_btn_position_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Добавьте должность:";
+            // 
             // PositionEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 74);
+            this.ClientSize = new System.Drawing.Size(366, 117);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.save_btn_position);
             this.Controls.Add(this.name_post);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -75,5 +87,6 @@ namespace Project
 
         private System.Windows.Forms.TextBox name_post;
         private System.Windows.Forms.Button save_btn_position;
+        private System.Windows.Forms.Label label1;
     }
 }

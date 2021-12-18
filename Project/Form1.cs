@@ -1,13 +1,37 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Project
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private TaskCompletionSource<string?> onReady = new TaskCompletionSource<string>();
+        public Form1(string? form)
         {
             InitializeComponent();
+            if (form != null)
+            {
+                label1.Text = form;
+            }
+        }
+        public async Task<string?> getForm1()
+        {
+            Show();
+            var result = await onReady.Task;
+            Close();
+            return result;
+        }
+        public class Form1F
+        {
+            public string NameOrganization { get; set; }
         }
 
         private async void save_post(object sender, EventArgs e)
@@ -79,7 +103,10 @@ namespace Project
         private async void button5_Click(object sender, EventArgs e)
         {
             var name = await new SupplierEditorForm(null).getSupplierEditorForm();
-            MessageBox.Show(name);
+
+            
+                MessageBox.Show(name);
+            
         }
     }
 }

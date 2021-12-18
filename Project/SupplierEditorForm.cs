@@ -37,12 +37,19 @@ namespace Project
             Close();
             return result;
         }
-        public class EmployeeEditor
+        public class SupplierEditor
         {
             public string NameOrganization { get; set; }
-
-           
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

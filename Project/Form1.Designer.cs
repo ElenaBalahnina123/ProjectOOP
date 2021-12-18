@@ -35,6 +35,7 @@ namespace Project
             this.button4 = new System.Windows.Forms.Button();
             this.save_product_warehouse = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -99,11 +100,20 @@ namespace Project
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 205);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 15);
+            this.label1.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 270);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.save_product_warehouse);
             this.Controls.Add(this.button4);
@@ -115,6 +125,7 @@ namespace Project
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -126,6 +137,7 @@ namespace Project
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button save_product_warehouse;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label1;
     }
 }
 
