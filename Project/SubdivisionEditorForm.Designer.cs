@@ -55,7 +55,7 @@ namespace Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 85);
+            this.ClientSize = new System.Drawing.Size(355, 85);
             this.Controls.Add(this.save_btn_subdivision);
             this.Controls.Add(this.name_subdivision);
             this.Name = "SubdivisionEditorForm";
