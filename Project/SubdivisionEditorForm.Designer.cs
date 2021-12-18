@@ -29,37 +29,38 @@ namespace Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.name_subdivision = new System.Windows.Forms.TextBox();
+            this.save_btn_subdivision = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // name_subdivision
             // 
-            this.button1.Location = new System.Drawing.Point(12, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.name_subdivision.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.name_subdivision.Location = new System.Drawing.Point(12, 12);
+            this.name_subdivision.Name = "name_subdivision";
+            this.name_subdivision.Size = new System.Drawing.Size(335, 33);
+            this.name_subdivision.TabIndex = 1;
             // 
-            // textBox1
+            // save_btn_subdivision
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(335, 33);
-            this.textBox1.TabIndex = 1;
+            this.save_btn_subdivision.Location = new System.Drawing.Point(12, 51);
+            this.save_btn_subdivision.Name = "save_btn_subdivision";
+            this.save_btn_subdivision.Size = new System.Drawing.Size(101, 23);
+            this.save_btn_subdivision.TabIndex = 2;
+            this.save_btn_subdivision.Text = " Сохранить";
+            this.save_btn_subdivision.UseVisualStyleBackColor = true;
+            this.save_btn_subdivision.Click += new System.EventHandler(this.save_btn_subdivision_Click_1);
             // 
             // SubdivisionEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 85);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(355, 85);
+            this.Controls.Add(this.save_btn_subdivision);
+            this.Controls.Add(this.name_subdivision);
             this.Name = "SubdivisionEditorForm";
             this.Text = "SubdivisionEditorForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SubdivisionEditorForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -67,7 +68,9 @@ namespace Project
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button save_btn_position
+            ;
+        private System.Windows.Forms.TextBox name_subdivision;
+        private System.Windows.Forms.Button save_btn_subdivision;
     }
 }

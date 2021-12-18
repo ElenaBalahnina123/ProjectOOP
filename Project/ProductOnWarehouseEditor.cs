@@ -7,44 +7,107 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using ProjectOop.Entities;
 namespace Project
 {
     public partial class ProductOnWarehouseEditor : Form
-    {
-        private TaskCompletionSource<ProductOnWarehouseEditorResult> tcs = new TaskCompletionSource<ProductOnWarehouseEditorResult>();
 
-        public ProductOnWarehouseEditor()
+        
+    {
+        private ProductOnWarehouse? InitialProductOnWarehouse;
+        private TaskCompletionSource<ProductOnWarehouse> tcs = new TaskCompletionSource<ProductOnWarehouse>();
+
+        public ProductOnWarehouseEditor(ProductOnWarehouse? productOnWarehouse)
         {
             InitializeComponent();
-        }
+            InitialProductOnWarehouse = productOnWarehouse;
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // TODO: проверки
-            tcs.SetResult(new ProductOnWarehouseEditorResult
+            if(productOnWarehouse != null)
             {
-                Size = sizeBox.SelectedIndex, 
-                Amount = Int32.Parse(amountInput.Text),
-                Color = colorInput.Text
-            });
+                var index = sizeBox.Items.IndexOf(productOnWarehouse.Size.ToString());
+                if(index != -1)
+                {
+                    sizeBox.SelectedIndex = index;
+                   
+                }
+
+
+                amountInput.Text = productOnWarehouse.Quantity.ToString();
+            }
         }
 
-        public async Task<ProductOnWarehouseEditorResult> GetEditorResult()
+        private void save_btn_prOnWerehouse(object sender, EventArgs e)
+
         {
-            Show();
-            var data = await tcs.Task;
-            Close();
-            return data;
+
+            var size = Int32.Parse((sizeBox.SelectedItem as string));
+
+
+
+            var trimmedAmount = amountInput.Text.Trim();
+            if (trimmedAmount.Length == 0)
+            {
+                MessageBox.Show("Не указано количество");
+                return;
+            }
+
+           ProductOnWarehouse resultPrOnWareh;
+            if (InitialProductOnWarehouse != null)
+            {
+                resultPrOnWareh = new ProductOnWarehouse()
+                {
+                    ID = InitialProductOnWarehouse.ID,
+                    Size = size,
+                    Quantity = Int32.Parse(trimmedAmount)
+                };
+            }
+            else
+            {
+                resultPrOnWareh = new ProductOnWarehouse()
+                {
+                    Size = size,
+                    Quantity = Int32.Parse(trimmedAmount)
+                };
+            };
+            tcs.SetResult(resultPrOnWareh);
+        }
+
+
+        public static async Task<ProductOnWarehouse?> EditPrOnWarehouse(ProductOnWarehouse? initialPrOnWarehouse = null)
+        {
+            var form = new ProductOnWarehouseEditor(initialPrOnWarehouse);
+            form.Show();
+            try
+            {
+                var productOnWarehouse = await form.tcs.Task;
+                return productOnWarehouse;
+            }
+            catch (OperationCanceledException e)
+            {
+                return null;
+            }
+            finally
+            {
+                if (!form.IsDisposed)
+                {
+                    form.Close();
+                }
+            }
+        }
+
+        private void ProductOnWarehouseEditor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                tcs.TrySetCanceled();
+            }
+            catch (Exception error)
+            {
+
+            }
         }
     }
 
-    public class ProductOnWarehouseEditorResult
-    {
-        public int Amount { get; set; }
-
-        public string Color { get; set; }
-
-        public int Size { get; set; }
-    }
+     
+   
 }

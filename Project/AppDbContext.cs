@@ -10,10 +10,10 @@ public class AppDbContext : DbContext
     public DbSet<FinishesProductWarehouse> Finishes_product_warehouses { get; set; }
     public DbSet<MaterialCutting> Material_cuttings { get; set; }
     public DbSet<MaterialForSketch> Material_for_sketchs { get; set; }
-    public DbSet<Post> Posts { get; set; }
+    public DbSet<Position> Posts { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductDelivery> Product_Deliverys { get; set; }
-    public DbSet<ProductInWarehouse> Product_in_warehouses { get; set; }
+    public DbSet<ProductOnWarehouse> Product_in_warehouses { get; set; }
     public DbSet<RawMaterialPuchaseTransaction> Raw_material_puchase_transactions { get; set; }
     public DbSet<RawMaterialWarehouse> Raw_material_warehouses { get; set; }
     public DbSet<RawMaterialItem> Row_stocks { get; set; }
@@ -26,7 +26,7 @@ public class AppDbContext : DbContext
     public DbSet<TransactionContents> Transaction_Contentss { get; set; }
     public DbSet<ResourceRequestHistoryItem> ResourceRequestHistoryItems { get; set; }
     public DbSet<ResourceRequestItem> ResourceRequestItems { get; set; }
-
+    public DbSet<ModelColor> Colors { get; set; }
 
     public AppDbContext()
     {
@@ -51,10 +51,10 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<FinishesProductWarehouse>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<MaterialCutting>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<MaterialForSketch>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<Post>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Position>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Product>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<ProductDelivery>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<ProductInWarehouse>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<ProductOnWarehouse>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<RawMaterialPuchaseTransaction>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<RawMaterialWarehouse>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<RawMaterialItem>().HasIndex(e => e.ID).IsUnique();
@@ -67,5 +67,6 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<TransactionContents>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<ResourceRequestHistoryItem>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<ResourceRequestItem>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<ModelColor>().HasIndex(e => e.ID).IsUnique();
     }
 }

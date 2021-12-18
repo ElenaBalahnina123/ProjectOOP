@@ -10,20 +10,32 @@ namespace Project
             InitializeComponent();
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void save_post(object sender, EventArgs e)
         {
-            /*using(var ctx = new AppDbContext()) {
 
-            }*/
+            var post_name = await PositionEditorForm.EditPosition();
+            if (post_name != null)
+            {
+                MessageBox.Show(post_name.NamePost);
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
 
-            var name = await new PositionEditorForm(null).getPostNameAsync();
-            MessageBox.Show(name);
         }
 
-        private async void button2_Click(object sender, EventArgs e)
+        private async void save_subdivision(object sender, EventArgs e)
         {
-            var name = await new SubdivisionEditorForm(null).getSubdivisionNameAsync();
-            MessageBox.Show(name);
+            var subdivision_name = await SubdivisionEditorForm.EditSubdivision();
+            if (subdivision_name != null)
+            {
+                MessageBox.Show(subdivision_name.Name);
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
         }
 
         private async void button3_Click(object sender, EventArgs e)
@@ -31,6 +43,32 @@ namespace Project
             var name = await new EmployeeEditorForm(null).getEmployeeNameAsync();
             MessageBox.Show(name);
 
+        }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            var color = await ColorEditorForm.EditColorAsync();
+            if(color != null)
+            {
+                MessageBox.Show(color.TextName);
+            } else
+            {
+                MessageBox.Show("Отменено");
+            }
+        }
+
+        private async void save_product_warehouse_Click(object sender, EventArgs e)
+        {
+            var productOnWarehouse = await ProductOnWarehouseEditor.EditPrOnWarehouse();
+            if (productOnWarehouse != null)
+            {
+                MessageBox.Show(productOnWarehouse.Size.ToString() + " " + productOnWarehouse.Quantity.ToString());
+
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
         }
     }
 }

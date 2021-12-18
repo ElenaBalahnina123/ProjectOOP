@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectOop
@@ -41,7 +42,7 @@ namespace ProjectOop
 
             public int Quantity { get; set; }
             [Required] [MaxLength(15)] public string Size { get; set; }
-            [Required] public string Color { get; set; }
+            public ModelColor Color { get; set; }
         }
 
         public class ShopEmployeer
@@ -50,7 +51,7 @@ namespace ProjectOop
             public Shop Shop{ get; set; }
         }
 
-        public class Post
+        public class Position
         {
             public int ID { get; set; }
             [Required] public string NamePost { get; set; }
@@ -86,7 +87,7 @@ namespace ProjectOop
             [Required] public DateTime DeviceDate { get; set; }
             [Required] public decimal Salary { get; set; }
 
-            public Post post { get; set; }
+            public Position post { get; set; }
         }
 
         public class FinishesProductWarehouse
@@ -121,15 +122,15 @@ namespace ProjectOop
             public Shop Shop { get; set; }
             [Required] public DateTime DeliveryDate { get; set; }
         }
-        public class ProductInWarehouse
+        public class ProductOnWarehouse
         {
             public int ID { get; set; }
 
             public FinishesProductWarehouse FinishesProductWarehouse { get; set; }
             public Product Product { get; set; }
             public int Quantity { get; set; }
-            [Required] [MaxLength(15)] public string Size { get; set; }
-            [Required] public string Color { get; set; }
+            [Required] public int Size { get; set; }
+            public ModelColor Color { get; set; }
         }
         public class RawMaterialPuchaseTransaction
         {
@@ -179,6 +180,13 @@ namespace ProjectOop
             [Required] public int Quantity { get; set; }
             [Required] public decimal Price { get; set; }
             [Required] public int INN { get; set; }
+        }
+
+        public class ModelColor
+        {
+            public int ID { get; set; }
+            public string RgbValue { get; set; }
+            public string TextName { get; set; }
         }
     }
 }
