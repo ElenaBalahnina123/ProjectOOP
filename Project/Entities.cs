@@ -97,13 +97,13 @@ namespace ProjectOop
             public int Quantity { get; set; } // количество
         }
 
-        public class MaterialForSketch
+        public class MaterialForSketch // материал для эскиза
         {
             public int ID { get; set; }
             public Article Article { get; set; }
             public Sketch Sketch { get; set; }
 
-        } // материал для эскиза
+        }
 
         public class Product // товар
         {

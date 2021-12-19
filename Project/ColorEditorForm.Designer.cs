@@ -39,7 +39,7 @@ namespace Project
             // btn_save
             // 
             this.btn_save.Location = new System.Drawing.Point(8, 113);
-            this.btn_save.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_save.Margin = new System.Windows.Forms.Padding(2);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(94, 25);
             this.btn_save.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace Project
             // color_string_name
             // 
             this.color_string_name.Location = new System.Drawing.Point(8, 22);
-            this.color_string_name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.color_string_name.Margin = new System.Windows.Forms.Padding(2);
             this.color_string_name.Name = "color_string_name";
             this.color_string_name.Size = new System.Drawing.Size(307, 23);
             this.color_string_name.TabIndex = 1;
@@ -68,7 +68,7 @@ namespace Project
             // rgb_value
             // 
             this.rgb_value.Location = new System.Drawing.Point(8, 76);
-            this.rgb_value.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rgb_value.Margin = new System.Windows.Forms.Padding(2);
             this.rgb_value.Name = "rgb_value";
             this.rgb_value.Size = new System.Drawing.Size(307, 23);
             this.rgb_value.TabIndex = 3;
@@ -93,10 +93,11 @@ namespace Project
             this.Controls.Add(this.label1);
             this.Controls.Add(this.color_string_name);
             this.Controls.Add(this.btn_save);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ColorEditorForm";
             this.Text = "ColorEditorForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ColorEditorForm_FormClosed);
+            this.Load += new System.EventHandler(this.ColorEditorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

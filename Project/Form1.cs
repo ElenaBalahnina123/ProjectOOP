@@ -84,6 +84,7 @@ namespace Project
         private async void save_product_warehouse_Click(object sender, EventArgs e)
         {
             var productOnWarehouse = await ProductOnWarehouseEditor.EditPrOnWarehouse();
+
             if (productOnWarehouse != null)
             {
                 MessageBox.Show(productOnWarehouse.Size.ToString() + " " + productOnWarehouse.Quantity.ToString());
@@ -102,11 +103,18 @@ namespace Project
 
         private async void button5_Click(object sender, EventArgs e)
         {
-            var name = await new SupplierEditorForm(null).getSupplierEditorForm();
 
-            
-                MessageBox.Show(name);
-            
+            var name_supplier = await SupplierEditorForm.EditSupplier();
+            if (name_supplier != null)
+            {
+                MessageBox.Show(name_supplier.NameOrganization);
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+
+
         }
     }
 }
