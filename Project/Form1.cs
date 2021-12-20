@@ -92,5 +92,33 @@ namespace Project
                 MessageBox.Show("Отменено");
             }
         }
+
+        private async void saveProductDelivery_Click(object sender, EventArgs e)
+        {
+            var productDelivery = await ProductDeliveryEditorForm.getProductDelivery();
+            if (productDelivery != null)
+            {
+                MessageBox.Show(productDelivery.DeliveryDate.ToString());
+
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+        }
+
+        private async void save_raw_transaction_Click(object sender, EventArgs e)
+        {
+            var rawTransaction = await RawMaterialPuchaseTransactionEditorForm.getRawTransaction();
+            if (rawTransaction != null)
+            {
+                MessageBox.Show(rawTransaction.PurchaseDate.ToString());
+
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+        }
     }
 }
