@@ -167,7 +167,7 @@ namespace ProjectOop
         {
             public int ID { get; set; }
             [Required] public string NameOrganization { get; set; }
-
+            [Required] public int INN { get; set; }
 
         } 
 
@@ -178,7 +178,7 @@ namespace ProjectOop
             public Article Article { get; set; }
             [Required] public int Quantity { get; set; }
             [Required] public decimal Price { get; set; }
-            [Required] public int INN { get; set; }
+            
         }
 
         public class ModelColor
