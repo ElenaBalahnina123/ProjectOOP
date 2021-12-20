@@ -34,6 +34,7 @@ namespace Project
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.save_product_warehouse = new System.Windows.Forms.Button();
+            this.save_resourse_story = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -69,12 +70,12 @@ namespace Project
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(402, 208);
+            this.button4.Location = new System.Drawing.Point(8, 169);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(78, 20);
+            this.button4.Size = new System.Drawing.Size(161, 23);
             this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
+            this.button4.Text = "Добавить цвет";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -88,11 +89,22 @@ namespace Project
             this.save_product_warehouse.UseVisualStyleBackColor = true;
             this.save_product_warehouse.Click += new System.EventHandler(this.save_product_warehouse_Click);
             // 
+            // save_resourse_story
+            // 
+            this.save_resourse_story.Location = new System.Drawing.Point(10, 207);
+            this.save_resourse_story.Name = "save_resourse_story";
+            this.save_resourse_story.Size = new System.Drawing.Size(159, 23);
+            this.save_resourse_story.TabIndex = 5;
+            this.save_resourse_story.Text = "Добавить историю";
+            this.save_resourse_story.UseVisualStyleBackColor = true;
+            this.save_resourse_story.Click += new System.EventHandler(this.save_resourse_story_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 270);
+            this.Controls.Add(this.save_resourse_story);
             this.Controls.Add(this.save_product_warehouse);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -112,6 +124,7 @@ namespace Project
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button save_product_warehouse;
+        private System.Windows.Forms.Button save_resourse_story;
     }
 }
 
