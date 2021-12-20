@@ -37,9 +37,9 @@ namespace Project
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -108,13 +108,6 @@ namespace Project
             this.textBox3.Size = new System.Drawing.Size(325, 23);
             this.textBox3.TabIndex = 7;
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(12, 203);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(325, 23);
-            this.textBox4.TabIndex = 8;
-            // 
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(12, 262);
@@ -132,14 +125,21 @@ namespace Project
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 203);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(325, 23);
+            this.dateTimePicker1.TabIndex = 11;
+            // 
             // EmployeeEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 351);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -150,6 +150,7 @@ namespace Project
             this.Controls.Add(this.label1);
             this.Name = "EmployeeEditorForm";
             this.Text = "EmployeeEditorForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmployeeEditorForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,8 +166,8 @@ namespace Project
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

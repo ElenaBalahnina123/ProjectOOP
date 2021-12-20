@@ -40,10 +40,18 @@ namespace Project
 
         private async void button3_Click(object sender, EventArgs e)
         {
-            var name = await new EmployeeEditorForm(null).getEmployeeNameAsync();
-            MessageBox.Show(name);
-
+            var employeer = await EmployeeEditorForm.getEmployeeNameAsync();
+            if (employeer != null)
+            {
+                MessageBox.Show(employeer.FirstName + " " + employeer.LastName + " " + employeer.MiddleName + " " + employeer.DeviceDate + " " + employeer.Salary);
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
         }
+
+    
 
         private async void button4_Click(object sender, EventArgs e)
         {
@@ -63,6 +71,20 @@ namespace Project
             if (productOnWarehouse != null)
             {
                 MessageBox.Show(productOnWarehouse.Size.ToString() + " " + productOnWarehouse.Quantity.ToString());
+
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+        }
+
+        private async void save_resourse_story_Click(object sender, EventArgs e)
+        {
+            var resourse = await ResourceRequestHistoryItemEditor.getResource();
+            if (resourse != null)
+            {
+                MessageBox.Show(resourse.Date.ToString());
 
             }
             else

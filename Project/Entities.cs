@@ -85,9 +85,11 @@ namespace ProjectOop
             [MaxLength(50)] public string MiddleName { get; set; }
 
             [Required] public DateTime DeviceDate { get; set; }
-            [Required] public decimal Salary { get; set; }
+            [Required] public string Salary { get; set; }
 
             public Position post { get; set; }
+
+           
         }
 
         public class FinishesProductWarehouse
