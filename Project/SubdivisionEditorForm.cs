@@ -11,7 +11,7 @@ using ProjectOop.Entities;
 
 namespace Project
 {
-    public partial class SubdivisionEditorForm : Form
+    public partial class SubdivisionEditorForm : Form // подразделение
 
     {
         private Subdivision? InitialSubdivision;
@@ -90,6 +90,11 @@ namespace Project
             {
 
             }
+        }
+
+        private void SubdivisionEditorForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

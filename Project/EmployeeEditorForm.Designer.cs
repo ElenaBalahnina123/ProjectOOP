@@ -150,6 +150,7 @@ namespace Project
             this.Controls.Add(this.label1);
             this.Name = "EmployeeEditorForm";
             this.Text = "EmployeeEditorForm";
+            this.Load += new System.EventHandler(this.EmployeeEditorForm_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmployeeEditorForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
