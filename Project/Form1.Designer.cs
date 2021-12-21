@@ -34,6 +34,9 @@ namespace Project
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.save_product_warehouse = new System.Windows.Forms.Button();
+            this.save_resourse_story = new System.Windows.Forms.Button();
+            this.saveProductDelivery = new System.Windows.Forms.Button();
+            this.save_raw_trancaction = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
@@ -72,12 +75,12 @@ namespace Project
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(8, 144);
+            this.button4.Location = new System.Drawing.Point(8, 169);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(184, 27);
+            this.button4.Size = new System.Drawing.Size(161, 23);
             this.button4.TabIndex = 3;
-            this.button4.Text = "Добавить цвет товара";
+            this.button4.Text = "Добавить цвет";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -90,6 +93,36 @@ namespace Project
             this.save_product_warehouse.Text = "Добавить товар на склад";
             this.save_product_warehouse.UseVisualStyleBackColor = true;
             this.save_product_warehouse.Click += new System.EventHandler(this.save_product_warehouse_Click);
+            // 
+            // save_resourse_story
+            // 
+            this.save_resourse_story.Location = new System.Drawing.Point(10, 207);
+            this.save_resourse_story.Name = "save_resourse_story";
+            this.save_resourse_story.Size = new System.Drawing.Size(159, 23);
+            this.save_resourse_story.TabIndex = 5;
+            this.save_resourse_story.Text = "Добавить историю";
+            this.save_resourse_story.UseVisualStyleBackColor = true;
+            this.save_resourse_story.Click += new System.EventHandler(this.save_resourse_story_Click);
+            // 
+            // saveProductDelivery
+            // 
+            this.saveProductDelivery.Location = new System.Drawing.Point(12, 245);
+            this.saveProductDelivery.Name = "saveProductDelivery";
+            this.saveProductDelivery.Size = new System.Drawing.Size(189, 23);
+            this.saveProductDelivery.TabIndex = 6;
+            this.saveProductDelivery.Text = "Добавить поставку товара";
+            this.saveProductDelivery.UseVisualStyleBackColor = true;
+            this.saveProductDelivery.Click += new System.EventHandler(this.saveProductDelivery_Click);
+            // 
+            // save_raw_trancaction
+            // 
+            this.save_raw_trancaction.Location = new System.Drawing.Point(18, 286);
+            this.save_raw_trancaction.Name = "save_raw_trancaction";
+            this.save_raw_trancaction.Size = new System.Drawing.Size(234, 23);
+            this.save_raw_trancaction.TabIndex = 7;
+            this.save_raw_trancaction.Text = "Добавить транзакцию закупки сырья";
+            this.save_raw_trancaction.UseVisualStyleBackColor = true;
+            this.save_raw_trancaction.Click += new System.EventHandler(this.save_raw_transaction_Click);
             // 
             // button5
             // 
@@ -122,7 +155,10 @@ namespace Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(207, 336);
+            this.ClientSize = new System.Drawing.Size(560, 452);
+            this.Controls.Add(this.save_raw_trancaction);
+            this.Controls.Add(this.saveProductDelivery);
+            this.Controls.Add(this.save_resourse_story);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
@@ -147,6 +183,9 @@ namespace Project
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button save_product_warehouse;
+        private System.Windows.Forms.Button save_resourse_story;
+        private System.Windows.Forms.Button saveProductDelivery;
+        private System.Windows.Forms.Button save_raw_trancaction;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button6;

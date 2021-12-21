@@ -7,53 +7,124 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjectOop.Entities;
 
 namespace Project
 {
     public partial class EmployeeEditorForm : Form // сотрудник
     {
+        private Employee? InitialEmployee;
 
-        private TaskCompletionSource<string?> onReady = new TaskCompletionSource<string>();
+        private TaskCompletionSource<Employee> onReady = new TaskCompletionSource<Employee>();
 
-        public EmployeeEditorForm(string? employee)
+        public EmployeeEditorForm(Employee? employee)
         {
             InitializeComponent();
+            InitialEmployee = employee;
 
             if (employee != null)
             {
-                textBox1.Text = employee;
+                textBox1.Text = employee.FirstName;
+                textBox2.Text = employee.LastName;
+                textBox3.Text = employee.MiddleName;
+                dateTimePicker1.Value = employee.DeviceDate;
+                textBox5.Text = employee.Salary.ToString();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var trimmedFirstName = textBox1.Text.Trim();
+            if (trimmedFirstName.Length == 0)
+            {
+                MessageBox.Show("Не указана фамилия сотрудника");
+                return;
+            }
+            var trimmedLastName = textBox2.Text.Trim();
+            if (trimmedLastName.Length == 0)
+            {
+                MessageBox.Show("Не указано имя сотрудника");
+                return;
+            }
+            var trimmedMiddleName = textBox3.Text.Trim();
+            var dateDevice = dateTimePicker1.Value;
+
+            var currentDate = DateTime.Now;
+
+            if (dateDevice > currentDate)
+            {
+                MessageBox.Show("Неверная дата");
+                return;
+            }
+
+            var trimmedSalary = textBox5.Text.Trim();
+            if (trimmedSalary.Length == 0)
+            {
+                MessageBox.Show("Не указана зарплата сотрудника");
+                return;
+            }
+
+            Employee result;
+            if (InitialEmployee != null)
+            {
+                result = new Employee()
+                {
+                    ID = InitialEmployee.ID,
+                    FirstName = trimmedFirstName,
+                    LastName = trimmedLastName,
+                    MiddleName = trimmedMiddleName,
+                    DeviceDate = dateDevice,
+                    Salary = trimmedSalary
+                };
+            }
+            else
+            {
+                result = new Employee()
+                {
+                    FirstName = trimmedFirstName,
+                    LastName = trimmedLastName,
+                    MiddleName = trimmedMiddleName,
+                    DeviceDate = dateDevice,
+                    Salary = trimmedSalary
+                };
+            };
+            onReady.SetResult(result);
 
         }
 
-        public async Task<string?> getEmployeeNameAsync()
+        public static async Task<Employee?>  getEmployeeNameAsync(Employee? initialEmployee = null)
         {
-            Show();
-            var result = await onReady.Task;
-            Close();
-            return result;
+            var form = new EmployeeEditorForm(initialEmployee);
+            form.Show();
+            try
+            {
+                var employee = await form.onReady.Task;
+                return employee;
+            }
+            catch (OperationCanceledException e)
+            {
+                return null;
+            }
+            finally
+            {
+                if (!form.IsDisposed)
+                {
+                    form.Close();
+                }
+            }
+
         }
 
-        public class EmployeeEditor
+        private void EmployeeEditorForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            public string FirstName { get; set; }
+            try
+            {
+                onReady.TrySetCanceled();
+            }
+            catch (Exception error)
+            {
 
-            public string LastName { get; set; }
-            public string MiddleName { get; set; }
-
-            public string Date { get; set; }
-
-            public int Price { get; set; }
-        }
-
-
-        private void EmployeeEditorForm_Load(object sender, EventArgs e)
-        {
-
+            }
         }
     }
 }

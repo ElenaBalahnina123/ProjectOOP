@@ -178,7 +178,6 @@ namespace ProjectOop
             public Article Article { get; set; }
             [Required] public int Quantity { get; set; }
             [Required] public decimal Price { get; set; }
-            
         }
 
         public class ModelColor
