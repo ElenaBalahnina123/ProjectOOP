@@ -30,35 +30,27 @@ namespace Project
         private void InitializeComponent()
         {
             this.btn_add_new = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btn_add_new
             // 
-            this.btn_add_new.Location = new System.Drawing.Point(425, 791);
+            this.btn_add_new.Location = new System.Drawing.Point(340, 633);
+            this.btn_add_new.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_add_new.Name = "btn_add_new";
-            this.btn_add_new.Size = new System.Drawing.Size(298, 34);
+            this.btn_add_new.Size = new System.Drawing.Size(238, 27);
             this.btn_add_new.TabIndex = 0;
             this.btn_add_new.Text = "Добавить новый цвет";
             this.btn_add_new.UseVisualStyleBackColor = true;
             this.btn_add_new.Click += new System.EventHandler(this.btn_add_new_Click);
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 25;
-            this.listBox1.Location = new System.Drawing.Point(12, 12);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(545, 629);
-            this.listBox1.TabIndex = 1;
-            // 
             // ColorListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 858);
-            this.Controls.Add(this.listBox1);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClientSize = new System.Drawing.Size(640, 686);
             this.Controls.Add(this.btn_add_new);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ColorListForm";
             this.Text = "ColorListForm";
             this.ResumeLayout(false);
@@ -68,6 +60,5 @@ namespace Project
         #endregion
 
         private System.Windows.Forms.Button btn_add_new;
-        private System.Windows.Forms.ListBox listBox1;
     }
 }
