@@ -11,12 +11,9 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class PositionEditorForm : Form
-
-    {
-        
+    public partial class PositionEditorForm : Form // должность
+    {        
         private Position? InitialPosition;
-
         private TaskCompletionSource<Position> onReady = new TaskCompletionSource<Position>();
 
         public PositionEditorForm(Position? post)
@@ -95,6 +92,16 @@ namespace Project
             {
 
             }
+        }
+
+        private void PositionEditorForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void name_post_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

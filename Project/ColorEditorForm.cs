@@ -99,6 +99,11 @@ namespace Project
                 
             }
         }
+
+        private void ColorEditorForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

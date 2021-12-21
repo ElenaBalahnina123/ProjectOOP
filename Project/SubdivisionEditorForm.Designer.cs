@@ -31,19 +31,20 @@ namespace Project
         {
             this.name_subdivision = new System.Windows.Forms.TextBox();
             this.save_btn_subdivision = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // name_subdivision
             // 
             this.name_subdivision.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.name_subdivision.Location = new System.Drawing.Point(12, 12);
+            this.name_subdivision.Location = new System.Drawing.Point(12, 38);
             this.name_subdivision.Name = "name_subdivision";
             this.name_subdivision.Size = new System.Drawing.Size(335, 33);
             this.name_subdivision.TabIndex = 1;
             // 
             // save_btn_subdivision
             // 
-            this.save_btn_subdivision.Location = new System.Drawing.Point(12, 51);
+            this.save_btn_subdivision.Location = new System.Drawing.Point(12, 77);
             this.save_btn_subdivision.Name = "save_btn_subdivision";
             this.save_btn_subdivision.Size = new System.Drawing.Size(101, 23);
             this.save_btn_subdivision.TabIndex = 2;
@@ -51,16 +52,27 @@ namespace Project
             this.save_btn_subdivision.UseVisualStyleBackColor = true;
             this.save_btn_subdivision.Click += new System.EventHandler(this.save_btn_subdivision_Click_1);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 15);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Добавьте подразделение:";
+            // 
             // SubdivisionEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 85);
+            this.ClientSize = new System.Drawing.Size(411, 120);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.save_btn_subdivision);
             this.Controls.Add(this.name_subdivision);
             this.Name = "SubdivisionEditorForm";
             this.Text = "SubdivisionEditorForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SubdivisionEditorForm_FormClosed);
+            this.Load += new System.EventHandler(this.SubdivisionEditorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -72,5 +84,6 @@ namespace Project
             ;
         private System.Windows.Forms.TextBox name_subdivision;
         private System.Windows.Forms.Button save_btn_subdivision;
+        private System.Windows.Forms.Label label1;
     }
 }
