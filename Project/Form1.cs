@@ -207,7 +207,20 @@ namespace Project
             {
                 MessageBox.Show("Отменено");
             }
-
         }
+
+        private async void save_ResourceRequestItem_Click(object sender, EventArgs e)
+        {
+            var ResourceRequestItem = await ResourceRequestItemForm.EditResourceRequestItem();
+            if (ResourceRequestItem != null)
+            {
+                MessageBox.Show(ResourceRequestItem.Quantity.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+        }
+
     }
 }
