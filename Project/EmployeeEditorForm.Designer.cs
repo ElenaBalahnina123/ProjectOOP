@@ -154,6 +154,7 @@ namespace Project
             this.Name = "EmployeeEditorForm";
             this.Text = "EmployeeEditorForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmployeeEditorForm_FormClosed);
+            this.Load += new System.EventHandler(this.EmployeeEditorForm_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

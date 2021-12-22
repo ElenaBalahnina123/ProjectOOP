@@ -234,5 +234,18 @@ namespace Project
                 MessageBox.Show("Отменено");
             }
         }
+
+        private async void save_Shop(object sender, EventArgs e)
+        {
+            var shoper = await ShopEditorForm.getShop();
+            if (shoper != null)
+            {
+                MessageBox.Show(shoper.ShopName + " " + shoper.Address);
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+        }
     }
 }
