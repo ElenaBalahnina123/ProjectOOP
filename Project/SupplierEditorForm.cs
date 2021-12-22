@@ -23,6 +23,7 @@ namespace Project
             if (supplier != null)
             {
                 textBox1.Text = supplier.NameOrganization;
+                textBox2.Text = supplier.INN.ToString();
             }
 
         }       
@@ -32,33 +33,40 @@ namespace Project
 
             if (trimmedNameOrganizatio.Length == 0)
             {
-                MessageBox.Show("Поставщик не указан");
+                MessageBox.Show("Наименование не указано");
                 return;
             }
-
-            Supplier resultSupplier;
+            var trimmedINN = textBox2.Text.Trim();
+            if (int.TryParse(trimmedINN, out _))
+            {
+                trimmedINN = int.Parse(trimmedINN).ToString();
+            }
+           
+            Supplier result;
             if (InitialSupplier != null)
             {
-                resultSupplier = new Supplier()
+                result = new Supplier()
                 {
                     ID = InitialSupplier.ID,
-                    NameOrganization = trimmedNameOrganizatio
+                    NameOrganization = trimmedNameOrganizatio,
+                    INN = int.Parse(trimmedINN)
 
                 };
             }
             else
             {
-                resultSupplier = new Supplier()
+                result = new Supplier()
                 {
-                    NameOrganization = trimmedNameOrganizatio
+                    NameOrganization = trimmedNameOrganizatio,
+                    INN = int.Parse(trimmedINN)
                 };
             };
 
-            onReady.SetResult(resultSupplier);
+            onReady.SetResult(result);
 
         }
 
-        public static async Task<Supplier?> EditSupplier(Supplier? initialSupplier = null)
+        public static async Task<Supplier?> getSupplierNameAsync(Supplier? initialSupplier = null)
         {
             var form = new SupplierEditorForm(initialSupplier);
             form.Show();

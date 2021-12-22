@@ -112,10 +112,10 @@ namespace Project
         private async void button5_Click(object sender, EventArgs e)
         {
 
-            var name_supplier = await SupplierEditorForm.EditSupplier();
+            var name_supplier = await SupplierEditorForm.getSupplierNameAsync();
             if (name_supplier != null)
             {
-                MessageBox.Show(name_supplier.NameOrganization);
+                MessageBox.Show(name_supplier.NameOrganization+" "+ name_supplier.INN);
             }
             else
             {

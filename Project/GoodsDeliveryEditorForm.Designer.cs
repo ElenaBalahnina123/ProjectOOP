@@ -34,6 +34,7 @@ namespace Project
             this.label1 = new System.Windows.Forms.Label();
             this.sizeBox = new System.Windows.Forms.ComboBox();
             this.save_btn_position = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_amount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,11 +90,21 @@ namespace Project
             this.save_btn_position.UseVisualStyleBackColor = true;
             this.save_btn_position.Click += new System.EventHandler(this.save_btn_position_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(154, 15);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Добавить товар в поставке";
+            // 
             // GoodsDeliveryEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(235, 204);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.save_btn_position);
             this.Controls.Add(this.sizeBox);
             this.Controls.Add(this.label1);
@@ -116,5 +127,6 @@ namespace Project
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox sizeBox;
         private System.Windows.Forms.Button save_btn_position;
+        private System.Windows.Forms.Label label2;
     }
 }
