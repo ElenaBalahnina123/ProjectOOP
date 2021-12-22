@@ -222,5 +222,17 @@ namespace Project
             }
         }
 
+        private async void save_MaterialCutting(object sender, EventArgs e)
+        {
+            var MaterialCutting = await MaterialCuttingEditorForm.EditMaterialCutting();
+            if (MaterialCutting != null)
+            {
+                MessageBox.Show(MaterialCutting.Quantity.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+        }
     }
 }

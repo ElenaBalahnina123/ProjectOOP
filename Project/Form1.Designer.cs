@@ -43,6 +43,7 @@ namespace Project
             this.save_btn_goodsDelivery = new System.Windows.Forms.Button();
             this.save_btn_transactionContents = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -185,11 +186,22 @@ namespace Project
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.save_ResourceRequestItem_Click);
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(225, 93);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(199, 23);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "Добавить материал для раскроя";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.save_MaterialCutting);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 452);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.save_btn_transactionContents);
             this.Controls.Add(this.save_btn_goodsDelivery);
@@ -229,6 +241,7 @@ namespace Project
         private System.Windows.Forms.Button save_btn_goodsDelivery;
         private System.Windows.Forms.Button save_btn_transactionContents;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }
 
