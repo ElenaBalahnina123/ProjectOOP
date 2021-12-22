@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Project
 {
     partial class EmployeeEditorForm
@@ -155,6 +157,11 @@ namespace Project
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void EmployeeEditorForm_Load(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

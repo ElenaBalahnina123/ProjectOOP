@@ -11,26 +11,25 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class ColorEditorForm : Form
+    public partial class ColorEditor : Form
     {
         private ModelColor? InitialModelColor;
 
         private TaskCompletionSource<ModelColor> tcs = new TaskCompletionSource<ModelColor>();
-
-        public ColorEditorForm(ModelColor? color)
+        public ColorEditor(ModelColor? color)
         {
             InitializeComponent();
             InitialModelColor = color;
-            if(color != null)
+            if (color != null)
             {
-                color_string_name.Text = color.TextName;
-                rgb_value.Text = color.RgbValue;
+                textBox1.Text = color.TextName;
+                textBox2.Text = color.RgbValue;
             }
         }
 
-        private void btn_save_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            var trimmedName = color_string_name.Text.Trim();
+            var trimmedName = textBox1.Text.Trim();
 
             if (trimmedName.Length == 0)
             {
@@ -38,15 +37,15 @@ namespace Project
                 return;
             }
 
-            var trimmedRgb = rgb_value.Text.Trim();
-            if(trimmedRgb.Length == 0)
+            var trimmedRgb = textBox2.Text.Trim();
+            if (trimmedRgb.Length == 0)
             {
                 MessageBox.Show("Не указано RGB значение для цвета");
                 return;
             }
 
             ModelColor resultModel;
-            if(InitialModelColor != null)
+            if (InitialModelColor != null)
             {
                 resultModel = new ModelColor()
                 {
@@ -54,7 +53,7 @@ namespace Project
                     RgbValue = trimmedRgb,
                     TextName = trimmedName
                 };
-            } 
+            }
             else
             {
                 resultModel = new ModelColor()
@@ -68,43 +67,36 @@ namespace Project
 
         public static async Task<ModelColor?> EditColorAsync(ModelColor? initialColor = null)
         {
-            var form = new ColorEditorForm(initialColor);
+            var form = new ColorEditor(initialColor);
             form.Show();
             try
             {
                 var color = await form.tcs.Task;
                 return color;
             }
-            catch(OperationCanceledException e)
+            catch (OperationCanceledException e)
             {
                 return null;
             }
             finally
             {
-                if(!form.IsDisposed)
+                if (!form.IsDisposed)
                 {
                     form.Close();
                 }
             }
         }
 
-        private void ColorEditorForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void ColorEditor_FormClosed(object sender, FormClosedEventArgs e)
         {
             try
             {
                 tcs.TrySetCanceled();
             }
-            catch(Exception error)
+            catch (Exception error)
             {
-                
+
             }
         }
-
-        private void ColorEditorForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
-
-
 }

@@ -79,10 +79,10 @@ namespace Project
 
         private async void button4_Click(object sender, EventArgs e)
         {
-            var color = await ColorEditorForm.EditColorAsync();
+            var color = await ColorEditor.EditColorAsync();
             if(color != null)
             {
-                MessageBox.Show(color.TextName);
+                MessageBox.Show(color.TextName + " " + color.RgbValue);
             } else
             {
                 MessageBox.Show("Отменено");

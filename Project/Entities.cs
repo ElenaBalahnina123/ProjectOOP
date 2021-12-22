@@ -80,8 +80,10 @@ namespace ProjectOop
             [Required] [MaxLength(50)] public string FirstName { get; set; } // имя
             [MaxLength(50)] public string MiddleName { get; set; } // отчество
             [Required] public DateTime DeviceDate { get; set; } // дата устройства
-            [Required] public decimal Salary { get; set; } //оклад
+            [Required] public string Salary { get; set; } //оклад
             public Position post { get; set; } // должность
+
+            
         }
 
         public class FinishesProductWarehouse // склад готовой продукции 
