@@ -93,7 +93,7 @@ namespace Project
             // 
             // save_resourse_story
             // 
-            this.save_resourse_story.Location = new System.Drawing.Point(10, 207);
+            this.save_resourse_story.Location = new System.Drawing.Point(228, 205);
             this.save_resourse_story.Name = "save_resourse_story";
             this.save_resourse_story.Size = new System.Drawing.Size(159, 23);
             this.save_resourse_story.TabIndex = 5;
@@ -120,6 +120,33 @@ namespace Project
             this.save_raw_trancaction.Text = "Добавить транзакцию закупки сырья";
             this.save_raw_trancaction.UseVisualStyleBackColor = true;
             this.save_raw_trancaction.Click += new System.EventHandler(this.save_raw_transaction_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(228, 169);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(184, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Добавить поставщика";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 205);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 15);
+            this.label1.TabIndex = 6;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(8, 205);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(184, 23);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "Добавить вид сырья";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
