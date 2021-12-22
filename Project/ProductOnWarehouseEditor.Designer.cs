@@ -53,6 +53,7 @@ namespace Project
             this.sizeBox.Name = "sizeBox";
             this.sizeBox.Size = new System.Drawing.Size(129, 23);
             this.sizeBox.TabIndex = 0;
+            this.sizeBox.SelectedIndexChanged += new System.EventHandler(this.sizeBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -95,11 +96,12 @@ namespace Project
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Location = new System.Drawing.Point(67, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 15);
+            this.label3.Size = new System.Drawing.Size(142, 15);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Добавьте товар на складе";
+            this.label3.Text = "Добавьте товар на склад";
+            this.label3.Click += new System.EventHandler(this.label3_Click_1);
             // 
             // ProductOnWarehouseEditor
             // 

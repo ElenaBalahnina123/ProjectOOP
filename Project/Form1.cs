@@ -247,5 +247,33 @@ namespace Project
                 MessageBox.Show("Отменено");
             }
         }
+
+        private async void save_Sketch(object sender, EventArgs e)
+        {
+            var Sketcher = await SketchEditorForm.EditSketch();
+            if (Sketcher != null)
+            {
+                MessageBox.Show(Sketcher.Name + " " + Sketcher.CreationDate + " " + Sketcher.DegreeDevelopment);
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+
+        }
+
+        private async void save_SketchMaterialization(object sender, EventArgs e)
+        {
+            var SketchMaterial = await SketchMaterializationEditorForm.EditSketchMaterialization();
+            if (SketchMaterial != null)
+            {
+                MessageBox.Show(SketchMaterial.Size + " " + SketchMaterial.DegreeDevelopment + " " + SketchMaterial.CreationDate);
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+
+        }
     }
 }

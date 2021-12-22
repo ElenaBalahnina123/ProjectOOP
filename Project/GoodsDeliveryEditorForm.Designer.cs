@@ -79,6 +79,7 @@ namespace Project
             this.sizeBox.Name = "sizeBox";
             this.sizeBox.Size = new System.Drawing.Size(120, 23);
             this.sizeBox.TabIndex = 3;
+            this.sizeBox.SelectedIndexChanged += new System.EventHandler(this.sizeBox_SelectedIndexChanged);
             // 
             // save_btn_position
             // 

@@ -105,6 +105,11 @@ namespace Project
         {
 
         }
+
+        private void sizeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }
