@@ -166,5 +166,33 @@ namespace Project
                 MessageBox.Show("Отменено");
             }
         }
+
+        private async void save_btn_goodsDelivery_Click(object sender, EventArgs e)
+        {
+            var goodsDelivery = await GoodsDeliveryEditorForm.EditGoodsDelivery();
+            if (goodsDelivery != null)
+            {
+                MessageBox.Show(goodsDelivery.Quantity.ToString() + " " + goodsDelivery.Size);
+
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+        }
+
+        private async void save_btn_transactionContents_Click(object sender, EventArgs e)
+        {
+            var transactionContents = await TransactionContentsEditorForm.EditorTransactionContents();
+            if (transactionContents != null)
+            {
+                MessageBox.Show(transactionContents.Quantity.ToString() + " " + transactionContents.Price);
+
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
+        }
     }
 }

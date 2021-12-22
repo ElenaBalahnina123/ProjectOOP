@@ -37,7 +37,7 @@ namespace Project
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(22, 23);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(232, 23);
+            this.dateTimePicker1.Size = new System.Drawing.Size(146, 23);
             this.dateTimePicker1.TabIndex = 0;
             // 
             // save_btn
@@ -54,7 +54,7 @@ namespace Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 105);
+            this.ClientSize = new System.Drawing.Size(199, 105);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "ProductDeliveryEditorForm";
