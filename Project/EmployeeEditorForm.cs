@@ -14,9 +14,8 @@ namespace Project
     public partial class EmployeeEditorForm : Form
     {
         private Employee? InitialEmployee;
-        // задача которую можно завершить и дождаться момента когла она завершится. в одном месте
-        // завкршаем звдачу если все хорошо, в другом дожидаемся и получаем данные
-        // объединение callback
+        // задача которую можно завершить и дождаться момента когда она завершится. в одном месте
+        // завершаем звдачу если все хорошо, в другом дожидаемся и получаем данные
         private TaskCompletionSource<Employee> onReady = new TaskCompletionSource<Employee>();
 
         public EmployeeEditorForm(Employee? employee)
