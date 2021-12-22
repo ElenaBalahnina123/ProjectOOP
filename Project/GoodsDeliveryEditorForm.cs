@@ -100,6 +100,11 @@ namespace Project
                 }
             }
         }
+
+        private void GoodsDeliveryEditorForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }

@@ -77,7 +77,7 @@ namespace Project
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(8, 169);
+            this.button4.Location = new System.Drawing.Point(8, 144);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(161, 23);
@@ -98,7 +98,7 @@ namespace Project
             // 
             // save_resourse_story
             // 
-            this.save_resourse_story.Location = new System.Drawing.Point(228, 205);
+            this.save_resourse_story.Location = new System.Drawing.Point(220, 21);
             this.save_resourse_story.Name = "save_resourse_story";
             this.save_resourse_story.Size = new System.Drawing.Size(159, 23);
             this.save_resourse_story.TabIndex = 5;
@@ -108,7 +108,7 @@ namespace Project
             // 
             // saveProductDelivery
             // 
-            this.saveProductDelivery.Location = new System.Drawing.Point(12, 245);
+            this.saveProductDelivery.Location = new System.Drawing.Point(8, 201);
             this.saveProductDelivery.Name = "saveProductDelivery";
             this.saveProductDelivery.Size = new System.Drawing.Size(189, 23);
             this.saveProductDelivery.TabIndex = 6;
@@ -118,7 +118,7 @@ namespace Project
             // 
             // save_raw_trancaction
             // 
-            this.save_raw_trancaction.Location = new System.Drawing.Point(18, 286);
+            this.save_raw_trancaction.Location = new System.Drawing.Point(8, 230);
             this.save_raw_trancaction.Name = "save_raw_trancaction";
             this.save_raw_trancaction.Size = new System.Drawing.Size(234, 23);
             this.save_raw_trancaction.TabIndex = 7;
@@ -128,7 +128,7 @@ namespace Project
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(228, 169);
+            this.button5.Location = new System.Drawing.Point(8, 317);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(184, 23);
             this.button5.TabIndex = 5;
@@ -146,16 +146,17 @@ namespace Project
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(8, 205);
+            this.button6.Location = new System.Drawing.Point(8, 172);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(184, 23);
             this.button6.TabIndex = 7;
-            this.button6.Text = "Добавить вид сырья";
+            this.button6.Text = "Добавить сырье на склад";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // save_btn_goodsDelivery
             // 
-            this.save_btn_goodsDelivery.Location = new System.Drawing.Point(18, 326);
+            this.save_btn_goodsDelivery.Location = new System.Drawing.Point(8, 259);
             this.save_btn_goodsDelivery.Name = "save_btn_goodsDelivery";
             this.save_btn_goodsDelivery.Size = new System.Drawing.Size(184, 23);
             this.save_btn_goodsDelivery.TabIndex = 8;
@@ -165,7 +166,7 @@ namespace Project
             // 
             // save_btn_transactionContents
             // 
-            this.save_btn_transactionContents.Location = new System.Drawing.Point(24, 365);
+            this.save_btn_transactionContents.Location = new System.Drawing.Point(8, 288);
             this.save_btn_transactionContents.Name = "save_btn_transactionContents";
             this.save_btn_transactionContents.Size = new System.Drawing.Size(265, 23);
             this.save_btn_transactionContents.TabIndex = 9;

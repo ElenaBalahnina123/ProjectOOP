@@ -102,6 +102,7 @@ namespace Project
             this.Name = "GoodsDeliveryEditorForm";
             this.Text = "GoodsDeliveryEditorForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GoodsDeliveryEditorForm_FormClosed);
+            this.Load += new System.EventHandler(this.GoodsDeliveryEditorForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numeric_amount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

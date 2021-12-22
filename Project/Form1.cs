@@ -194,5 +194,10 @@ namespace Project
                 MessageBox.Show("Отменено");
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
