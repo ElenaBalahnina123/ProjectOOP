@@ -195,8 +195,18 @@ namespace Project
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private async void button6_Click(object sender, EventArgs e)
         {
+            var goodsDelivery = await RawMaterialItemForm.EditRawMaterialItem();
+            if (goodsDelivery != null)
+            {
+                MessageBox.Show(goodsDelivery.Quantity.ToString() );
+
+            }
+            else
+            {
+                MessageBox.Show("Отменено");
+            }
 
         }
     }

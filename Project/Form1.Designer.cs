@@ -39,7 +39,7 @@ namespace Project
             this.save_raw_trancaction = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.save_btn_RawMaterialItem = new System.Windows.Forms.Button();
             this.save_btn_goodsDelivery = new System.Windows.Forms.Button();
             this.save_btn_transactionContents = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -144,15 +144,15 @@ namespace Project
             this.label1.Size = new System.Drawing.Size(0, 15);
             this.label1.TabIndex = 6;
             // 
-            // button6
+            // save_btn_RawMaterialItem
             // 
-            this.button6.Location = new System.Drawing.Point(8, 172);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(184, 23);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "Добавить сырье на склад";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.save_btn_RawMaterialItem.Location = new System.Drawing.Point(8, 172);
+            this.save_btn_RawMaterialItem.Name = "save_btn_RawMaterialItem";
+            this.save_btn_RawMaterialItem.Size = new System.Drawing.Size(184, 23);
+            this.save_btn_RawMaterialItem.TabIndex = 7;
+            this.save_btn_RawMaterialItem.Text = "Добавить сырье на склад";
+            this.save_btn_RawMaterialItem.UseVisualStyleBackColor = true;
+            this.save_btn_RawMaterialItem.Click += new System.EventHandler(this.button6_Click);
             // 
             // save_btn_goodsDelivery
             // 
@@ -184,7 +184,7 @@ namespace Project
             this.Controls.Add(this.save_raw_trancaction);
             this.Controls.Add(this.saveProductDelivery);
             this.Controls.Add(this.save_resourse_story);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.save_btn_RawMaterialItem);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.save_product_warehouse);
@@ -213,7 +213,7 @@ namespace Project
         private System.Windows.Forms.Button save_raw_trancaction;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button save_btn_RawMaterialItem;
         private System.Windows.Forms.Button save_btn_goodsDelivery;
         private System.Windows.Forms.Button save_btn_transactionContents;
     }
