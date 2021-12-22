@@ -96,7 +96,7 @@ namespace Project
             // 
             // save_resourse_story
             // 
-            this.save_resourse_story.Location = new System.Drawing.Point(18, 368);
+            this.save_resourse_story.Location = new System.Drawing.Point(228, 205);
             this.save_resourse_story.Name = "save_resourse_story";
             this.save_resourse_story.Size = new System.Drawing.Size(159, 23);
             this.save_resourse_story.TabIndex = 5;
@@ -126,7 +126,7 @@ namespace Project
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(18, 329);
+            this.button5.Location = new System.Drawing.Point(228, 169);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(184, 23);
             this.button5.TabIndex = 5;

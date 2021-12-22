@@ -14,7 +14,8 @@ namespace Project
     public partial class EmployeeEditorForm : Form // сотрудник
     {
         private Employee? InitialEmployee;
-
+        // задача которую можно завершить и дождаться момента когда она завершится. в одном месте
+        // завершаем звдачу если все хорошо, в другом дожидаемся и получаем данные
         private TaskCompletionSource<Employee> onReady = new TaskCompletionSource<Employee>();
 
         public EmployeeEditorForm(Employee? employee)
@@ -91,13 +92,14 @@ namespace Project
             onReady.SetResult(result);
 
         }
-
+        // статический асинхронный метод. 
         public static async Task<Employee?>  getEmployeeNameAsync(Employee? initialEmployee = null)
         {
             var form = new EmployeeEditorForm(initialEmployee);
             form.Show();
             try
             {
+                // ждем когда вызывается кнопка и эта задача завершится. 
                 var employee = await form.onReady.Task;
                 return employee;
             }

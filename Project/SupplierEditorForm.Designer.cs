@@ -35,7 +35,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(57, 70);
+            this.button1.Location = new System.Drawing.Point(12, 70);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -71,6 +71,7 @@
             this.Controls.Add(this.button1);
             this.Name = "SupplierEditorForm";
             this.Text = "SupplierEditorForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SupplierEditorForm_FormClosed_1);
             this.Load += new System.EventHandler(this.SupplierEditorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
