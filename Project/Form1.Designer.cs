@@ -40,6 +40,8 @@ namespace Project
             this.button5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
+            this.save_btn_goodsDelivery = new System.Windows.Forms.Button();
+            this.save_btn_transactionContents = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -151,11 +153,33 @@ namespace Project
             this.button6.Text = "Добавить вид сырья";
             this.button6.UseVisualStyleBackColor = true;
             // 
+            // save_btn_goodsDelivery
+            // 
+            this.save_btn_goodsDelivery.Location = new System.Drawing.Point(18, 326);
+            this.save_btn_goodsDelivery.Name = "save_btn_goodsDelivery";
+            this.save_btn_goodsDelivery.Size = new System.Drawing.Size(184, 23);
+            this.save_btn_goodsDelivery.TabIndex = 8;
+            this.save_btn_goodsDelivery.Text = "Добавить товар в поставке";
+            this.save_btn_goodsDelivery.UseVisualStyleBackColor = true;
+            this.save_btn_goodsDelivery.Click += new System.EventHandler(this.save_btn_goodsDelivery_Click);
+            // 
+            // save_btn_transactionContents
+            // 
+            this.save_btn_transactionContents.Location = new System.Drawing.Point(24, 365);
+            this.save_btn_transactionContents.Name = "save_btn_transactionContents";
+            this.save_btn_transactionContents.Size = new System.Drawing.Size(265, 23);
+            this.save_btn_transactionContents.TabIndex = 9;
+            this.save_btn_transactionContents.Text = "Добавить содержимое транзакции";
+            this.save_btn_transactionContents.UseVisualStyleBackColor = true;
+            this.save_btn_transactionContents.Click += new System.EventHandler(this.save_btn_transactionContents_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 452);
+            this.Controls.Add(this.save_btn_transactionContents);
+            this.Controls.Add(this.save_btn_goodsDelivery);
             this.Controls.Add(this.save_raw_trancaction);
             this.Controls.Add(this.saveProductDelivery);
             this.Controls.Add(this.save_resourse_story);
@@ -189,6 +213,8 @@ namespace Project
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button save_btn_goodsDelivery;
+        private System.Windows.Forms.Button save_btn_transactionContents;
     }
 }
 

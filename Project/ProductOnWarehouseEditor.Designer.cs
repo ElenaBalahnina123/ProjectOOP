@@ -31,10 +31,10 @@ namespace Project
         {
             this.sizeBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.amountInput = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.numeric_amount = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_amount)).BeginInit();
             this.SuspendLayout();
             // 
             // sizeBox
@@ -63,14 +63,6 @@ namespace Project
             this.label1.TabIndex = 1;
             this.label1.Text = "Размер";
             // 
-            // amountInput
-            // 
-            this.amountInput.Location = new System.Drawing.Point(8, 82);
-            this.amountInput.Margin = new System.Windows.Forms.Padding(2);
-            this.amountInput.Name = "amountInput";
-            this.amountInput.Size = new System.Drawing.Size(129, 23);
-            this.amountInput.TabIndex = 2;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -92,25 +84,21 @@ namespace Project
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.save_btn_prOnWerehouse);
             // 
-            // label3
+            // numeric_amount
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(176, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 15);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Название товара?";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.numeric_amount.Location = new System.Drawing.Point(12, 83);
+            this.numeric_amount.Name = "numeric_amount";
+            this.numeric_amount.Size = new System.Drawing.Size(120, 23);
+            this.numeric_amount.TabIndex = 7;
             // 
             // ProductOnWarehouseEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 163);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(235, 163);
+            this.Controls.Add(this.numeric_amount);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.amountInput);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.sizeBox);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -118,6 +106,7 @@ namespace Project
             this.Text = "ProductOnWarehouseEditor";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ProductOnWarehouseEditor_FormClosed);
             this.Load += new System.EventHandler(this.ProductOnWarehouseEditor_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_amount)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,9 +116,8 @@ namespace Project
 
         private System.Windows.Forms.ComboBox sizeBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox amountInput;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numeric_amount;
     }
 }

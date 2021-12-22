@@ -32,7 +32,7 @@ namespace Project
                 }
 
 
-                amountInput.Text = productOnWarehouse.Quantity.ToString();
+                numeric_amount.Text = productOnWarehouse.Quantity.ToString();
             }
         }
 
@@ -44,7 +44,7 @@ namespace Project
 
 
 
-            var trimmedAmount = amountInput.Text.Trim();
+            var trimmedAmount = numeric_amount.Text.Trim();
             if (trimmedAmount.Length == 0)
             {
                 MessageBox.Show("Не указано количество");

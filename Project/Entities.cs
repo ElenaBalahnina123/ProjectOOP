@@ -179,7 +179,7 @@ namespace ProjectOop
             public RawMaterialPuchaseTransaction RawMaterialPuchaseTransaction { get; set; }
             public Article Article { get; set; }
             [Required] public int Quantity { get; set; }
-            [Required] public decimal Price { get; set; }
+            [Required] public double Price { get; set; }
         }
 
         public class ModelColor

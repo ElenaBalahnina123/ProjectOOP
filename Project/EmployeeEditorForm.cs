@@ -59,10 +59,9 @@ namespace Project
             }
 
             var trimmedSalary = textBox5.Text.Trim();
-            if (trimmedSalary.Length == 0)
+            if (int.TryParse(trimmedSalary, out _))
             {
-                MessageBox.Show("Не указана зарплата сотрудника");
-                return;
+                trimmedSalary = (int.Parse(trimmedSalary)).ToString("C2");
             }
 
             Employee result;
