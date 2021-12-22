@@ -11,7 +11,7 @@ using ProjectOop.Entities;
 
 namespace Project
 {
-    public partial class EmployeeEditorForm : Form
+    public partial class EmployeeEditorForm : Form // сотрудник
     {
         private Employee? InitialEmployee;
         // задача которую можно завершить и дождаться момента когда она завершится. в одном месте

@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Project
 {
     partial class EmployeeEditorForm
@@ -157,10 +159,16 @@ namespace Project
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "EmployeeEditorForm";
             this.Text = "EmployeeEditorForm";
+            this.Load += new System.EventHandler(this.EmployeeEditorForm_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmployeeEditorForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void EmployeeEditorForm_Load(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

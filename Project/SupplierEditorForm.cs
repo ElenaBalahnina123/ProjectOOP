@@ -80,6 +80,18 @@ namespace Project
             }
         }
 
+        private void SupplierEditorForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                onReady.TrySetCanceled();
+            }
+            catch (Exception error)
+            {
+
+            }
+        }
+
 
 
      
