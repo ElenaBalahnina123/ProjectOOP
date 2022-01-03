@@ -24,9 +24,12 @@ namespace Project
             this.dbContext = dbContext;
         }
 
-        private void btn_come_in_Click(object sender, EventArgs e)
+        private async void btn_come_in_Click(object sender, EventArgs e)
         {
             //var form = host.Services.GetRequiredService<DirectorForm>();
+            var login = textBox1.Text;
+            var password = textBox2.Text;
+
 
         }
     }

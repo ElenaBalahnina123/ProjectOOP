@@ -17,11 +17,15 @@ namespace Project
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
             var host = Host.CreateDefaultBuilder()
                 .ConfigureServices((_, services) =>
                     services
                     .AddTransient<LoginForm>()
+                    .AddTransient<ProductionForm>()
+                    .AddTransient<PositionEditorForm>()
+                    .AddTransient<ListEmployee>()
+                    .AddTransient<ListMaterial>()
+                    .AddTransient<ColorListForm>()
                     .AddTransient<DirectorForm>()
                     .AddSingleton<HostHolder>()
                     .AddSingleton<AppDbContext>()
@@ -34,15 +38,9 @@ namespace Project
                 var hostHolder = host.Services.GetRequiredService<HostHolder>();
                 hostHolder.host = host;
 
-                var mainForm = host.Services.GetRequiredService<LoginForm>();
-                Application.Run(mainForm);
+                var loginForm = host.Services.GetRequiredService<LoginForm>();
+                Application.Run(loginForm);
             }
-
-            //Application.Run(new Form0());
-
-
-
-            //Application.
         }
     }
 
