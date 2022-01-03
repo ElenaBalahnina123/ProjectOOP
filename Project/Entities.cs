@@ -94,16 +94,16 @@ namespace ProjectOop
         public class MaterialCutting // материал для райскроя
         {
             public int ID { get; set; }
-            public MaterialForSketch MaterialForSketch { get; set; } // материал для эскиза
+            public Material MaterialForSketch { get; set; } // материал для эскиза
             public SketchMaterialization SketchMaterialization { get; set; } // мтериализация эскиза
             public int Quantity { get; set; } // количество
         }
 
-        public class MaterialForSketch // материал для эскиза
+        public class Material // материал
         {
             public int ID { get; set; }
             public Article Article { get; set; }
-            public Sketch Sketch { get; set; }
+            public string Name { get; set; }
 
         }
 
