@@ -6,6 +6,9 @@ public class AppDbContext : DbContext
 
    // public DbSet<Article> Articles { get; set; } // артикул
    // public DbSet<Subdivision> Divisions { get; set; } // подразделения
+
+    public DbSet<User> Users { get; set; }
+
     public DbSet<Employee> Employees { get; set; } // сотрудники
    // public DbSet<FinishesProductWarehouse> Finishes_product_warehouses { get; set; } // склад готовой продукции
    // public DbSet<MaterialCutting> Material_cuttings { get; set; } // материал для раскроя
@@ -45,6 +48,8 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<User>().HasIndex(e => e.ID).IsUnique();
+
        // modelBuilder.Entity<Article>().HasIndex(e => e.ID).IsUnique();
        // modelBuilder.Entity<Subdivision>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Employee>().HasIndex(e => e.ID).IsUnique();
