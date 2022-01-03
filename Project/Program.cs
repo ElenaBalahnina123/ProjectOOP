@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProjectOop.Entities;
 
 namespace Project
 {
@@ -27,30 +28,20 @@ namespace Project
                     .AddTransient<ListMaterial>()
                     .AddTransient<ColorListForm>()
                     .AddTransient<DirectorForm>()
-                    .AddSingleton<HostHolder>()
                     .AddSingleton<AppDbContext>()
+                    .AddSingleton<ProgramState>()
                 ).Build();
 
             host.StartAsync();
 
             using(host)
             {
-                var hostHolder = host.Services.GetRequiredService<HostHolder>();
-                hostHolder.host = host;
-
-                var loginForm = host.Services.GetRequiredService<LoginForm>();
-                Application.Run(loginForm);
+                var programState = host.Services.GetRequiredService<ProgramState>();
+                programState.SetHost(host);
+                programState.DoLogin();
             }
         }
     }
 
-    public class HostHolder : IDisposable
-    {
-        public IHost host;
-
-        public void Dispose()
-        {
-            host = null;
-        }
-    }
+    
 }

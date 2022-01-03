@@ -14,29 +14,28 @@ namespace Project
 {
     public partial class DirectorForm : Form
     {
-        private IHost host;
-        private AppDbContext dbContext;
-        public DirectorForm(HostHolder hostHolder, AppDbContext dbContext)
-
+        private ProgramState programState;
+        
+        public DirectorForm(ProgramState programState)
         {
-            host = hostHolder.host;
+            this.programState = programState;
             InitializeComponent();
-            this.dbContext = dbContext;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var form = host.Services.GetRequiredService<ListEmployee>();
+            //var form = host.Services.GetRequiredService<ListEmployee>();
+            programState.ShowEmployerList();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var form2 = host.Services.GetRequiredService<ProductionForm>();
+            //var form2 = host.Services.GetRequiredService<ProductionForm>();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var form3 = host.Services.GetRequiredService<PositionEditorForm>();
+            //var form3 = host.Services.GetRequiredService<PositionEditorForm>();
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Project
             var post_name = await PositionEditorForm.EditPosition();
             if (post_name != null)
             {
-                MessageBox.Show(post_name.NamePost);
+                MessageBox.Show(post_name.Name);
             }
             else
             {

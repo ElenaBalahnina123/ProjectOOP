@@ -7,7 +7,7 @@ public class AppDbContext : DbContext
    // public DbSet<Article> Articles { get; set; } // артикул
    // public DbSet<Subdivision> Divisions { get; set; } // подразделения
 
-    public DbSet<User> Users { get; set; }
+    public DbSet<Role> Roles { get; set; }
 
     public DbSet<Employee> Employees { get; set; } // сотрудники
    // public DbSet<FinishesProductWarehouse> Finishes_product_warehouses { get; set; } // склад готовой продукции
@@ -48,14 +48,15 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<User>().HasIndex(e => e.ID).IsUnique();
-
        // modelBuilder.Entity<Article>().HasIndex(e => e.ID).IsUnique();
        // modelBuilder.Entity<Subdivision>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Employee>().HasIndex(e => e.ID).IsUnique();
-       // modelBuilder.Entity<FinishesProductWarehouse>().HasIndex(e => e.ID).IsUnique();
-       // modelBuilder.Entity<MaterialCutting>().HasIndex(e => e.ID).IsUnique();
-      //  modelBuilder.Entity<Material>().HasIndex(e => e.ID).IsUnique();
+
+        modelBuilder.Entity<Role>().HasIndex(e => e.ID).IsUnique();
+
+        // modelBuilder.Entity<FinishesProductWarehouse>().HasIndex(e => e.ID).IsUnique();
+        // modelBuilder.Entity<MaterialCutting>().HasIndex(e => e.ID).IsUnique();
+        //  modelBuilder.Entity<Material>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Position>().HasIndex(e => e.ID).IsUnique();
        // modelBuilder.Entity<Product>().HasIndex(e => e.ID).IsUnique();
       //  modelBuilder.Entity<ProductDelivery>().HasIndex(e => e.ID).IsUnique();

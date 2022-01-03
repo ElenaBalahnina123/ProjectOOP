@@ -14,23 +14,34 @@ namespace Project
 {
     public partial class LoginForm : Form
     {
-        private IHost host;
         private AppDbContext dbContext;
+        private ProgramState programState;
 
-        public LoginForm(HostHolder hostHolder, AppDbContext dbContext)
+        public LoginForm(AppDbContext dbContext, ProgramState state)
         {
-            host = hostHolder.host;
             InitializeComponent();
             this.dbContext = dbContext;
+            programState = state;
         }
 
         private async void btn_come_in_Click(object sender, EventArgs e)
         {
-            //var form = host.Services.GetRequiredService<DirectorForm>();
             var login = textBox1.Text;
             var password = textBox2.Text;
 
+            var employee = (from emp in dbContext.Employees where emp.Login == login select emp).First();
+            if(employee == null)
+            {
+                MessageBox.Show("not found");
+                return;
+            }
+            if(employee.Password != password)
+            {
+                MessageBox.Show("invalid password");
+                return;
+            }
 
+            programState.ShowMainForm(employee);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace ProjectOop
 {
@@ -51,7 +52,15 @@ namespace ProjectOop
         public class Position //должность
         {
             public int ID { get; set; }
-            [Required] public string NamePost { get; set; } // название
+            [Required] public string Name { get; set; } // название
+
+            public List<Role> Roles { get; set; }
+        }
+
+        public class Role
+        {
+            public int ID { get; set; }
+            [Required] public string Name { get; set; } // название
         }
 
         public class RawMaterialWarehouse // cклад сырья и материалов
@@ -73,24 +82,17 @@ namespace ProjectOop
             [Required] public string Name { get; set; }
         }
 
-        public class User
+        public class Employee // сотрудник
         {
             public int ID { get; set; }
             public string Login { get; set; }
             public string Password { get; set; }
-        }
-
-        public class Employee // сотрудник
-        {
-            public int ID { get; set; }
             [Required] [MaxLength(50)] public string LastName { get; set; } // фамилия 
             [Required] [MaxLength(50)] public string FirstName { get; set; } // имя
             [MaxLength(50)] public string MiddleName { get; set; } // отчество
             [Required] public DateTime DeviceDate { get; set; } // дата устройства
             [Required] public string Salary { get; set; } //оклад
             public Position post { get; set; } // должность
-
-            
         }
 
         public class FinishesProductWarehouse // склад готовой продукции 

@@ -35,6 +35,8 @@ namespace Project
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // TODO: login, password
+
             var trimmedFirstName = textBox1.Text.Trim();
             if (trimmedFirstName.Length == 0)
             {

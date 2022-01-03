@@ -23,7 +23,7 @@ namespace Project
 
             if(post != null)
             {
-                name_post.Text = post.NamePost;
+                name_post.Text = post.Name;
             }
             
         }
@@ -45,7 +45,7 @@ namespace Project
                 resultPosition = new Position()
                 {
                     ID = InitialPosition.ID,
-                    NamePost = trimmedNamePost
+                    Name = trimmedNamePost
 
                 };
             }
@@ -53,7 +53,7 @@ namespace Project
             {
                 resultPosition = new Position()
                 {
-                    NamePost = trimmedNamePost
+                    Name = trimmedNamePost
                 };
             };
 
