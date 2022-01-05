@@ -23,13 +23,13 @@ namespace Project
                     services
                     .AddTransient<LoginForm>()
                     .AddTransient<ProductionForm>()
-                    .AddTransient<PositionEditorForm>()
                     .AddTransient<ListEmployee>()
                     .AddTransient<ListMaterial>()
                     .AddTransient<ColorListForm>()
                     .AddTransient<DirectorForm>()
                     .AddSingleton<AppDbContext>()
                     .AddSingleton<ProgramState>()
+                    .AddTransient<DesignerForm>()
                 ).Build();
 
             host.StartAsync();
@@ -38,7 +38,7 @@ namespace Project
             {
                 var programState = host.Services.GetRequiredService<ProgramState>();
                 programState.SetHost(host);
-                programState.DoLogin();
+                programState.OnStart();
             }
         }
     }

@@ -8,16 +8,33 @@ using System.Windows.Forms;
 
 namespace Project.Forms
 {
-    public static class KnownRoles
+    /*public static class KnownRoles
     {
         public static readonly string DIRECTOR = "director";
-    }
+        public static readonly string SEAMSTRESS = "seamstress";
+        public static readonly string CUTTER = "cutter";
+        public static readonly string DESIGNER = "designer";
+        public static readonly string TECHNOLOGIST = "technologist";
+    }*/
 
     static class Utils
     {
-        public static bool HasRole(this Employee employee, string RoleName)
+        /*private static string getStringValueOfRole(Role role)
         {
-            return (from role in employee.post.Roles where role.Name == RoleName select role).Count() > 0;
+            switch(role)
+            {
+                case Role.DIRECTOR: return "director";
+                case Role.CUTTER: return "cutter";
+                case Role.DESIGNER: return "designer";
+                case Role.SEAMSTRESS: return "seamstress";
+                case Role.TECHNOLOGIST: return "technologist";
+                default: throw new Exception("unknown role: " + role);
+            }
+        }*/
+
+        public static bool HasRole(this Employee employee, Role chekingRole)
+        {
+            return employee.Role == chekingRole;
         }
     }
 }

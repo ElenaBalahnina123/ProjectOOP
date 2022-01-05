@@ -8,6 +8,15 @@ namespace ProjectOop
 {
     namespace Entities // сущности
     {
+        public enum Role
+        {
+            DIRECTOR, // директор, может всё
+            SEAMSTRESS, // швея, стадия пошива
+            CUTTER, // раскройщик, стадия раскроя
+            DESIGNER, // модельек, стадии художественного и технологического эскизов
+            TECHNOLOGIST // технолог, контроль качества
+        }
+
         public class Article // артикул
         {
             public int ID { get; set; }
@@ -49,19 +58,19 @@ namespace ProjectOop
             public Shop Shop{ get; set; } //ID магазина
         }
 
-        public class Position //должность
+        /*public class Position //должность
         {
             public int ID { get; set; }
             [Required] public string Name { get; set; } // название
 
-            public List<Role> Roles { get; set; }
-        }
+            public List<Project.Forms.Role> Roles { get; set; }
+        }*/
 
-        public class Role
+        /*public class Role
         {
             public int ID { get; set; }
             [Required] public string Name { get; set; } // название
-        }
+        }*/
 
         public class RawMaterialWarehouse // cклад сырья и материалов
         {
@@ -92,7 +101,10 @@ namespace ProjectOop
             [MaxLength(50)] public string MiddleName { get; set; } // отчество
             [Required] public DateTime DeviceDate { get; set; } // дата устройства
             [Required] public string Salary { get; set; } //оклад
-            public Position post { get; set; } // должность
+
+            public Role Role { get; set; }
+
+//            public Position post { get; set; } // должность
         }
 
         public class FinishesProductWarehouse // склад готовой продукции 

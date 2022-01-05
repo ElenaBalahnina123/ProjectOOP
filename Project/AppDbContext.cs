@@ -7,13 +7,12 @@ public class AppDbContext : DbContext
    // public DbSet<Article> Articles { get; set; } // артикул
    // public DbSet<Subdivision> Divisions { get; set; } // подразделения
 
-    public DbSet<Role> Roles { get; set; }
-
+    //public DbSet<Role> Roles { get; set; }
     public DbSet<Employee> Employees { get; set; } // сотрудники
    // public DbSet<FinishesProductWarehouse> Finishes_product_warehouses { get; set; } // склад готовой продукции
    // public DbSet<MaterialCutting> Material_cuttings { get; set; } // материал для раскроя
    // public DbSet<Material> Material_for_sketchs { get; set; } // материал для эскиза
-    public DbSet<Position> Posts { get; set; } // должность
+    //public DbSet<Position> Posts { get; set; } // должность
    // public DbSet<Product> Products { get; set; } // товар
    // public DbSet<ProductDelivery> Product_Deliverys { get; set; } //поставка товара
    // public DbSet<ProductOnWarehouse> Product_in_warehouses { get; set; } // товар на складе
@@ -52,12 +51,12 @@ public class AppDbContext : DbContext
        // modelBuilder.Entity<Subdivision>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Employee>().HasIndex(e => e.ID).IsUnique();
 
-        modelBuilder.Entity<Role>().HasIndex(e => e.ID).IsUnique();
+        //modelBuilder.Entity<Role>().HasIndex(e => e.ID).IsUnique();
 
         // modelBuilder.Entity<FinishesProductWarehouse>().HasIndex(e => e.ID).IsUnique();
         // modelBuilder.Entity<MaterialCutting>().HasIndex(e => e.ID).IsUnique();
         //  modelBuilder.Entity<Material>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<Position>().HasIndex(e => e.ID).IsUnique();
+        //modelBuilder.Entity<Position>().HasIndex(e => e.ID).IsUnique();
        // modelBuilder.Entity<Product>().HasIndex(e => e.ID).IsUnique();
       //  modelBuilder.Entity<ProductDelivery>().HasIndex(e => e.ID).IsUnique();
        // modelBuilder.Entity<ProductOnWarehouse>().HasIndex(e => e.ID).IsUnique();

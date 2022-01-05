@@ -44,6 +44,8 @@ namespace Project
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.login_box = new System.Windows.Forms.TextBox();
             this.password_box = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -161,11 +163,33 @@ namespace Project
             this.password_box.Size = new System.Drawing.Size(458, 31);
             this.password_box.TabIndex = 13;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 487);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 25);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Логин";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(18, 551);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 25);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Пароль";
+            // 
             // EmployeeEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 900);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.password_box);
             this.Controls.Add(this.login_box);
             this.Controls.Add(this.dateTimePicker1);
@@ -208,5 +232,7 @@ namespace Project
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox login_box;
         private System.Windows.Forms.TextBox password_box;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
     }
 }

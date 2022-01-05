@@ -37,5 +37,10 @@ namespace Project
         {
             //var form3 = host.Services.GetRequiredService<PositionEditorForm>();
         }
+
+        private void btn_edit_colors_Click(object sender, EventArgs e)
+        {
+            programState.DoColorEdit();
+        }
     }
 }

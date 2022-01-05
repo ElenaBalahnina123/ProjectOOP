@@ -22,21 +22,51 @@ namespace Project
 
         public Employee employee { get; private set; }
 
-        public void DoLogin()
+        public async void OnStart()
         {
-            var loginForm = host.Services.GetRequiredService<LoginForm>();
-            Application.Run(loginForm);
+            var db = host.Services.GetRequiredService<AppDbContext>();
+            if(db.Employees.Count() > 0) 
+            {
+                var loginForm = host.Services.GetRequiredService<LoginForm>();
+                Application.Run(loginForm);
+            } else
+            {
+
+            }
+        }
+
+        private void ShowForm<T>() where T : Form
+        {
+            host.Services.GetRequiredService<T>().Show();
         }
 
         public void ShowMainForm(Employee employee)
         {
             this.employee = employee;
 
-            var hasDirectorRole = employee.HasRole(KnownRoles.DIRECTOR);
-            if(hasDirectorRole)
+            switch (employee.Role)
             {
-                host.Services.GetRequiredService<DirectorForm>().Show();
+                case Role.DIRECTOR:
+                    ShowForm<DirectorForm>();
+                    break;
+                /*case Role.SEAMSTRESS:
+                    ShowForm<ProductionForm>();
+                    break;
+                case Role.CUTTER:
+                    ShowForm<ProductionForm>();
+                    break;
+                case Role.DESIGNER:
+                    ShowForm<DesignerForm>();
+                    break;
+                case Role.TECHNOLOGIST:
+                    ShowForm<ProductionForm>();
+                    break;*/
             }
+        }
+
+        public void DoColorEdit()
+        {
+            ShowForm<ColorListForm>();
         }
 
         public void ShowEmployerList()

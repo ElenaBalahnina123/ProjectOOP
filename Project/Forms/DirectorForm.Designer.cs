@@ -31,7 +31,8 @@ namespace Project
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_edit_materials = new System.Windows.Forms.Button();
+            this.btn_edit_colors = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -56,23 +57,34 @@ namespace Project
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btn_edit_materials
             // 
-            this.button3.Location = new System.Drawing.Point(91, 238);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(224, 57);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Должности";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_edit_materials.Location = new System.Drawing.Point(91, 324);
+            this.btn_edit_materials.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_edit_materials.Name = "btn_edit_materials";
+            this.btn_edit_materials.Size = new System.Drawing.Size(271, 72);
+            this.btn_edit_materials.TabIndex = 3;
+            this.btn_edit_materials.Text = "Редактировать материалы";
+            this.btn_edit_materials.UseVisualStyleBackColor = true;
+            // 
+            // btn_edit_colors
+            // 
+            this.btn_edit_colors.Location = new System.Drawing.Point(91, 222);
+            this.btn_edit_colors.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_edit_colors.Name = "btn_edit_colors";
+            this.btn_edit_colors.Size = new System.Drawing.Size(271, 72);
+            this.btn_edit_colors.TabIndex = 2;
+            this.btn_edit_colors.Text = "Редактировать цвета";
+            this.btn_edit_colors.UseVisualStyleBackColor = true;
+            this.btn_edit_colors.Click += new System.EventHandler(this.btn_edit_colors_Click);
             // 
             // DirectorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 406);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(431, 497);
+            this.Controls.Add(this.btn_edit_materials);
+            this.Controls.Add(this.btn_edit_colors);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -86,6 +98,7 @@ namespace Project
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_edit_materials;
+        private System.Windows.Forms.Button btn_edit_colors;
     }
 }

@@ -37,7 +37,7 @@ namespace Project
         private async void save_post(object sender, EventArgs e)
         {
 
-            var post_name = await PositionEditorForm.EditPosition();
+            /*var post_name = await PositionEditorForm.EditPosition();
             if (post_name != null)
             {
                 MessageBox.Show(post_name.Name);
@@ -45,7 +45,7 @@ namespace Project
             else
             {
                 MessageBox.Show("Отменено");
-            }
+            }*/
 
         }
 

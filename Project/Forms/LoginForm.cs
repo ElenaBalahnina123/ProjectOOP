@@ -29,8 +29,9 @@ namespace Project
             var login = textBox1.Text;
             var password = textBox2.Text;
 
-            var employee = (from emp in dbContext.Employees where emp.Login == login select emp).First();
-            if(employee == null)
+            var employee = await Task.Run(() => (from emp in dbContext.Employees where emp.Login == login select emp).FirstOrDefault());
+
+            if (employee == null)
             {
                 MessageBox.Show("not found");
                 return;

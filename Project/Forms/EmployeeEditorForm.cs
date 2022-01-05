@@ -79,7 +79,7 @@ namespace Project
                     Salary = trimmedSalary
                 };
             }
-            else
+            else // else
             {
                 result = new Employee()
                 {
@@ -94,7 +94,7 @@ namespace Project
 
         }
         // статический асинхронный метод. 
-        public static async Task<Employee?>  getEmployeeNameAsync(Employee? initialEmployee = null)
+        public static async Task<Employee?>  getEmployeeNameAsync(Employee initialEmployee = null)
         {
             var form = new EmployeeEditorForm(initialEmployee);
             form.Show();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectOop.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,19 @@ namespace Project
 {
     public partial class ProductionForm : Form
     {
-        public ProductionForm()
+        private readonly Role role;
+
+        public ProductionForm(ProgramState state)
         {
             InitializeComponent();
+            role = state.employee.Role;
+
+            button_add_sketch.Visible = role == Role.DESIGNER || role == Role.DIRECTOR;
+        }
+
+        private void btnAddSketchClick(object sender, EventArgs e)
+        {
+
         }
     }
 }
