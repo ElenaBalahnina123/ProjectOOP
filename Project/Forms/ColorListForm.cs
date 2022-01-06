@@ -12,10 +12,10 @@ namespace Project
 {
     public partial class ColorListForm : Form
     {
-        private readonly ProgramState programState;
+        private readonly ProgramContext programState;
         private readonly AppDbContext db;
 
-        public ColorListForm(ProgramState state, AppDbContext dbContext)
+        public ColorListForm(ProgramContext state, AppDbContext dbContext)
         {
             programState = state;
             db = dbContext;

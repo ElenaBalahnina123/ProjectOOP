@@ -15,7 +15,7 @@ namespace Project
     {
         private readonly Role role;
 
-        public ProductionForm(ProgramState state)
+        public ProductionForm(ProgramContext state)
         {
             InitializeComponent();
             role = state.employee.Role;

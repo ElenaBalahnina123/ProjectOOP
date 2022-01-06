@@ -15,9 +15,9 @@ namespace Project
     public partial class LoginForm : Form
     {
         private AppDbContext dbContext;
-        private ProgramState programState;
+        private ProgramContext programState;
 
-        public LoginForm(AppDbContext dbContext, ProgramState state)
+        public LoginForm(AppDbContext dbContext, ProgramContext state)
         {
             InitializeComponent();
             this.dbContext = dbContext;

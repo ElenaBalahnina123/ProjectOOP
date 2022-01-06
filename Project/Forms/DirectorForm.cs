@@ -14,9 +14,9 @@ namespace Project
 {
     public partial class DirectorForm : Form
     {
-        private ProgramState programState;
+        private ProgramContext programState;
         
-        public DirectorForm(ProgramState programState)
+        public DirectorForm(ProgramContext programState)
         {
             this.programState = programState;
             InitializeComponent();

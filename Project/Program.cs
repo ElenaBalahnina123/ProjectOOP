@@ -28,18 +28,18 @@ namespace Project
                     .AddTransient<ColorListForm>()
                     .AddTransient<DirectorForm>()
                     .AddSingleton<AppDbContext>()
-                    .AddSingleton<ProgramState>()
+                    .AddSingleton<ProgramContext>()
                     .AddTransient<DesignerForm>()
                 ).Build();
 
             host.StartAsync();
 
-            using(host)
+            /*using(host)
             {
                 var programState = host.Services.GetRequiredService<ProgramState>();
                 programState.SetHost(host);
                 programState.OnStart();
-            }
+            }*/
         }
     }
 

@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public class ProgramState : ApplicationContext
+    public class ProgramContext : ApplicationContext
     {
 
         private readonly IHost host;
 
         private readonly List<Form> formsRegistry = new();
 
-        public ProgramState(IHost host)
+        public ProgramContext(IHost host)
         {
             this.host = host;
         }
