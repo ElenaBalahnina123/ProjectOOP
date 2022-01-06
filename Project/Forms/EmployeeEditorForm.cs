@@ -30,12 +30,27 @@ namespace Project
                 textBox3.Text = employee.MiddleName;
                 dateTimePicker1.Value = employee.DeviceDate;
                 textBox5.Text = employee.Salary.ToString();
+                password_box.Text = employee.Password;
+                login_box.Text = employee.Login;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             // TODO: login, password
+            var login = login_box.Text.Trim();
+            if(login.Length == 0)
+            {
+                MessageBox.Show("Login");
+                return;
+            }
+
+            var password = password_box.Text.Trim();
+            if(password.Length == 0)
+            {
+                MessageBox.Show("Password");
+                return;
+            }
 
             var trimmedFirstName = textBox1.Text.Trim();
             if (trimmedFirstName.Length == 0)
@@ -76,7 +91,9 @@ namespace Project
                     LastName = trimmedLastName,
                     MiddleName = trimmedMiddleName,
                     DeviceDate = dateDevice,
-                    Salary = trimmedSalary
+                    Salary = trimmedSalary,
+                    Password = password,
+                    Login = login,
                 };
             }
             else // else
@@ -87,14 +104,16 @@ namespace Project
                     LastName = trimmedLastName,
                     MiddleName = trimmedMiddleName,
                     DeviceDate = dateDevice,
-                    Salary = trimmedSalary
+                    Salary = trimmedSalary,
+                    Password = password,
+                    Login = login,
                 };
             };
             onReady.SetResult(result);
 
         }
         // статический асинхронный метод. 
-        public static async Task<Employee?>  getEmployeeNameAsync(Employee initialEmployee = null)
+        public static async Task<Employee?>  GetEmployeeAsync(Employee initialEmployee = null)
         {
             var form = new EmployeeEditorForm(initialEmployee);
             form.Show();
