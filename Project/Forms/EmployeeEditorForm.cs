@@ -113,10 +113,12 @@ namespace Project
 
         }
         // статический асинхронный метод. 
-        public static async Task<Employee?>  GetEmployeeAsync(Employee initialEmployee = null)
+        public static async Task<Employee?>  GetEmployeeAsync(ProgramContext context, Employee initialEmployee = null)
         {
-            var form = new EmployeeEditorForm(initialEmployee);
-            form.Show();
+            var form = context.ShowForm<EmployeeEditorForm>();
+
+            /*var form = new EmployeeEditorForm(initialEmployee);
+            form.Show();*/
             try
             {
                 // ждем когда вызывается кнопка и эта задача завершится. 

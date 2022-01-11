@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -33,6 +34,14 @@ namespace Project
                 ).Build();
 
             host.StartAsync();
+
+            //var context = new ProgramContext(host);
+
+            var context = host.Services.GetRequiredService<ProgramContext>();
+            context.SetHost(host);
+            Application.Run(context);
+
+            context.OnStart();
 
             /*using(host)
             {

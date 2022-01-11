@@ -4,6 +4,7 @@ using Project.Forms;
 using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,15 +15,14 @@ namespace Project
     public class ProgramContext : ApplicationContext
     {
 
-        private readonly IHost host;
+        private IHost host;
 
         private readonly List<Form> formsRegistry = new();
 
-        public ProgramContext(IHost host)
+        public void SetHost(IHost host)
         {
             this.host = host;
         }
-
         public T CreateForm<T>() where T : Form
         {
             var form = host.Services.GetRequiredService<T>();
@@ -41,41 +41,40 @@ namespace Project
             }
         }
 
-        /*private IHost host;
-
-        public void SetHost(IHost host)
-        {
-            this.host = host;
-        }*/
-
         public Employee employee { get; private set; }
 
-        public async Task OnStart()
+        public void OnStart()
         {
+            Debug.WriteLine("call onStart");
+
             var db = host.Services.GetRequiredService<AppDbContext>();
-            if(db.Employees.Count() > 0) 
+            if(db.Employees.Any()) 
             {
-                var loginForm = CreateForm<LoginForm>();
-                Application.Run(loginForm);
+                ShowForm<LoginForm>();
             } 
             else
             {
-                var employee = await EmployeeEditorForm.GetEmployeeAsync();
-                await db.AddAsync(employee);
-                if(employee != null)
+                Task.Run(async () =>
                 {
-                    Application.Run(CreateMainForm(employee));
-                }
-                else
-                {
-                    MessageBox.Show("Требуется хотя бы один пользователь");
-                }
+                    var employee = await EmployeeEditorForm.GetEmployeeAsync(this);
+                    await db.AddAsync(employee);
+                    if (employee != null)
+                    {
+                        CreateMainForm(employee).Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Требуется хотя бы один пользователь");
+                    }
+                });
             }
         }
 
-        private void ShowForm<T>() where T : Form
+        public T ShowForm<T>() where T : Form
         {
-            CreateForm<T>().Show();
+            var form = CreateForm<T>();
+            form.Show();
+            return form;
         }
 
         private Form CreateMainForm(Employee employee)

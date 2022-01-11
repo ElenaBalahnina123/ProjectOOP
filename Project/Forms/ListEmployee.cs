@@ -12,14 +12,17 @@ namespace Project
 {
     public partial class ListEmployee : Form
     {
-        public ListEmployee()
+        private ProgramContext context;
+
+        public ListEmployee(ProgramContext context)
         {
+            this.context = context;
             InitializeComponent();
         }
 
         private async void save_employee_Click(object sender, EventArgs e)
         {
-            var employeer = await EmployeeEditorForm.GetEmployeeAsync();
+            var employeer = await EmployeeEditorForm.GetEmployeeAsync(context);
             if (employeer != null)
             {
                 MessageBox.Show(employeer.FirstName + " " + employeer.LastName + " " + employeer.MiddleName + " " + employeer.DeviceDate + " " + employeer.Salary);

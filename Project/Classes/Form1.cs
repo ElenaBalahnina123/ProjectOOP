@@ -64,7 +64,7 @@ namespace Project
 
         private async void button3_Click(object sender, EventArgs e)
         {
-            var employeer = await EmployeeEditorForm.GetEmployeeAsync();
+            /*var employeer = await EmployeeEditorForm.GetEmployeeAsync();
             if (employeer != null)
             {
                 MessageBox.Show(employeer.FirstName + " " + employeer.LastName + " " + employeer.MiddleName + " " + employeer.DeviceDate + " " + employeer.Salary);
@@ -72,7 +72,7 @@ namespace Project
             else
             {
                 MessageBox.Show("Отменено");
-            }
+            }*/
         }
 
     
