@@ -1,13 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Project
@@ -15,11 +7,12 @@ namespace Project
     public partial class DirectorForm : Form
     {
         private ProgramContext programState;
-        
+
         public DirectorForm(ProgramContext programState)
         {
             this.programState = programState;
             InitializeComponent();
+            Debug.WriteLine("components DirectorForm initialized");
         }
 
         private void button1_Click(object sender, EventArgs e)

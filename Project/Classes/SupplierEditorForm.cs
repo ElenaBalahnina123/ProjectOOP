@@ -1,11 +1,5 @@
 ﻿using ProjectOop.Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,7 +19,7 @@ namespace Project
                 textBox1.Text = supplier.NameOrganization;
             }
 
-        }       
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             var trimmedNameOrganizatio = textBox1.Text.Trim();
@@ -94,13 +88,13 @@ namespace Project
 
 
 
-     
+
         private void SupplierEditorForm_Load(object sender, EventArgs e)
         {
 
         }
-       
-       
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {

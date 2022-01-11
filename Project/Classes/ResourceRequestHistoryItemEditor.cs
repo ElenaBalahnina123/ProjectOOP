@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using ProjectOop.Entities;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjectOop.Entities;
 
 namespace Project
 {
@@ -20,7 +14,7 @@ namespace Project
             InitializeComponent();
             InitialResourse = resource;
 
-            if(resource != null)
+            if (resource != null)
             {
                 dateStory.Value = resource.Date;
             }

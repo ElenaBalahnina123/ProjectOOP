@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using ProjectOop.Entities;
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjectOop.Entities;
 
 namespace Project
 {
@@ -16,37 +11,28 @@ namespace Project
         private Employee? InitialEmployee;
         // задача которую можно завершить и дождаться момента когда она завершится. в одном месте
         // завершаем звдачу если все хорошо, в другом дожидаемся и получаем данные
-        private TaskCompletionSource<Employee> onReady = new TaskCompletionSource<Employee>();
+        //public readonly TaskCompletionSource<Employee> onReady = new TaskCompletionSource<Employee>();
 
-        public EmployeeEditorForm(Employee? employee)
+        public EventHandler<Employee> OnEmployeeReady;
+
+        public EmployeeEditorForm()
         {
             InitializeComponent();
-            InitialEmployee = employee;
-
-            if (employee != null)
-            {
-                textBox1.Text = employee.FirstName;
-                textBox2.Text = employee.LastName;
-                textBox3.Text = employee.MiddleName;
-                dateTimePicker1.Value = employee.DeviceDate;
-                textBox5.Text = employee.Salary.ToString();
-                password_box.Text = employee.Password;
-                login_box.Text = employee.Login;
-            }
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
             // TODO: login, password
             var login = login_box.Text.Trim();
-            if(login.Length == 0)
+            if (login.Length == 0)
             {
                 MessageBox.Show("Login");
                 return;
             }
 
             var password = password_box.Text.Trim();
-            if(password.Length == 0)
+            if (password.Length == 0)
             {
                 MessageBox.Show("Password");
                 return;
@@ -109,46 +95,88 @@ namespace Project
                     Login = login,
                 };
             };
-            onReady.SetResult(result);
-
+            OnEmployeeReady(this, result);
+            //onReady.SetResult(result);
+            //Close();
         }
+
+        public void SetEmployee(Employee initialEmployee)
+        {
+            InitialEmployee = initialEmployee;
+            textBox1.Text = initialEmployee.FirstName;
+            textBox2.Text = initialEmployee.LastName;
+            textBox3.Text = initialEmployee.MiddleName;
+            dateTimePicker1.Value = initialEmployee.DeviceDate;
+            textBox5.Text = initialEmployee.Salary.ToString();
+            password_box.Text = initialEmployee.Password;
+            login_box.Text = initialEmployee.Login;
+        }
+
+        public async Task<Employee> EmployeeAsync(bool closeForm = true)
+        {
+            var tcs = new TaskCompletionSource<Employee?>();
+
+            var formClosed = false;
+            var gotResult = false;
+
+            FormClosed += (_, _) =>
+            {
+                if (formClosed) return;
+                formClosed = true;
+                tcs.SetResult(null);
+            };
+            OnEmployeeReady += (_, employee) =>
+            {
+                if (gotResult) return;
+                gotResult = true;
+                tcs.SetResult(employee);
+            };
+
+            var employee = await tcs.Task;
+
+            if (!formClosed && closeForm)
+            {
+                Close();
+            }
+            return employee;
+        }
+
         // статический асинхронный метод. 
-        public static async Task<Employee?>  GetEmployeeAsync(ProgramContext context, Employee initialEmployee = null)
+        public static async Task<Employee?> GetEmployeeAsync(ProgramContext context, Employee initialEmployee = null)
         {
-            var form = context.ShowForm<EmployeeEditorForm>();
+            var form = context.CreateForm<EmployeeEditorForm>();
+            Debug.WriteLine("form created");
 
-            /*var form = new EmployeeEditorForm(initialEmployee);
-            form.Show();*/
-            try
-            {
-                // ждем когда вызывается кнопка и эта задача завершится. 
-                var employee = await form.onReady.Task;
-                return employee;
-            }
-            catch (OperationCanceledException e)
-            {
-                return null;
-            }
-            finally
-            {
-                if (!form.IsDisposed)
-                {
-                    form.Close();
-                }
-            }
+            form.SetEmployee(initialEmployee);
 
+            var tcs = new TaskCompletionSource<Employee?>();
+
+            var formClosed = false;
+            var gotResult = false;
+
+            form.FormClosed += (_, _) =>
+            {
+                if (formClosed) return;
+                formClosed = true;
+                tcs.SetResult(null);
+            };
+            form.OnEmployeeReady += (_, employee) =>
+            {
+                if (gotResult) return;
+                gotResult = true;
+                tcs.SetResult(employee);
+            };
+
+            form.Show();
+
+            var employee = await tcs.Task;
+
+            if (!formClosed)
+            {
+                form.Close();
+            }
+            return employee;
         }
 
-        private void EmployeeEditorForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            try
-            {
-                onReady.TrySetCanceled();
-            }
-            catch (Exception error)
-            {
-
-            }
-        }
     }
 }

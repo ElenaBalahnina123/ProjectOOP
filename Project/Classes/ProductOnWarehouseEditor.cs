@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using ProjectOop.Entities;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjectOop.Entities;
 namespace Project
 {
     public partial class ProductOnWarehouseEditor : Form // товар на складе
 
-        
+
     {
         private ProductOnWarehouse? InitialProductOnWarehouse;
         private TaskCompletionSource<ProductOnWarehouse> tcs = new TaskCompletionSource<ProductOnWarehouse>();
@@ -22,13 +16,13 @@ namespace Project
             InitializeComponent();
             InitialProductOnWarehouse = productOnWarehouse;
 
-            if(productOnWarehouse != null)
+            if (productOnWarehouse != null)
             {
                 var index = sizeBox.Items.IndexOf(productOnWarehouse.Size.ToString());
-                if(index != -1)
+                if (index != -1)
                 {
                     sizeBox.SelectedIndex = index;
-                   
+
                 }
 
 
@@ -51,7 +45,7 @@ namespace Project
                 return;
             }
 
-           ProductOnWarehouse resultPrOnWareh;
+            ProductOnWarehouse resultPrOnWareh;
             if (InitialProductOnWarehouse != null)
             {
                 resultPrOnWareh = new ProductOnWarehouse()
@@ -118,6 +112,6 @@ namespace Project
         }
     }
 
-     
-   
+
+
 }

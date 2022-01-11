@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using ProjectOop.Entities;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjectOop.Entities;
 
 namespace Project
 {
@@ -31,14 +25,14 @@ namespace Project
         private void save_btn_subdivision_Click_1(object sender, EventArgs e)
         {
             var trimmedName = name_subdivision.Text.Trim();
-            if(trimmedName.Length == 0)
+            if (trimmedName.Length == 0)
             {
 
                 MessageBox.Show("Не указано название подразделения");
                 return;
             }
 
-             Subdivision resultSublivision;
+            Subdivision resultSublivision;
             if (InitialSubdivision != null)
             {
                 resultSublivision = new Subdivision()

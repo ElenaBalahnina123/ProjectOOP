@@ -1,11 +1,5 @@
 ﻿using ProjectOop.Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,7 +14,7 @@ namespace Project
             InitializeComponent();
             InitialTransactionContents = transactionContents;
 
-            if(transactionContents != null)
+            if (transactionContents != null)
             {
                 numericUpDown1.Text = transactionContents.Quantity.ToString();
                 textBox_price.Text = transactionContents.Price.ToString();

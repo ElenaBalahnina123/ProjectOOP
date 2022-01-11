@@ -105,6 +105,7 @@ namespace Project
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(463, 31);
             this.textBox1.TabIndex = 5;
+            this.textBox1.Text = "admin";
             // 
             // textBox2
             // 
@@ -113,6 +114,7 @@ namespace Project
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(463, 31);
             this.textBox2.TabIndex = 6;
+            this.textBox2.Text = "admin";
             // 
             // textBox3
             // 
@@ -121,6 +123,7 @@ namespace Project
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(463, 31);
             this.textBox3.TabIndex = 7;
+            this.textBox3.Text = "admin";
             // 
             // textBox5
             // 
@@ -129,6 +132,7 @@ namespace Project
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(463, 31);
             this.textBox5.TabIndex = 9;
+            this.textBox5.Text = "123";
             // 
             // button1
             // 
@@ -155,6 +159,7 @@ namespace Project
             this.login_box.Name = "login_box";
             this.login_box.Size = new System.Drawing.Size(461, 31);
             this.login_box.TabIndex = 12;
+            this.login_box.Text = "admin";
             // 
             // password_box
             // 
@@ -162,6 +167,7 @@ namespace Project
             this.password_box.Name = "password_box";
             this.password_box.Size = new System.Drawing.Size(458, 31);
             this.password_box.TabIndex = 13;
+            this.password_box.Text = "admin";
             // 
             // label5
             // 
@@ -206,15 +212,9 @@ namespace Project
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "EmployeeEditorForm";
             this.Text = "EmployeeEditorForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmployeeEditorForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
-
-        private void EmployeeEditorForm_Load(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

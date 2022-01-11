@@ -1,11 +1,5 @@
 ﻿using ProjectOop.Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,7 +14,7 @@ namespace Project
         {
             InitializeComponent();
             InitialGoodsDelivery = goodsDelivery;
-            if(goodsDelivery != null)
+            if (goodsDelivery != null)
             {
                 numeric_amount.Text = goodsDelivery.Quantity.ToString();
                 var index = sizeBox.Items.IndexOf(goodsDelivery.Size.ToString());
@@ -31,7 +25,7 @@ namespace Project
                 }
             }
 
-           
+
         }
 
         private void GoodsDeliveryEditorForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -63,7 +57,7 @@ namespace Project
                 result = new GoodsDelivery()
                 {
                     ID = InitialGoodsDelivery.ID,
-                    
+
                     Quantity = Int32.Parse(trimmedAmount),
                     Size = size.ToString()
                 };
@@ -101,5 +95,5 @@ namespace Project
             }
         }
     }
-    
+
 }

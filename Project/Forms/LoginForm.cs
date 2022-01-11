@@ -1,12 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,13 +30,14 @@ namespace Project
                 MessageBox.Show("not found");
                 return;
             }
-            if(employee.Password != password)
+            if (employee.Password != password)
             {
                 MessageBox.Show("invalid password");
                 return;
             }
 
             programState.ShowMainForm(employee);
+            Close();
         }
     }
 }

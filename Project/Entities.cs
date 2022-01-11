@@ -1,8 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
 
 namespace ProjectOop
 {
@@ -55,7 +52,7 @@ namespace ProjectOop
         public class ShopEmployeer // сотрудник-магазин
         {
             public int ID { get; set; }
-            public Shop Shop{ get; set; } //ID магазина
+            public Shop Shop { get; set; } //ID магазина
         }
 
         /*public class Position //должность
@@ -104,7 +101,7 @@ namespace ProjectOop
 
             public Role Role { get; set; }
 
-//            public Position post { get; set; } // должность
+            //            public Position post { get; set; } // должность
         }
 
         public class FinishesProductWarehouse // склад готовой продукции 
@@ -132,14 +129,14 @@ namespace ProjectOop
         {
             public int ID { get; set; }
             public SketchMaterialization SketchMaterialization { get; set; }
-        } 
+        }
 
         public class ProductDelivery // поставка товара
         {
             public int ID { get; set; }
             public Shop Shop { get; set; }
             [Required] public DateTime DeliveryDate { get; set; }
-        } 
+        }
 
         public class ProductOnWarehouse // товар на складе
         {
@@ -174,7 +171,7 @@ namespace ProjectOop
             public Employee Employee { get; set; } // сотрудник
             [Required] public DateTime CreationDate { get; set; } // дата создания эскиза
             [Required] [MaxLength(70)] public string DegreeDevelopment { get; set; } //степень разработки
-        } 
+        }
 
         public class SketchMaterialization //Материализация эскиза
         {
@@ -184,7 +181,7 @@ namespace ProjectOop
             public Employee Employee { get; set; }
             [Required] public DateTime CreationDate { get; set; } // дата создания
             [Required] public string DegreeDevelopment { get; set; } // степень разработки
-        } 
+        }
 
         public class Supplier// поставщик
         {
@@ -192,7 +189,7 @@ namespace ProjectOop
             [Required] public string NameOrganization { get; set; }
             [Required] public int INN { get; set; }
 
-        } 
+        }
 
         public class TransactionContents //Содержимое транзакции 
         {
