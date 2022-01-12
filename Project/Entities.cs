@@ -93,9 +93,9 @@ namespace ProjectOop
             public int ID { get; set; }
             public string Login { get; set; }
             public string Password { get; set; }
-            [Required] [MaxLength(50)] public string LastName { get; set; } // фамилия 
-            [Required] [MaxLength(50)] public string FirstName { get; set; } // имя
-            [MaxLength(50)] public string MiddleName { get; set; } // отчество
+            [Required] [MaxLength(50)] public string Surname { get; set; } // фамилия 
+            [Required] [MaxLength(50)] public string Name { get; set; } // имя
+            [MaxLength(50)] public string Patronymic { get; set; } // отчество
             [Required] public DateTime DeviceDate { get; set; } // дата устройства
             [Required] public string Salary { get; set; } //оклад
 

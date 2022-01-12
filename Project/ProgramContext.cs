@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Project
@@ -27,13 +28,13 @@ namespace Project
                     services
                     .AddTransient<LoginForm>()
                     .AddTransient<ProductionForm>()
-                    .AddTransient<ListEmployee>()
+                    .AddTransient<EmployeeListForm>()
                     .AddTransient<ListMaterial>()
                     .AddTransient<ColorListForm>()
                     .AddTransient<DirectorForm>()
                     .AddTransient<EmployeeEditorForm>()
                     .AddSingleton<AppDbContext>()
-                    .AddSingleton<ProgramContext>(this)
+                    .AddSingleton(this)
                     .AddTransient<DesignerForm>()
                 ).Build();
 
@@ -42,10 +43,46 @@ namespace Project
             OnStart();
         }
 
-
-
-
         public Employee employee { get; private set; }
+
+        internal async Task EditEmployee(Employee employee)
+        {
+            var e = await CreateForm<EmployeeEditorForm>().SetEmployee(employee).EmployeeAsync(showModal: true);
+            if (e == null)
+            {
+                Debug.WriteLine("employee edit cancelled");
+                return;
+            }
+            Debug.WriteLine("employee edit complete, saving");
+
+            var db = host.Services.GetRequiredService<AppDbContext>();
+
+            var existing = await db.Employees.FindAsync(e.ID);
+            if (existing == null)
+            {
+                Debug.WriteLine("cannot find employee in db, return");
+                return;
+            }
+
+            db.Entry(existing).CurrentValues.SetValues(e);
+            Debug.WriteLine("saving changes");
+            db.SaveChanges();
+            Debug.WriteLine("changes saved");
+        }
+
+        internal async Task AddNewEmployee()
+        {
+            var employee = await CreateForm<EmployeeEditorForm>().EmployeeAsync(showModal: true);
+
+            if (employee == null) return;
+
+            var db = host.Services.GetRequiredService<AppDbContext>();
+            db.Employees.Add(employee);
+
+            await db.SaveChangesAsync();
+
+            //await ShowFormModal<EmployeeEditorForm>().EmployeeAsync();
+        }
 
         private void OnStart()
         {
@@ -91,6 +128,13 @@ namespace Project
             }
         }
 
+        internal async Task DeleteEmployee(Employee employee)
+        {
+            var db = host.Services.GetRequiredService<AppDbContext>();
+            db.Employees.Remove(employee);
+            db.SaveChanges();
+        }
+
         private void ExitProgram()
         {
             if (disposing) return;
@@ -115,6 +159,13 @@ namespace Project
             {
                 ExitProgram();
             }
+        }
+
+        public T ShowFormModal<T>() where T : Form
+        {
+            var form = CreateForm<T>();
+            form.ShowDialog();
+            return form;
         }
 
         public T ShowForm<T>() where T : Form
@@ -147,7 +198,7 @@ namespace Project
 
         public void ShowEmployerList()
         {
-
+            ShowForm<EmployeeListForm>();
         }
     }
 }

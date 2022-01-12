@@ -9,9 +9,6 @@ namespace Project
     public partial class EmployeeEditorForm : Form // сотрудник
     {
         private Employee? InitialEmployee;
-        // задача которую можно завершить и дождаться момента когда она завершится. в одном месте
-        // завершаем звдачу если все хорошо, в другом дожидаемся и получаем данные
-        //public readonly TaskCompletionSource<Employee> onReady = new TaskCompletionSource<Employee>();
 
         public EventHandler<Employee> OnEmployeeReady;
 
@@ -23,7 +20,6 @@ namespace Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // TODO: login, password
             var login = login_box.Text.Trim();
             if (login.Length == 0)
             {
@@ -73,9 +69,9 @@ namespace Project
                 result = new Employee()
                 {
                     ID = InitialEmployee.ID,
-                    FirstName = trimmedFirstName,
-                    LastName = trimmedLastName,
-                    MiddleName = trimmedMiddleName,
+                    Name = trimmedFirstName,
+                    Surname = trimmedLastName,
+                    Patronymic = trimmedMiddleName,
                     DeviceDate = dateDevice,
                     Salary = trimmedSalary,
                     Password = password,
@@ -86,33 +82,34 @@ namespace Project
             {
                 result = new Employee()
                 {
-                    FirstName = trimmedFirstName,
-                    LastName = trimmedLastName,
-                    MiddleName = trimmedMiddleName,
+                    Name = trimmedFirstName,
+                    Surname = trimmedLastName,
+                    Patronymic = trimmedMiddleName,
                     DeviceDate = dateDevice,
                     Salary = trimmedSalary,
                     Password = password,
                     Login = login,
                 };
             };
-            OnEmployeeReady(this, result);
-            //onReady.SetResult(result);
-            //Close();
+
+            OnEmployeeReady?.Invoke(this, result);
+            Close();
         }
 
-        public void SetEmployee(Employee initialEmployee)
+        public EmployeeEditorForm SetEmployee(Employee initialEmployee)
         {
             InitialEmployee = initialEmployee;
-            textBox1.Text = initialEmployee.FirstName;
-            textBox2.Text = initialEmployee.LastName;
-            textBox3.Text = initialEmployee.MiddleName;
+            textBox1.Text = initialEmployee.Name;
+            textBox2.Text = initialEmployee.Surname;
+            textBox3.Text = initialEmployee.Patronymic;
             dateTimePicker1.Value = initialEmployee.DeviceDate;
             textBox5.Text = initialEmployee.Salary.ToString();
             password_box.Text = initialEmployee.Password;
             login_box.Text = initialEmployee.Login;
+            return this;
         }
 
-        public async Task<Employee> EmployeeAsync(bool closeForm = true)
+        public async Task<Employee> EmployeeAsync(bool showModal = false, bool closeForm = true)
         {
             var tcs = new TaskCompletionSource<Employee?>();
 
@@ -123,7 +120,10 @@ namespace Project
             {
                 if (formClosed) return;
                 formClosed = true;
-                tcs.SetResult(null);
+                if (!gotResult)
+                {
+                    tcs.SetResult(null);
+                }
             };
             OnEmployeeReady += (_, employee) =>
             {
@@ -131,6 +131,11 @@ namespace Project
                 gotResult = true;
                 tcs.SetResult(employee);
             };
+
+            if (showModal)
+            {
+                ShowDialog();
+            }
 
             var employee = await tcs.Task;
 
