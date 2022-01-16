@@ -1,5 +1,8 @@
 ﻿using ProjectOop.Entities;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Project
@@ -8,6 +11,8 @@ namespace Project
     {
         private readonly Role role;
         private readonly AppDbContext db;
+
+        private List<Product> Sketching;
 
         public ProductionForm(ProgramContext context, AppDbContext db)
         {
@@ -23,9 +28,20 @@ namespace Project
 
         }
 
-        private void ProductionForm_Load(object sender, EventArgs e)
+        private async void ProductionForm_Load(object sender, EventArgs e)
         {
+            // await Task.Run(() => (from c in db.Colors select c).ToList());
+
+            //var products = await Task.Run(() => (from p in db.Products select p).ToList());
+
+            Sketching = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.SKETCH select p).ToList());
+
             
+
+            //var sketchProducts = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.SKETCH select p).ToList());
+            //var blueprintProducts = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.BLUEPRINT select p).ToList());
+
+
         }
     }
 }

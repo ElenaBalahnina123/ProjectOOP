@@ -34,6 +34,8 @@ namespace ProjectOop
             public int ID { get; set; }
             public string Name { get; set; }
 
+            public double Amount { get; set }
+
         }
 
         public class ModelColor
@@ -100,6 +102,33 @@ namespace ProjectOop
             public Sewing Sewing { get; set; }
 
             public bool QaPassed { get; set; }
+        }
+
+        public enum Stage
+        {
+            INITIAL,
+            SKETCH,
+            BLUEPRINT,
+            CUT,
+            SEWING,
+            READY
+        }
+
+        public static class ProductExtension
+        {
+            public static Stage GetStage(this Product product)
+            {
+                if (product.Sketch == null) return Stage.INITIAL;
+                // sketch != null
+                else if (product.Blueprint == null) return Stage.SKETCH;
+                // blueprint != null
+                else if (product.Cut == null) return Stage.BLUEPRINT;
+                // cut != null
+                else if (product.Sewing == null) return Stage.CUT;
+                // sewing != null
+                else if (!product.QaPassed) return Stage.SEWING;
+                else return Stage.READY;
+            }
         }
     }
 }

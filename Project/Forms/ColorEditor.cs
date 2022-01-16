@@ -11,7 +11,7 @@ namespace Project
         private ModelColor? InitialModelColor;
         public EventHandler<ModelColor> OnColorEditor;
 
-      
+
         public ColorEditor()
         {
             InitializeComponent();
@@ -56,7 +56,7 @@ namespace Project
             Close();
         }
 
-        public  ColorEditor SetColor(ModelColor initialColor)
+        public ColorEditor SetColor(ModelColor initialColor)
         {
             InitialModelColor = initialColor;
             color_name.Text = initialColor.TextName;

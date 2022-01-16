@@ -58,7 +58,7 @@ namespace Project
         private async void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var index = listBox1.SelectedIndex;
-            if(index != ListBox.NoMatches)
+            if (index != ListBox.NoMatches)
             {
                 var employee = employees[index];
 

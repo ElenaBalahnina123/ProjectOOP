@@ -36,9 +36,10 @@ namespace Project.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(198, 102);
+            this.button1.Location = new System.Drawing.Point(286, 242);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(107, 38);
             this.button1.TabIndex = 0;
             this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = true;
@@ -47,27 +48,30 @@ namespace Project.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 34);
+            this.label1.Location = new System.Drawing.Point(25, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 15);
+            this.label1.Size = new System.Drawing.Size(90, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Название";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(46, 57);
+            this.textBox1.Location = new System.Drawing.Point(34, 52);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(227, 23);
+            this.textBox1.Size = new System.Drawing.Size(323, 31);
             this.textBox1.TabIndex = 2;
             // 
             // MaterialEditorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 160);
+            this.ClientSize = new System.Drawing.Size(436, 294);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MaterialEditorForm";
             this.Text = "MaterialEditorForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MaterialEditorForm_FormClosed);

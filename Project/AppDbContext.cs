@@ -3,8 +3,20 @@ using ProjectOop.Entities;
 
 public class AppDbContext : DbContext
 {
-    public DbSet<Employee> Employees { get; set; } 
+    public DbSet<Employee> Employees { get; set; }
     public DbSet<ModelColor> Colors { get; set; }
+
+    public DbSet<Material> Materials { get; set; }
+
+    public DbSet<Sketch> Sketches { get; set; }
+
+    public DbSet<Blueprint> Blueprints { get; set; }
+
+    public DbSet<Cut> Cuts { get; set; }
+
+    public DbSet<Sewing> Sewings { get; set; }
+
+    public DbSet<Product> Products { get; set; }
 
     public AppDbContext()
     {
