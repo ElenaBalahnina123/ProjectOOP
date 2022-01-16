@@ -34,16 +34,18 @@ namespace Project
 
             //var products = await Task.Run(() => (from p in db.Products select p).ToList());
 
-            Sketching = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.SKETCH select p).ToList());
-            sketches_list_box.DataSource = Sketching.ConvertAll(s => s.Sketch.Name);
-
-
-
+            LoadContent();
 
             //var sketchProducts = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.SKETCH select p).ToList());
             //var blueprintProducts = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.BLUEPRINT select p).ToList());
 
 
+        }
+
+        private async void LoadContent()
+        {
+            Sketching = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.SKETCH select p).ToList());
+            sketches_list_box.DataSource = Sketching.ConvertAll(s => s.Sketch.Name);
         }
     }
 }
