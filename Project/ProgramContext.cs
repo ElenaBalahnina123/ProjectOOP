@@ -31,6 +31,7 @@ namespace Project
                     .AddTransient<EmployeeListForm>()
                     .AddTransient<ListMaterial>()
                     .AddTransient<ColorListForm>()
+                    .AddTransient<ColorEditor>()
                     .AddTransient<DirectorForm>()
                     .AddTransient<EmployeeEditorForm>()
                     .AddSingleton<AppDbContext>()
@@ -44,6 +45,7 @@ namespace Project
         }
 
         public Employee employee { get; private set; }
+        public ModelColor color { get; private set; }
 
         internal async Task EditEmployee(Employee employee)
         {
@@ -69,6 +71,30 @@ namespace Project
             db.SaveChanges();
             Debug.WriteLine("changes saved");
         }
+        internal async Task EditColor(ModelColor color)
+        {
+            var c = await CreateForm<ColorEditor>().SetColor(color).ColorAsync(showModal: true);
+            if (c == null)
+            {
+                Debug.WriteLine("color edit cancelled");
+                return;
+            }
+            Debug.WriteLine("color edit complete, saving");
+
+            var db = host.Services.GetRequiredService<AppDbContext>();
+
+            var existing = await db.Colors.FindAsync(c.ID);
+            if (existing == null)
+            {
+                Debug.WriteLine("cannot find colors in db, return");
+                return;
+            }
+
+            db.Entry(existing).CurrentValues.SetValues(c);
+            Debug.WriteLine("saving changes");
+            db.SaveChanges();
+            Debug.WriteLine("changes saved");
+        }
 
         internal async Task AddNewEmployee()
         {
@@ -84,6 +110,18 @@ namespace Project
             //await ShowFormModal<EmployeeEditorForm>().EmployeeAsync();
         }
 
+        internal async Task AddNewColor()
+        {
+            var color = await CreateForm<ColorEditor>().ColorAsync(showModal: true);
+
+            if (color == null) return;
+
+            var db = host.Services.GetRequiredService<AppDbContext>();
+            db.Colors.Add(color);
+
+            await db.SaveChangesAsync();
+        }
+       
         private void OnStart()
         {
             Debug.WriteLine("call onStart");
@@ -132,6 +170,13 @@ namespace Project
         {
             var db = host.Services.GetRequiredService<AppDbContext>();
             db.Employees.Remove(employee);
+            db.SaveChanges();
+        }
+
+        internal async Task DeleteColor(ModelColor color)
+        {
+            var db = host.Services.GetRequiredService<AppDbContext>();
+            db.Colors.Remove(color);
             db.SaveChanges();
         }
 

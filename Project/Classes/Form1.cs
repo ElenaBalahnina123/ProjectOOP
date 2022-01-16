@@ -73,7 +73,7 @@ namespace Project
 
         private async void button4_Click(object sender, EventArgs e)
         {
-            var color = await ColorEditor.EditColorAsync();
+            /*var color = await ColorEditor.();
             if (color != null)
             {
                 MessageBox.Show(color.TextName + " " + color.RgbValue);
@@ -81,7 +81,7 @@ namespace Project
             else
             {
                 MessageBox.Show("Отменено");
-            }
+            }*/
         }
 
         private async void save_product_warehouse_Click(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 ﻿using ProjectOop.Entities;
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -8,17 +9,13 @@ namespace Project
     public partial class ColorEditor : Form
     {
         private ModelColor? InitialModelColor;
+        public EventHandler<ModelColor> OnColorEditor;
 
-        private TaskCompletionSource<ModelColor> tcs = new TaskCompletionSource<ModelColor>();
-        public ColorEditor(ModelColor? color)
+      
+        public ColorEditor()
         {
             InitializeComponent();
-            InitialModelColor = color;
-            if (color != null)
-            {
-                textBox1.Text = color.TextName;
-                textBox2.Text = color.RgbValue;
-            }
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,41 +53,91 @@ namespace Project
                     TextName = trimmedName
                 };
             };
-            tcs.SetResult(resultModel);
+            OnColorEditor?.Invoke(this, resultModel);
+            Close();
         }
 
-        public static async Task<ModelColor?> EditColorAsync(ModelColor? initialColor = null)
+        public  ColorEditor SetColor(ModelColor initialColor)
         {
-            var form = new ColorEditor(initialColor);
-            form.Show();
-            try
+            InitialModelColor = initialColor;
+            textBox1.Text = initialColor.RgbValue;
+            textBox2.Text = initialColor.TextName;
+
+            return this;
+        }
+
+
+        public async Task<ModelColor> ColorAsync(bool showModal = false, bool closeForm = true)
+        {
+            var tcs = new TaskCompletionSource<ModelColor?>();
+
+            var formClosed = false;
+            var gotResult = false;
+
+            FormClosed += (_, _) =>
             {
-                var color = await form.tcs.Task;
-                return color;
-            }
-            catch (OperationCanceledException e)
-            {
-                return null;
-            }
-            finally
-            {
-                if (!form.IsDisposed)
+                if (formClosed) return;
+                formClosed = true;
+                if (!gotResult)
                 {
-                    form.Close();
+                    tcs.SetResult(null);
                 }
+            };
+            OnColorEditor += (_, color) =>
+            {
+                if (gotResult) return;
+                gotResult = true;
+                tcs.SetResult(color);
+            };
+
+            if (showModal)
+            {
+                ShowDialog();
             }
+
+            var color = await tcs.Task;
+
+            if (!formClosed && closeForm)
+            {
+                Close();
+            }
+            return color;
         }
 
-        private void ColorEditor_FormClosed(object sender, FormClosedEventArgs e)
+        public static async Task<ModelColor?> GetColorAsync(ProgramContext context, ModelColor initialColor = null)
         {
-            try
-            {
-                tcs.TrySetCanceled();
-            }
-            catch (Exception error)
-            {
+            var form = context.CreateForm<ColorEditor>();
+            Debug.WriteLine("form created");
 
+            form.SetColor(initialColor);
+
+            var tcs = new TaskCompletionSource<ModelColor?>();
+
+            var formClosed = false;
+            var gotResult = false;
+
+            form.FormClosed += (_, _) =>
+            {
+                if (formClosed) return;
+                formClosed = true;
+                tcs.SetResult(null);
+            };
+            form.OnColorEditor += (_, color) =>
+            {
+                if (gotResult) return;
+                gotResult = true;
+                tcs.SetResult(color);
+            };
+
+            form.Show();
+
+            var color = await tcs.Task;
+
+            if (!formClosed)
+            {
+                form.Close();
             }
+            return color;
         }
     }
 }

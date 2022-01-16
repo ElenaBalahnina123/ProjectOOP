@@ -90,7 +90,6 @@ namespace Project
             this.Controls.Add(this.label1);
             this.Name = "ColorEditor";
             this.Text = "ColorEditor";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ColorEditor_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
