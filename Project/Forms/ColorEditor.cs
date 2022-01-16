@@ -15,12 +15,11 @@ namespace Project
         public ColorEditor()
         {
             InitializeComponent();
-           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var trimmedName = textBox1.Text.Trim();
+            var trimmedName = color_name.Text.Trim();
 
             if (trimmedName.Length == 0)
             {
@@ -28,7 +27,7 @@ namespace Project
                 return;
             }
 
-            var trimmedRgb = textBox2.Text.Trim();
+            var trimmedRgb = rgb_value.Text.Trim();
             if (trimmedRgb.Length == 0)
             {
                 MessageBox.Show("Не указано RGB значение для цвета");
@@ -60,8 +59,8 @@ namespace Project
         public  ColorEditor SetColor(ModelColor initialColor)
         {
             InitialModelColor = initialColor;
-            textBox1.Text = initialColor.RgbValue;
-            textBox2.Text = initialColor.TextName;
+            color_name.Text = initialColor.TextName;
+            rgb_value.Text = initialColor.RgbValue;
 
             return this;
         }
