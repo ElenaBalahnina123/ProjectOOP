@@ -66,6 +66,7 @@ namespace Project
             this.btn_edit_materials.TabIndex = 3;
             this.btn_edit_materials.Text = "Редактировать материалы";
             this.btn_edit_materials.UseVisualStyleBackColor = true;
+            this.btn_edit_materials.Click += new System.EventHandler(this.btn_edit_materials_Click);
             // 
             // btn_edit_colors
             // 

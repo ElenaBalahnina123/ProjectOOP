@@ -29,27 +29,27 @@ namespace Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.sketch_group = new System.Windows.Forms.GroupBox();
             this.button_add_sketch = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.groupBox1.SuspendLayout();
+            this.blueprint_box = new System.Windows.Forms.GroupBox();
+            this.cut_box = new System.Windows.Forms.GroupBox();
+            this.sewing_box = new System.Windows.Forms.GroupBox();
+            this.qa_box = new System.Windows.Forms.GroupBox();
+            this.ready_box = new System.Windows.Forms.GroupBox();
+            this.sketch_group.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // sketch_group
             // 
-            this.groupBox1.Controls.Add(this.button_add_sketch);
-            this.groupBox1.Location = new System.Drawing.Point(17, 20);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(360, 885);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Художественный эскиз";
+            this.sketch_group.Controls.Add(this.button_add_sketch);
+            this.sketch_group.Location = new System.Drawing.Point(17, 20);
+            this.sketch_group.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.sketch_group.Name = "sketch_group";
+            this.sketch_group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.sketch_group.Size = new System.Drawing.Size(360, 885);
+            this.sketch_group.TabIndex = 0;
+            this.sketch_group.TabStop = false;
+            this.sketch_group.Text = "Художественный эскиз";
             // 
             // button_add_sketch
             // 
@@ -62,88 +62,89 @@ namespace Project
             this.button_add_sketch.UseVisualStyleBackColor = true;
             this.button_add_sketch.Click += new System.EventHandler(this.btnAddSketchClick);
             // 
-            // groupBox2
+            // blueprint_box
             // 
-            this.groupBox2.Location = new System.Drawing.Point(386, 20);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(360, 885);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Технический эскиз";
+            this.blueprint_box.Location = new System.Drawing.Point(386, 20);
+            this.blueprint_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.blueprint_box.Name = "blueprint_box";
+            this.blueprint_box.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.blueprint_box.Size = new System.Drawing.Size(360, 885);
+            this.blueprint_box.TabIndex = 1;
+            this.blueprint_box.TabStop = false;
+            this.blueprint_box.Text = "Технический эскиз";
             // 
-            // groupBox3
+            // cut_box
             // 
-            this.groupBox3.Location = new System.Drawing.Point(754, 20);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Size = new System.Drawing.Size(360, 885);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Раскрой";
+            this.cut_box.Location = new System.Drawing.Point(754, 20);
+            this.cut_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cut_box.Name = "cut_box";
+            this.cut_box.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cut_box.Size = new System.Drawing.Size(360, 885);
+            this.cut_box.TabIndex = 1;
+            this.cut_box.TabStop = false;
+            this.cut_box.Text = "Раскрой";
             // 
-            // groupBox4
+            // sewing_box
             // 
-            this.groupBox4.Location = new System.Drawing.Point(1123, 20);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox4.Size = new System.Drawing.Size(360, 885);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Пошив";
+            this.sewing_box.Location = new System.Drawing.Point(1123, 20);
+            this.sewing_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.sewing_box.Name = "sewing_box";
+            this.sewing_box.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.sewing_box.Size = new System.Drawing.Size(360, 885);
+            this.sewing_box.TabIndex = 1;
+            this.sewing_box.TabStop = false;
+            this.sewing_box.Text = "Пошив";
             // 
-            // groupBox5
+            // qa_box
             // 
-            this.groupBox5.Location = new System.Drawing.Point(1491, 20);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox5.Size = new System.Drawing.Size(360, 885);
-            this.groupBox5.TabIndex = 2;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Котроль качества";
+            this.qa_box.Location = new System.Drawing.Point(1491, 20);
+            this.qa_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.qa_box.Name = "qa_box";
+            this.qa_box.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.qa_box.Size = new System.Drawing.Size(360, 885);
+            this.qa_box.TabIndex = 2;
+            this.qa_box.TabStop = false;
+            this.qa_box.Text = "Котроль качества";
             // 
-            // groupBox6
+            // ready_box
             // 
-            this.groupBox6.Location = new System.Drawing.Point(1860, 20);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox6.Size = new System.Drawing.Size(360, 885);
-            this.groupBox6.TabIndex = 2;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Готовое изделие";
+            this.ready_box.Location = new System.Drawing.Point(1860, 20);
+            this.ready_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ready_box.Name = "ready_box";
+            this.ready_box.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ready_box.Size = new System.Drawing.Size(360, 885);
+            this.ready_box.TabIndex = 2;
+            this.ready_box.TabStop = false;
+            this.ready_box.Text = "Готовое изделие";
             // 
             // ProductionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2237, 938);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.ready_box);
+            this.Controls.Add(this.qa_box);
+            this.Controls.Add(this.sewing_box);
+            this.Controls.Add(this.cut_box);
+            this.Controls.Add(this.blueprint_box);
+            this.Controls.Add(this.sketch_group);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ProductionForm";
             this.Text = "ProductionForm";
-            this.groupBox1.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.ProductionForm_Load);
+            this.sketch_group.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox sketch_group;
         private System.Windows.Forms.Button button_add_sketch;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox blueprint_box;
+        private System.Windows.Forms.GroupBox cut_box;
+        private System.Windows.Forms.GroupBox sewing_box;
+        private System.Windows.Forms.GroupBox qa_box;
+        private System.Windows.Forms.GroupBox ready_box;
     }
 }
