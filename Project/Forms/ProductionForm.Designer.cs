@@ -36,11 +36,13 @@ namespace Project
             this.sewing_box = new System.Windows.Forms.GroupBox();
             this.qa_box = new System.Windows.Forms.GroupBox();
             this.ready_box = new System.Windows.Forms.GroupBox();
+            this.sketches_list_box = new System.Windows.Forms.ListBox();
             this.sketch_group.SuspendLayout();
             this.SuspendLayout();
             // 
             // sketch_group
             // 
+            this.sketch_group.Controls.Add(this.sketches_list_box);
             this.sketch_group.Controls.Add(this.button_add_sketch);
             this.sketch_group.Location = new System.Drawing.Point(17, 20);
             this.sketch_group.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -117,6 +119,15 @@ namespace Project
             this.ready_box.TabStop = false;
             this.ready_box.Text = "Готовое изделие";
             // 
+            // sketches_list_box
+            // 
+            this.sketches_list_box.FormattingEnabled = true;
+            this.sketches_list_box.ItemHeight = 25;
+            this.sketches_list_box.Location = new System.Drawing.Point(7, 32);
+            this.sketches_list_box.Name = "sketches_list_box";
+            this.sketches_list_box.Size = new System.Drawing.Size(346, 779);
+            this.sketches_list_box.TabIndex = 1;
+            // 
             // ProductionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -146,5 +157,6 @@ namespace Project
         private System.Windows.Forms.GroupBox sewing_box;
         private System.Windows.Forms.GroupBox qa_box;
         private System.Windows.Forms.GroupBox ready_box;
+        private System.Windows.Forms.ListBox sketches_list_box;
     }
 }
