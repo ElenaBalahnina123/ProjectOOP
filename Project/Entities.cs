@@ -36,7 +36,7 @@ namespace ProjectOop
 
             public ModelColor color { get; set; }
 
-            
+
         }
 
         public class ModelColor
@@ -45,7 +45,7 @@ namespace ProjectOop
             public string RgbValue { get; set; }
             public string TextName { get; set; }
 
-            
+
         }
 
         public class Sketch
@@ -68,10 +68,19 @@ namespace ProjectOop
 
             public Employee Author { get; set; }
 
-            public List<Material> Materials { get; set; }
+            public List<MaterialInBlueprint> Materials { get; set; }
 
             public DateTime CreationDate { get; set; }
 
+        }
+
+        public class MaterialInBlueprint
+        {
+            public int ID { get; set; }
+
+            public Blueprint Blueprint;
+
+            public Material material;
         }
 
         public class Cut

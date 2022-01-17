@@ -23,12 +23,12 @@ namespace Project
             db = dbContext;
         }
 
-       
+
 
         private async Task loadMaterialList()
         {
             materials = await Task.Run(() => (from m in db.Materials select m).ToList());
-            var items = materials.ConvertAll(m => m.Name + " " + m.color);
+            var items = materials.ConvertAll(m => m.Name + " " + m.color.TextName);
             listBox1.Invoke((MethodInvoker)delegate
             {
                 listBox1.DataSource = items;
@@ -40,7 +40,7 @@ namespace Project
 
         }
 
-        private  async void editToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var index = listBox1.SelectedIndex;
             if (index != ListBox.NoMatches)

@@ -1,10 +1,10 @@
 ﻿using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Project.Forms
 {
@@ -24,12 +24,12 @@ namespace Project.Forms
 
         private void MaterialEditorForm_Load(object sender, EventArgs e)
         {
-            comboBox_color.DataSource = Colors.ConvertAll(color => color.TextName); 
+            comboBox_color.DataSource = Colors.ConvertAll(color => color.TextName);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(comboBox_color.SelectedIndex == -1)
+            if (comboBox_color.SelectedIndex == -1)
             {
                 MessageBox.Show("Не выбран цвет");
                 return;
@@ -47,7 +47,7 @@ namespace Project.Forms
                 return;
             }
 
-           
+
             Material result;
             if (InitialMaterial != null)
             {
@@ -55,7 +55,7 @@ namespace Project.Forms
                 {
                     ID = InitialMaterial.ID,
                     Name = trimmedName,
-                    color = selectedColor 
+                    color = selectedColor
                 };
             }
             else
@@ -156,6 +156,6 @@ namespace Project.Forms
 
         }
 
-        
+
     }
 }
