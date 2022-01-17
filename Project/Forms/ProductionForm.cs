@@ -12,14 +12,18 @@ namespace Project
     {
         private readonly Role role;
         private readonly AppDbContext db;
-        private ProgramContext context;
+        private readonly ProgramContext context;
 
-        private List<Sketch> sketches;
-
-        private List<Product> Sketching;
+        private List<Product> Sketching = new();
+        private List<Product> Blueprinting = new();
+        private List<Product> Cutting = new();
+        private List<Product> Sewing = new();
+        private List<Product> QualityControl = new();
+        private List<Product> ReadyProducts = new();
 
         public ProductionForm(ProgramContext context, AppDbContext db)
         {
+            this.context = context;
             InitializeComponent();
             role = context.employee.Role;
 
@@ -29,29 +33,47 @@ namespace Project
 
         private  async void btnAddSketchClick(object sender, EventArgs e)
         {
-            await context.AddNewSketch();
-            loadSketchList();
+            await context.CreateSketchAndProduct();
+            LoadContent();
         }
 
         private async void ProductionForm_Load(object sender, EventArgs e)
         {
-            // await Task.Run(() => (from c in db.Colors select c).ToList());
-
-            //var products = await Task.Run(() => (from p in db.Products select p).ToList());
-            loadSketchList();
             LoadContent();
-            
-
-            //var sketchProducts = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.SKETCH select p).ToList());
-            //var blueprintProducts = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.BLUEPRINT select p).ToList());
-
-
         }
 
         private async void LoadContent()
         {
-            Sketching = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.SKETCH select p).ToList());
-            sketches_list_box.DataSource = Sketching.ConvertAll(s => s.Sketch.Name + " " + s.Sketch.FileLocation + " " + s.Sketch.Author + " " + s.Sketch.CreationDate);
+            /*Sketching = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.SKETCH select p).ToList());
+            sketches_list_box.DataSource = Sketching.ConvertAll(s => s.Sketch.Name + " " + s.Sketch.FileLocation + " " + s.Sketch.Author + " " + s.Sketch.CreationDate);*/
+            var allProducts = await Task.Run(() => (from p in db.Products select p).ToList());
+            IEnumerable<IGrouping<Stage, Product>> staged = allProducts.GroupBy(p => p.GetStage());
+            foreach(var st in staged)
+            {
+                switch (st.Key)
+                {
+                    case Stage.INITIAL:
+                        break;
+                    case Stage.SKETCH:
+                        Sketching = st.ToList();
+                        break;
+                    case Stage.BLUEPRINT:
+                        Blueprinting = st.ToList();
+                        break;
+                    case Stage.CUT:
+                        Cutting = st.ToList();
+                        break;
+                    case Stage.SEWING:
+                        Sewing = st.ToList();
+                        break;
+                    case Stage.READY:
+                        ReadyProducts = st.ToList();
+                        break;
+                }
+            }
+
+            sketches_list_box.DataSource = Sketching.ConvertAll(product => product.Sketch.Name);
+
         }
 
         private void sketch_group_Enter(object sender, EventArgs e)
@@ -67,43 +89,30 @@ namespace Project
                 if (index != ListBox.NoMatches)
                 {
                     sketches_list_box.SelectedIndex = index;
-                    contextMenuStrip1.Show(Cursor.Position);
+                    sketch_context_menu.Show(Cursor.Position);
                 }
             }
         }
 
-        private async void editToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void edit_sketch_toolstrip_MenuItem_Click(object sender, EventArgs e)
         {
             var index = sketches_list_box.SelectedIndex;
             if (index != ListBox.NoMatches)
             {
-                var sketch = sketches[index];
-
-                Debug.WriteLine("before edit employee");
+                var sketch = Sketching[index].Sketch;
                 await context.EditSketch(sketch);
-                Debug.WriteLine("employee updated");
-                await loadSketchList();
+                LoadContent();
             }
         }
 
-        private async Task loadSketchList()
-        {
-            sketches = await Task.Run(() => (from e in db.Sketches select e).ToList());
-            var items = sketches.ConvertAll(e => e.Name + " " + e.FileLocation + " " + e.Author + " " + e.CreationDate);
-            sketches_list_box.Invoke((MethodInvoker)delegate
-            {
-                sketches_list_box.DataSource = items;
-            });
-        }
-        private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void delete_sketch_toolstrip_MenuItem_Click(object sender, EventArgs e)
         {
             var index = sketches_list_box.SelectedIndex;
             if (index != ListBox.NoMatches)
             {
-                var sketch = sketches[index];
-
-                await context.DeleteSketch(sketch);
-                await loadSketchList();
+                var product = Sketching[index];
+                await product.RemoveFromDb(db);
+                LoadContent();
             }
         }
 

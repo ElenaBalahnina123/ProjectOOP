@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace ProjectOop
 {
@@ -140,6 +141,34 @@ namespace ProjectOop
                 // sewing != null
                 else if (!product.QaPassed) return Stage.SEWING;
                 else return Stage.READY;
+            }
+
+            public static async Task RemoveFromDb(this Product product, AppDbContext db)
+            {
+                if(product.Sketch != null)
+                {
+                    db.Remove(product.Sketch);
+                }
+                if(product.Blueprint != null)
+                {
+                    foreach(MaterialInBlueprint m in product.Blueprint.Materials)
+                    {
+                        db.Remove(m);
+                    }
+
+                    db.Remove(product.Blueprint);
+                }
+                if(product.Cut != null)
+                {
+                    db.Remove(product.Cut);
+                }
+                if(product.Sewing != null)
+                {
+                    db.Remove(product.Sewing);
+                }
+                db.Remove(product);
+
+                db.SaveChanges();
             }
         }
     }

@@ -39,6 +39,7 @@ namespace Project
                     .AddSingleton<AppDbContext>()
                     .AddSingleton(this)
                     .AddTransient<DesignerForm>()
+                    .AddTransient<SketchArtEditorForm>()
                 ).Build();
 
             host.StartAsync();
@@ -175,7 +176,7 @@ namespace Project
             await db.SaveChangesAsync();
         }
 
-        internal async Task AddNewSketch()
+        internal async Task CreateSketchAndProduct()
         {
             var sketch = await CreateForm<SketchArtEditorForm>().SketchAsync(showModal: true);
 
@@ -184,6 +185,11 @@ namespace Project
             var db = host.Services.GetRequiredService<AppDbContext>();
             db.Sketches.Add(sketch);
 
+            db.Products.Add(new Product()
+            {
+                Sketch = sketch
+            });
+           
             await db.SaveChangesAsync();
         }
 
