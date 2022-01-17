@@ -23,13 +23,10 @@ namespace Project
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //var form2 = host.Services.GetRequiredService<ProductionForm>();
+            programState.ShowProductionList();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //var form3 = host.Services.GetRequiredService<PositionEditorForm>();
-        }
+       
 
         private void btn_edit_colors_Click(object sender, EventArgs e)
         {

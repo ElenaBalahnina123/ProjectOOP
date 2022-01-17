@@ -124,6 +124,31 @@ namespace Project
             Debug.WriteLine("changes saved");
         }
 
+        internal async Task EditSketch(Sketch sketch)
+        {
+            var s = await CreateForm<SketchArtEditorForm>().SetSketch(sketch).SketchAsync(showModal: true);
+            if (s == null)
+            {
+                Debug.WriteLine("sketch edit cancelled");
+                return;
+            }
+            Debug.WriteLine("sketch edit complete, saving");
+
+            var db = host.Services.GetRequiredService<AppDbContext>();
+
+            var existing = await db.Sketches.FindAsync(s.ID);
+            if (existing == null)
+            {
+                Debug.WriteLine("cannot find sketch in db, return");
+                return;
+            }
+
+            db.Entry(existing).CurrentValues.SetValues(s);
+            Debug.WriteLine("saving changes");
+            db.SaveChanges();
+            Debug.WriteLine("changes saved");
+        }
+
         internal async Task AddNewEmployee()
         {
             var employee = await CreateForm<EmployeeEditorForm>().EmployeeAsync(showModal: true);
@@ -146,6 +171,18 @@ namespace Project
 
             var db = host.Services.GetRequiredService<AppDbContext>();
             db.Colors.Add(color);
+
+            await db.SaveChangesAsync();
+        }
+
+        internal async Task AddNewSketch()
+        {
+            var sketch = await CreateForm<SketchArtEditorForm>().SketchAsync(showModal: true);
+
+            if (sketch == null) return;
+
+            var db = host.Services.GetRequiredService<AppDbContext>();
+            db.Sketches.Add(sketch);
 
             await db.SaveChangesAsync();
         }
@@ -213,6 +250,12 @@ namespace Project
             db.SaveChanges();
         }
 
+        internal async Task DeleteSketch(Sketch sketch)
+        {
+            var db = host.Services.GetRequiredService<AppDbContext>();
+            db.Sketches.Remove(sketch);
+            db.SaveChanges();
+        }
         internal async Task DeleteColor(ModelColor color)
         {
             var db = host.Services.GetRequiredService<AppDbContext>();
@@ -290,6 +333,11 @@ namespace Project
         public void ShowEmployerList()
         {
             ShowForm<EmployeeListForm>();
+        }
+
+        public void ShowProductionList()
+        {
+            ShowForm<ProductionForm>();
         }
 
         public void ShowMaterialList()
