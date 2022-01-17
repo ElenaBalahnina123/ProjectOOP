@@ -32,10 +32,11 @@ namespace ProjectOop
         public class Material // материал
         {
             public int ID { get; set; }
-            public string Name { get; set; }
+            [Required] public string Name { get; set; }
 
-            public double Amount { get; set }
+            public ModelColor color { get; set; }
 
+            
         }
 
         public class ModelColor
@@ -43,6 +44,8 @@ namespace ProjectOop
             public int ID { get; set; }
             public string RgbValue { get; set; }
             public string TextName { get; set; }
+
+            
         }
 
         public class Sketch

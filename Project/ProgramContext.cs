@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Project.Forms;
 using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace Project
                     .AddTransient<ProductionForm>()
                     .AddTransient<EmployeeListForm>()
                     .AddTransient<ListMaterial>()
+                    .AddTransient<MaterialEditorForm>()
                     .AddTransient<ColorListForm>()
                     .AddTransient<ColorEditor>()
                     .AddTransient<DirectorForm>()
@@ -46,6 +48,7 @@ namespace Project
 
         public Employee employee { get; private set; }
         public ModelColor color { get; private set; }
+        public Material material { get; private set; }
 
         internal async Task EditEmployee(Employee employee)
         {
@@ -96,6 +99,31 @@ namespace Project
             Debug.WriteLine("changes saved");
         }
 
+        internal async Task EditMaterial(Material material)
+        {
+            var c = await CreateForm<MaterialEditorForm>().SetMaterial(material).MaterialAsync(showModal: true);
+            if (c == null)
+            {
+                Debug.WriteLine("material edit cancelled");
+                return;
+            }
+            Debug.WriteLine("material edit complete, saving");
+
+            var db = host.Services.GetRequiredService<AppDbContext>();
+
+            var existing = await db.Materials.FindAsync(c.ID);
+            if (existing == null)
+            {
+                Debug.WriteLine("cannot find material in db, return");
+                return;
+            }
+
+            db.Entry(existing).CurrentValues.SetValues(c);
+            Debug.WriteLine("saving changes");
+            db.SaveChanges();
+            Debug.WriteLine("changes saved");
+        }
+
         internal async Task AddNewEmployee()
         {
             var employee = await CreateForm<EmployeeEditorForm>().EmployeeAsync(showModal: true);
@@ -118,6 +146,18 @@ namespace Project
 
             var db = host.Services.GetRequiredService<AppDbContext>();
             db.Colors.Add(color);
+
+            await db.SaveChangesAsync();
+        }
+
+        internal async Task AddNewMaterial()
+        {
+            var material = await CreateForm<MaterialEditorForm>().MaterialAsync(showModal: true);
+
+            if (material == null) return;
+
+            var db = host.Services.GetRequiredService<AppDbContext>();
+            db.Materials.Add(material);
 
             await db.SaveChangesAsync();
         }
@@ -180,6 +220,12 @@ namespace Project
             db.SaveChanges();
         }
 
+        internal async Task DeleteMaterial(Material material)
+        {
+            var db = host.Services.GetRequiredService<AppDbContext>();
+            db.Materials.Remove(material);
+            db.SaveChanges();
+        }
         private void ExitProgram()
         {
             if (disposing) return;
@@ -245,5 +291,11 @@ namespace Project
         {
             ShowForm<EmployeeListForm>();
         }
+
+        public void ShowMaterialList()
+        {
+            ShowForm<ListMaterial>();
+        }
+
     }
 }

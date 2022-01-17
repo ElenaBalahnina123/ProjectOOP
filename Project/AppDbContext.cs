@@ -6,8 +6,6 @@ public class AppDbContext : DbContext
     public DbSet<Employee> Employees { get; set; }
     public DbSet<ModelColor> Colors { get; set; }
 
-    public DbSet<Material> Materials { get; set; }
-
     public DbSet<Sketch> Sketches { get; set; }
 
     public DbSet<Blueprint> Blueprints { get; set; }
@@ -17,6 +15,8 @@ public class AppDbContext : DbContext
     public DbSet<Sewing> Sewings { get; set; }
 
     public DbSet<Product> Products { get; set; }
+
+    public DbSet<Material> Materials { get; set; }
 
     public AppDbContext()
     {
@@ -37,5 +37,11 @@ public class AppDbContext : DbContext
     {
         modelBuilder.Entity<Employee>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<ModelColor>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Material>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Sketch>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Blueprint>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Cut>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Sewing>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Product>().HasIndex(e => e.ID).IsUnique();
     }
 }
