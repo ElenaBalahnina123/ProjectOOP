@@ -90,5 +90,7 @@ namespace Project
             await context.AddNewMaterial();
             loadMaterialList();
         }
+
+       
     }
 }

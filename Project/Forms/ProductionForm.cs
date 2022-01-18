@@ -76,18 +76,7 @@ namespace Project
             }
         }
 
-        private void sketches_list_box_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                var index = sketches_list_box.IndexFromPoint(e.X, e.Y);
-                if (index != ListBox.NoMatches)
-                {
-                    sketches_list_box.SelectedIndex = index;
-                    sketch_context_menu.Show(Cursor.Position);
-                }
-            }
-        }
+       
 
         private async void edit_sketch_toolstrip_MenuItem_Click(object sender, EventArgs e)
         {
@@ -124,12 +113,101 @@ namespace Project
             }
         }
 
+
+
+        #region "MouseDown list Box"
+        private void sketches_list_box_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var index = sketches_list_box.IndexFromPoint(e.X, e.Y);
+                if (index != ListBox.NoMatches)
+                {
+                    sketches_list_box.SelectedIndex = index;
+                    sketch_context_menu.Show(Cursor.Position);
+                }
+            }
+        }
+
         private void blueprint_list_box_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var index = blueprint_list_box.IndexFromPoint(e.X, e.Y);
+                if (index != ListBox.NoMatches)
+                {
+                    blueprint_list_box.SelectedIndex = index;
+                    blueprint_context_menu.Show(Cursor.Position);
+                }
+            }
+        }
+        private void cutting_list_box_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var index = cutting_list_box.IndexFromPoint(e.X, e.Y);
+                if (index != ListBox.NoMatches)
+                {
+                    cutting_list_box.SelectedIndex = index;
+                    cutting_context_menu.Show(Cursor.Position);
+                }
+            }
+        }
+
+        private void sewing_list_box_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var index = sewing_list_box.IndexFromPoint(e.X, e.Y);
+                if (index != ListBox.NoMatches)
+                {
+                    sewing_list_box.SelectedIndex = index;
+                    sewing_context_menu.Show(Cursor.Position);
+                }
+            }
+        }
+
+      
+
+        private void ready_list_box_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var index = ready_list_box.IndexFromPoint(e.X, e.Y);
+                if (index != ListBox.NoMatches)
+                {
+                    ready_list_box.SelectedIndex = index;
+                    ready_context_menu.Show(Cursor.Position);
+                }
+            }
+        }
+        #endregion
+        private void toCuttingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void editToolStripMenuItem2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void toCuttingToolStripMenuItem_Click(object sender, EventArgs e)
+        private void deleteToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void добавитьПошивToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void контрольКачестваToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

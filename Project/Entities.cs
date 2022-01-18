@@ -52,8 +52,8 @@ namespace ProjectOop
         public class Sketch
         {
             public int ID { get; set; }
+            [Required] public string Name { get; set; }
 
-            public string Name { get; set; }
 
             public string FileLocation { get; set; }
 
@@ -65,8 +65,6 @@ namespace ProjectOop
         public class Blueprint
         {
             public int ID { get; set; }
-
-            public Employee Author { get; set; }
 
             public List<MaterialInBlueprint> Materials { get; set; }
 

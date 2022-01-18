@@ -51,95 +51,85 @@ namespace Project
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 32);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 25);
+            this.label1.Size = new System.Drawing.Size(58, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Фамилия";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 127);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(12, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 25);
+            this.label2.Size = new System.Drawing.Size(31, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "Имя";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 217);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(12, 130);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 25);
+            this.label3.Size = new System.Drawing.Size(58, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "Отчество";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 308);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(12, 185);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(144, 25);
+            this.label4.Size = new System.Drawing.Size(96, 15);
             this.label4.TabIndex = 3;
             this.label4.Text = "Дата устройства";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 407);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(12, 244);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 25);
+            this.label6.Size = new System.Drawing.Size(41, 15);
             this.label6.TabIndex = 4;
             this.label6.Text = "Оклад";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(17, 62);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox1.Location = new System.Drawing.Point(12, 37);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(463, 31);
+            this.textBox1.Size = new System.Drawing.Size(325, 23);
             this.textBox1.TabIndex = 5;
             this.textBox1.Text = "admin";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(17, 157);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox2.Location = new System.Drawing.Point(12, 94);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(463, 31);
+            this.textBox2.Size = new System.Drawing.Size(325, 23);
             this.textBox2.TabIndex = 6;
             this.textBox2.Text = "admin";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(17, 247);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox3.Location = new System.Drawing.Point(12, 148);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(463, 31);
+            this.textBox3.Size = new System.Drawing.Size(325, 23);
             this.textBox3.TabIndex = 7;
             this.textBox3.Text = "admin";
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(17, 437);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox5.Location = new System.Drawing.Point(12, 262);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(463, 31);
+            this.textBox5.Size = new System.Drawing.Size(325, 23);
             this.textBox5.TabIndex = 9;
             this.textBox5.Text = "123";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(17, 715);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button1.Location = new System.Drawing.Point(12, 429);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 38);
+            this.button1.Size = new System.Drawing.Size(95, 23);
             this.button1.TabIndex = 10;
             this.button1.Text = "Сохранить";
             this.button1.UseVisualStyleBackColor = true;
@@ -147,53 +137,52 @@ namespace Project
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(17, 338);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 203);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(463, 31);
+            this.dateTimePicker1.Size = new System.Drawing.Size(325, 23);
             this.dateTimePicker1.TabIndex = 11;
             // 
             // login_box
             // 
-            this.login_box.Location = new System.Drawing.Point(18, 515);
+            this.login_box.Location = new System.Drawing.Point(13, 309);
+            this.login_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.login_box.Name = "login_box";
-            this.login_box.Size = new System.Drawing.Size(461, 31);
+            this.login_box.Size = new System.Drawing.Size(324, 23);
             this.login_box.TabIndex = 12;
             this.login_box.Text = "admin";
             // 
             // password_box
             // 
-            this.password_box.Location = new System.Drawing.Point(20, 579);
+            this.password_box.Location = new System.Drawing.Point(12, 357);
+            this.password_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.password_box.Name = "password_box";
-            this.password_box.Size = new System.Drawing.Size(458, 31);
+            this.password_box.Size = new System.Drawing.Size(322, 23);
             this.password_box.TabIndex = 13;
             this.password_box.Text = "admin";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 487);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(14, 292);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 25);
+            this.label5.Size = new System.Drawing.Size(41, 15);
             this.label5.TabIndex = 14;
             this.label5.Text = "Логин";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 551);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(13, 340);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 25);
+            this.label7.Size = new System.Drawing.Size(49, 15);
             this.label7.TabIndex = 15;
             this.label7.Text = "Пароль";
             // 
             // EmployeeEditorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 900);
+            this.ClientSize = new System.Drawing.Size(360, 540);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.password_box);
@@ -209,7 +198,6 @@ namespace Project
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "EmployeeEditorForm";
             this.Text = "EmployeeEditorForm";
             this.ResumeLayout(false);

@@ -39,8 +39,6 @@ namespace Project
             this.cutting_list_box = new System.Windows.Forms.ListBox();
             this.sewing_box = new System.Windows.Forms.GroupBox();
             this.sewing_list_box = new System.Windows.Forms.ListBox();
-            this.qa_box = new System.Windows.Forms.GroupBox();
-            this.quality_control_list_box = new System.Windows.Forms.ListBox();
             this.ready_box = new System.Windows.Forms.GroupBox();
             this.ready_list_box = new System.Windows.Forms.ListBox();
             this.sketch_context_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -50,26 +48,41 @@ namespace Project
             this.blueprint_context_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toCuttingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьТехническийЭскизToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cutting_context_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьРаскройToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sewing_context_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ready_context_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.завершитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.контрольКачестваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отправитьНаДоработкуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.утилизироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.контрольКачестваПройденToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.раскройToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пошивToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sketch_group.SuspendLayout();
             this.blueprint_box.SuspendLayout();
             this.cut_box.SuspendLayout();
             this.sewing_box.SuspendLayout();
-            this.qa_box.SuspendLayout();
             this.ready_box.SuspendLayout();
             this.sketch_context_menu.SuspendLayout();
             this.blueprint_context_menu.SuspendLayout();
+            this.cutting_context_menu.SuspendLayout();
+            this.sewing_context_menu.SuspendLayout();
+            this.ready_context_menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // sketch_group
             // 
             this.sketch_group.Controls.Add(this.sketches_list_box);
             this.sketch_group.Controls.Add(this.button_add_sketch);
-            this.sketch_group.Location = new System.Drawing.Point(17, 20);
-            this.sketch_group.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.sketch_group.Location = new System.Drawing.Point(12, 12);
             this.sketch_group.Name = "sketch_group";
-            this.sketch_group.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.sketch_group.Size = new System.Drawing.Size(360, 885);
+            this.sketch_group.Size = new System.Drawing.Size(252, 531);
             this.sketch_group.TabIndex = 0;
             this.sketch_group.TabStop = false;
             this.sketch_group.Text = "Художественный эскиз";
@@ -77,19 +90,19 @@ namespace Project
             // sketches_list_box
             // 
             this.sketches_list_box.FormattingEnabled = true;
-            this.sketches_list_box.ItemHeight = 25;
-            this.sketches_list_box.Location = new System.Drawing.Point(7, 32);
+            this.sketches_list_box.ItemHeight = 15;
+            this.sketches_list_box.Location = new System.Drawing.Point(5, 21);
+            this.sketches_list_box.Margin = new System.Windows.Forms.Padding(2);
             this.sketches_list_box.Name = "sketches_list_box";
-            this.sketches_list_box.Size = new System.Drawing.Size(345, 779);
+            this.sketches_list_box.Size = new System.Drawing.Size(243, 469);
             this.sketches_list_box.TabIndex = 1;
             this.sketches_list_box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.sketches_list_box_MouseDown);
             // 
             // button_add_sketch
             // 
-            this.button_add_sketch.Location = new System.Drawing.Point(23, 822);
-            this.button_add_sketch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_add_sketch.Location = new System.Drawing.Point(16, 493);
             this.button_add_sketch.Name = "button_add_sketch";
-            this.button_add_sketch.Size = new System.Drawing.Size(310, 38);
+            this.button_add_sketch.Size = new System.Drawing.Size(217, 23);
             this.button_add_sketch.TabIndex = 0;
             this.button_add_sketch.Text = "Добавить эскиз";
             this.button_add_sketch.UseVisualStyleBackColor = true;
@@ -98,11 +111,9 @@ namespace Project
             // blueprint_box
             // 
             this.blueprint_box.Controls.Add(this.blueprint_list_box);
-            this.blueprint_box.Location = new System.Drawing.Point(386, 20);
-            this.blueprint_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.blueprint_box.Location = new System.Drawing.Point(270, 12);
             this.blueprint_box.Name = "blueprint_box";
-            this.blueprint_box.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.blueprint_box.Size = new System.Drawing.Size(360, 885);
+            this.blueprint_box.Size = new System.Drawing.Size(252, 531);
             this.blueprint_box.TabIndex = 1;
             this.blueprint_box.TabStop = false;
             this.blueprint_box.Text = "Технический эскиз";
@@ -110,21 +121,20 @@ namespace Project
             // blueprint_list_box
             // 
             this.blueprint_list_box.FormattingEnabled = true;
-            this.blueprint_list_box.ItemHeight = 25;
-            this.blueprint_list_box.Location = new System.Drawing.Point(7, 32);
+            this.blueprint_list_box.ItemHeight = 15;
+            this.blueprint_list_box.Location = new System.Drawing.Point(5, 19);
+            this.blueprint_list_box.Margin = new System.Windows.Forms.Padding(2);
             this.blueprint_list_box.Name = "blueprint_list_box";
-            this.blueprint_list_box.Size = new System.Drawing.Size(346, 829);
+            this.blueprint_list_box.Size = new System.Drawing.Size(243, 499);
             this.blueprint_list_box.TabIndex = 0;
             this.blueprint_list_box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.blueprint_list_box_MouseDown);
             // 
             // cut_box
             // 
             this.cut_box.Controls.Add(this.cutting_list_box);
-            this.cut_box.Location = new System.Drawing.Point(754, 20);
-            this.cut_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cut_box.Location = new System.Drawing.Point(528, 12);
             this.cut_box.Name = "cut_box";
-            this.cut_box.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cut_box.Size = new System.Drawing.Size(360, 885);
+            this.cut_box.Size = new System.Drawing.Size(252, 531);
             this.cut_box.TabIndex = 1;
             this.cut_box.TabStop = false;
             this.cut_box.Text = "Раскрой";
@@ -132,20 +142,20 @@ namespace Project
             // cutting_list_box
             // 
             this.cutting_list_box.FormattingEnabled = true;
-            this.cutting_list_box.ItemHeight = 25;
-            this.cutting_list_box.Location = new System.Drawing.Point(7, 32);
+            this.cutting_list_box.ItemHeight = 15;
+            this.cutting_list_box.Location = new System.Drawing.Point(5, 19);
+            this.cutting_list_box.Margin = new System.Windows.Forms.Padding(2);
             this.cutting_list_box.Name = "cutting_list_box";
-            this.cutting_list_box.Size = new System.Drawing.Size(346, 829);
+            this.cutting_list_box.Size = new System.Drawing.Size(243, 499);
             this.cutting_list_box.TabIndex = 0;
+            this.cutting_list_box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cutting_list_box_MouseDown);
             // 
             // sewing_box
             // 
             this.sewing_box.Controls.Add(this.sewing_list_box);
-            this.sewing_box.Location = new System.Drawing.Point(1123, 20);
-            this.sewing_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.sewing_box.Location = new System.Drawing.Point(786, 12);
             this.sewing_box.Name = "sewing_box";
-            this.sewing_box.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.sewing_box.Size = new System.Drawing.Size(360, 885);
+            this.sewing_box.Size = new System.Drawing.Size(252, 531);
             this.sewing_box.TabIndex = 1;
             this.sewing_box.TabStop = false;
             this.sewing_box.Text = "Пошив";
@@ -153,41 +163,20 @@ namespace Project
             // sewing_list_box
             // 
             this.sewing_list_box.FormattingEnabled = true;
-            this.sewing_list_box.ItemHeight = 25;
-            this.sewing_list_box.Location = new System.Drawing.Point(7, 32);
+            this.sewing_list_box.ItemHeight = 15;
+            this.sewing_list_box.Location = new System.Drawing.Point(5, 19);
+            this.sewing_list_box.Margin = new System.Windows.Forms.Padding(2);
             this.sewing_list_box.Name = "sewing_list_box";
-            this.sewing_list_box.Size = new System.Drawing.Size(346, 829);
+            this.sewing_list_box.Size = new System.Drawing.Size(243, 499);
             this.sewing_list_box.TabIndex = 0;
-            // 
-            // qa_box
-            // 
-            this.qa_box.Controls.Add(this.quality_control_list_box);
-            this.qa_box.Location = new System.Drawing.Point(1491, 20);
-            this.qa_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.qa_box.Name = "qa_box";
-            this.qa_box.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.qa_box.Size = new System.Drawing.Size(360, 885);
-            this.qa_box.TabIndex = 2;
-            this.qa_box.TabStop = false;
-            this.qa_box.Text = "Котроль качества";
-            // 
-            // quality_control_list_box
-            // 
-            this.quality_control_list_box.FormattingEnabled = true;
-            this.quality_control_list_box.ItemHeight = 25;
-            this.quality_control_list_box.Location = new System.Drawing.Point(7, 32);
-            this.quality_control_list_box.Name = "quality_control_list_box";
-            this.quality_control_list_box.Size = new System.Drawing.Size(346, 829);
-            this.quality_control_list_box.TabIndex = 0;
+            this.sewing_list_box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.sewing_list_box_MouseDown);
             // 
             // ready_box
             // 
             this.ready_box.Controls.Add(this.ready_list_box);
-            this.ready_box.Location = new System.Drawing.Point(1860, 20);
-            this.ready_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ready_box.Location = new System.Drawing.Point(1044, 12);
             this.ready_box.Name = "ready_box";
-            this.ready_box.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ready_box.Size = new System.Drawing.Size(360, 885);
+            this.ready_box.Size = new System.Drawing.Size(252, 531);
             this.ready_box.TabIndex = 2;
             this.ready_box.TabStop = false;
             this.ready_box.Text = "Готовое изделие";
@@ -195,11 +184,13 @@ namespace Project
             // ready_list_box
             // 
             this.ready_list_box.FormattingEnabled = true;
-            this.ready_list_box.ItemHeight = 25;
-            this.ready_list_box.Location = new System.Drawing.Point(7, 32);
+            this.ready_list_box.ItemHeight = 15;
+            this.ready_list_box.Location = new System.Drawing.Point(5, 19);
+            this.ready_list_box.Margin = new System.Windows.Forms.Padding(2);
             this.ready_list_box.Name = "ready_list_box";
-            this.ready_list_box.Size = new System.Drawing.Size(346, 829);
+            this.ready_list_box.Size = new System.Drawing.Size(243, 499);
             this.ready_list_box.TabIndex = 0;
+            this.ready_list_box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ready_list_box_MouseDown);
             // 
             // sketch_context_menu
             // 
@@ -209,19 +200,19 @@ namespace Project
             this.deleteToolStripMenuItem,
             this.to_blueprint_sketch_context_MenuItem});
             this.sketch_context_menu.Name = "contextMenuStrip1";
-            this.sketch_context_menu.Size = new System.Drawing.Size(303, 100);
+            this.sketch_context_menu.Size = new System.Drawing.Size(233, 70);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(302, 32);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.editToolStripMenuItem.Text = "Редактировать";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.edit_sketch_toolstrip_MenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(302, 32);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
             this.deleteToolStripMenuItem.Text = "Удалить";
             this.deleteToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.delete_sketch_toolstrip_MenuItem_Click);
@@ -229,8 +220,8 @@ namespace Project
             // to_blueprint_sketch_context_MenuItem
             // 
             this.to_blueprint_sketch_context_MenuItem.Name = "to_blueprint_sketch_context_MenuItem";
-            this.to_blueprint_sketch_context_MenuItem.Size = new System.Drawing.Size(302, 32);
-            this.to_blueprint_sketch_context_MenuItem.Text = "Создать технический эскиз";
+            this.to_blueprint_sketch_context_MenuItem.Size = new System.Drawing.Size(232, 22);
+            this.to_blueprint_sketch_context_MenuItem.Text = "Добавить технический эскиз";
             this.to_blueprint_sketch_context_MenuItem.Click += new System.EventHandler(this.create_blueprint_menu_item_click);
             // 
             // blueprint_context_menu
@@ -239,41 +230,145 @@ namespace Project
             this.blueprint_context_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editToolStripMenuItem1,
             this.deleteToolStripMenuItem1,
-            this.toCuttingToolStripMenuItem});
+            this.создатьТехническийЭскизToolStripMenuItem});
             this.blueprint_context_menu.Name = "blueprint_context_menu";
-            this.blueprint_context_menu.Size = new System.Drawing.Size(241, 133);
+            this.blueprint_context_menu.Size = new System.Drawing.Size(176, 70);
             // 
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(240, 32);
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(223, 22);
             this.editToolStripMenuItem1.Text = "Edit";
             // 
             // deleteToolStripMenuItem1
             // 
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(240, 32);
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(223, 22);
             this.deleteToolStripMenuItem1.Text = "Delete";
             // 
-            // toCuttingToolStripMenuItem
+            // создатьТехническийЭскизToolStripMenuItem
             // 
-            this.toCuttingToolStripMenuItem.Name = "toCuttingToolStripMenuItem";
-            this.toCuttingToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
-            this.toCuttingToolStripMenuItem.Text = "Добавить раскрой";
-            this.toCuttingToolStripMenuItem.Click += new System.EventHandler(this.toCuttingToolStripMenuItem_Click);
+            this.создатьТехническийЭскизToolStripMenuItem.Name = "создатьТехническийЭскизToolStripMenuItem";
+            this.создатьТехническийЭскизToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.создатьТехническийЭскизToolStripMenuItem.Text = "Добавить раскрой";
+            // 
+            // cutting_context_menu
+            // 
+            this.cutting_context_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem2,
+            this.deleteToolStripMenuItem2,
+            this.добавитьРаскройToolStripMenuItem});
+            this.cutting_context_menu.Name = "contextMenuStrip1";
+            this.cutting_context_menu.Size = new System.Drawing.Size(168, 70);
+            // 
+            // editToolStripMenuItem2
+            // 
+            this.editToolStripMenuItem2.Name = "editToolStripMenuItem2";
+            this.editToolStripMenuItem2.Size = new System.Drawing.Size(175, 22);
+            this.editToolStripMenuItem2.Text = "Edit";
+            this.editToolStripMenuItem2.Click += new System.EventHandler(this.editToolStripMenuItem2_Click);
+            // 
+            // deleteToolStripMenuItem2
+            // 
+            this.deleteToolStripMenuItem2.Name = "deleteToolStripMenuItem2";
+            this.deleteToolStripMenuItem2.Size = new System.Drawing.Size(175, 22);
+            this.deleteToolStripMenuItem2.Text = "Delete";
+            this.deleteToolStripMenuItem2.Click += new System.EventHandler(this.deleteToolStripMenuItem2_Click);
+            // 
+            // добавитьРаскройToolStripMenuItem
+            // 
+            this.добавитьРаскройToolStripMenuItem.Name = "добавитьРаскройToolStripMenuItem";
+            this.добавитьРаскройToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.добавитьРаскройToolStripMenuItem.Text = "Добавить пошив";
+            // 
+            // sewing_context_menu
+            // 
+            this.sewing_context_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem3,
+            this.deleteToolStripMenuItem3,
+            this.контрольКачестваToolStripMenuItem});
+            this.sewing_context_menu.Name = "sewing_context_menu";
+            this.sewing_context_menu.Size = new System.Drawing.Size(179, 70);
+            // 
+            // editToolStripMenuItem3
+            // 
+            this.editToolStripMenuItem3.Name = "editToolStripMenuItem3";
+            this.editToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem3.Text = "Edit";
+            // 
+            // deleteToolStripMenuItem3
+            // 
+            this.deleteToolStripMenuItem3.Name = "deleteToolStripMenuItem3";
+            this.deleteToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem3.Text = "Delete";
+            // 
+            // ready_context_menu
+            // 
+            this.ready_context_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.завершитьToolStripMenuItem});
+            this.ready_context_menu.Name = "ready_context_menu";
+            this.ready_context_menu.Size = new System.Drawing.Size(136, 26);
+            // 
+            // завершитьToolStripMenuItem
+            // 
+            this.завершитьToolStripMenuItem.Name = "завершитьToolStripMenuItem";
+            this.завершитьToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.завершитьToolStripMenuItem.Text = "Завершить";
+            // 
+            // контрольКачестваToolStripMenuItem
+            // 
+            this.контрольКачестваToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.отправитьНаДоработкуToolStripMenuItem,
+            this.утилизироватьToolStripMenuItem,
+            this.контрольКачестваПройденToolStripMenuItem});
+            this.контрольКачестваToolStripMenuItem.Name = "контрольКачестваToolStripMenuItem";
+            this.контрольКачестваToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.контрольКачестваToolStripMenuItem.Text = "Контроль качества";
+            this.контрольКачестваToolStripMenuItem.Click += new System.EventHandler(this.контрольКачестваToolStripMenuItem_Click);
+            // 
+            // отправитьНаДоработкуToolStripMenuItem
+            // 
+            this.отправитьНаДоработкуToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.раскройToolStripMenuItem,
+            this.пошивToolStripMenuItem});
+            this.отправитьНаДоработкуToolStripMenuItem.Name = "отправитьНаДоработкуToolStripMenuItem";
+            this.отправитьНаДоработкуToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.отправитьНаДоработкуToolStripMenuItem.Text = "Отправить на доработку";
+            // 
+            // утилизироватьToolStripMenuItem
+            // 
+            this.утилизироватьToolStripMenuItem.Name = "утилизироватьToolStripMenuItem";
+            this.утилизироватьToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.утилизироватьToolStripMenuItem.Text = "Утилизировать";
+            // 
+            // контрольКачестваПройденToolStripMenuItem
+            // 
+            this.контрольКачестваПройденToolStripMenuItem.Name = "контрольКачестваПройденToolStripMenuItem";
+            this.контрольКачестваПройденToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.контрольКачестваПройденToolStripMenuItem.Text = "Контроль качества пройден";
+            // 
+            // раскройToolStripMenuItem
+            // 
+            this.раскройToolStripMenuItem.Name = "раскройToolStripMenuItem";
+            this.раскройToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.раскройToolStripMenuItem.Text = "Раскрой";
+            // 
+            // пошивToolStripMenuItem
+            // 
+            this.пошивToolStripMenuItem.Name = "пошивToolStripMenuItem";
+            this.пошивToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.пошивToolStripMenuItem.Text = "Пошив";
             // 
             // ProductionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2238, 938);
+            this.ClientSize = new System.Drawing.Size(1575, 564);
             this.Controls.Add(this.ready_box);
-            this.Controls.Add(this.qa_box);
             this.Controls.Add(this.sewing_box);
             this.Controls.Add(this.cut_box);
             this.Controls.Add(this.blueprint_box);
             this.Controls.Add(this.sketch_group);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ProductionForm";
             this.Text = "ProductionForm";
             this.Load += new System.EventHandler(this.ProductionForm_Load);
@@ -281,10 +376,12 @@ namespace Project
             this.blueprint_box.ResumeLayout(false);
             this.cut_box.ResumeLayout(false);
             this.sewing_box.ResumeLayout(false);
-            this.qa_box.ResumeLayout(false);
             this.ready_box.ResumeLayout(false);
             this.sketch_context_menu.ResumeLayout(false);
             this.blueprint_context_menu.ResumeLayout(false);
+            this.cutting_context_menu.ResumeLayout(false);
+            this.sewing_context_menu.ResumeLayout(false);
+            this.ready_context_menu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -296,7 +393,6 @@ namespace Project
         private System.Windows.Forms.GroupBox blueprint_box;
         private System.Windows.Forms.GroupBox cut_box;
         private System.Windows.Forms.GroupBox sewing_box;
-        private System.Windows.Forms.GroupBox qa_box;
         private System.Windows.Forms.GroupBox ready_box;
         private System.Windows.Forms.ListBox sketches_list_box;
         private System.Windows.Forms.ContextMenuStrip sketch_context_menu;
@@ -306,11 +402,25 @@ namespace Project
         private System.Windows.Forms.ListBox blueprint_list_box;
         private System.Windows.Forms.ListBox cutting_list_box;
         private System.Windows.Forms.ListBox sewing_list_box;
-        private System.Windows.Forms.ListBox quality_control_list_box;
         private System.Windows.Forms.ListBox ready_list_box;
         private System.Windows.Forms.ContextMenuStrip blueprint_context_menu;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toCuttingToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cutting_context_menu;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem2;
+        private System.Windows.Forms.ContextMenuStrip sewing_context_menu;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem3;
+        private System.Windows.Forms.ContextMenuStrip ready_context_menu;
+        private System.Windows.Forms.ToolStripMenuItem завершитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem создатьТехническийЭскизToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьРаскройToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem контрольКачестваToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отправитьНаДоработкуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem раскройToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem пошивToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem утилизироватьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem контрольКачестваПройденToolStripMenuItem;
     }
 }
