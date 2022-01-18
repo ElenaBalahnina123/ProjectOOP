@@ -150,6 +150,20 @@ namespace Project
             Debug.WriteLine("changes saved");
         }
 
+        internal async Task ConvertFromSketchToBlueprint(Product product)
+        {
+            if (product.Blueprint != null) return;
+            var blueprint = await ShowForm<BlueprintEditorForm>().GetBlueprintAsync();
+
+            var db = host.Services.GetRequiredService<AppDbContext>();
+            db.Blueprints.Add(blueprint);
+            db.SaveChanges();
+
+            db.Attach(product);
+            product.Blueprint = blueprint;
+            db.SaveChanges();
+        }
+
         internal async Task AddNewEmployee()
         {
             var employee = await CreateForm<EmployeeEditorForm>().EmployeeAsync(showModal: true);

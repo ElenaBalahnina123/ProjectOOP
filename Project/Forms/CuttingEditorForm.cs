@@ -9,24 +9,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Project
+namespace Project.Forms
 {
-    public partial class BlueprintEditorForm : Form
+    public partial class CuttingEditorForm : Form
     {
-        public BlueprintEditorForm()
+        public CuttingEditorForm()
         {
             InitializeComponent();
         }
 
-        public BlueprintEditorForm SetProduct(Product product)
+        public CuttingEditorForm SetProduct(Product product)
         {
-            name_sketch.Text = product.Sketch.Name;
+
             return this;
         }
 
-        public async Task<Blueprint?> GetBlueprintAsync()
+        public async Task<Cut> GetCutAsync()
         {
-            throw new Exception("not implemented");
+            throw new Exception("not ready");
         }
     }
 }

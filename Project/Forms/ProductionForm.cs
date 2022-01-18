@@ -44,8 +44,6 @@ namespace Project
 
         private async void LoadContent()
         {
-            /*Sketching = await Task.Run(() => (from p in db.Products where p.GetStage() == Stage.SKETCH select p).ToList());
-            sketches_list_box.DataSource = Sketching.ConvertAll(s => s.Sketch.Name + " " + s.Sketch.FileLocation + " " + s.Sketch.Author + " " + s.Sketch.CreationDate);*/
             var allProducts = await Task.Run(() => (from p in db.Products select p).ToList());
             IEnumerable<IGrouping<Stage, Product>> staged = allProducts.GroupBy(p => p.GetStage());
             foreach(var st in staged)
@@ -56,29 +54,26 @@ namespace Project
                         break;
                     case Stage.SKETCH:
                         Sketching = st.ToList();
+                        sketches_list_box.DataSource = Sketching.ConvertAll(product => product.Sketch.Name);
                         break;
                     case Stage.BLUEPRINT:
                         Blueprinting = st.ToList();
+                        blueprint_list_box.DataSource = Blueprinting.ConvertAll(product => product.Sketch.Name);
                         break;
                     case Stage.CUT:
                         Cutting = st.ToList();
+                        cutting_list_box.DataSource = Cutting.ConvertAll(product => product.Sketch.Name);
                         break;
                     case Stage.SEWING:
                         Sewing = st.ToList();
+                        sewing_list_box.DataSource = Sewing.ConvertAll(product => product.Sketch.Name);
                         break;
                     case Stage.READY:
                         ReadyProducts = st.ToList();
+                        ready_list_box.DataSource = ReadyProducts.ConvertAll(product => product.Sketch.Name);
                         break;
                 }
             }
-
-            sketches_list_box.DataSource = Sketching.ConvertAll(product => product.Sketch.Name);
-
-        }
-
-        private void sketch_group_Enter(object sender, EventArgs e)
-        {
-           
         }
 
         private void sketches_list_box_MouseDown(object sender, MouseEventArgs e)
@@ -116,7 +111,25 @@ namespace Project
             }
         }
 
-        private void finishedToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void create_blueprint_menu_item_click(object sender, EventArgs e)
+        {
+            var index = sketches_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                var product = Sketching[index];
+
+                await context.ConvertFromSketchToBlueprint(product);
+
+                LoadContent();
+            }
+        }
+
+        private void blueprint_list_box_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void toCuttingToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

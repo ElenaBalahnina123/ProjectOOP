@@ -65,7 +65,6 @@ namespace ProjectOop
         public class Blueprint
         {
             public int ID { get; set; }
-            public string Name { get; set; }
 
             public Employee Author { get; set; }
 
