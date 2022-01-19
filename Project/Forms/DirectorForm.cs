@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Forms;
+using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -36,6 +37,11 @@ namespace Project
         private void btn_edit_materials_Click(object sender, EventArgs e)
         {
             programState.ShowMaterialList();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            programState.ShowForm<AddMaterials>();
         }
     }
 }

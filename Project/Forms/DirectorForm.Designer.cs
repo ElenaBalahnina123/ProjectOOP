@@ -33,6 +33,7 @@ namespace Project
             this.button2 = new System.Windows.Forms.Button();
             this.btn_edit_materials = new System.Windows.Forms.Button();
             this.btn_edit_colors = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -79,11 +80,22 @@ namespace Project
             this.btn_edit_colors.UseVisualStyleBackColor = true;
             this.btn_edit_colors.Click += new System.EventHandler(this.btn_edit_colors_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(137, 544);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(112, 34);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // DirectorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 497);
+            this.ClientSize = new System.Drawing.Size(431, 737);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.btn_edit_materials);
             this.Controls.Add(this.btn_edit_colors);
             this.Controls.Add(this.button2);
@@ -101,5 +113,6 @@ namespace Project
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btn_edit_materials;
         private System.Windows.Forms.Button btn_edit_colors;
+        private System.Windows.Forms.Button button3;
     }
 }

@@ -43,6 +43,7 @@ namespace Project
                     .AddTransient<SewingEditorForm>()
                     .AddTransient<CuttingEditorForm>()
                     .AddTransient<BlueprintEditorForm>()
+                    .AddTransient<AddMaterials>()
                 ).Build();
 
             host.StartAsync();

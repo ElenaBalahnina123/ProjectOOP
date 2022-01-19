@@ -315,7 +315,6 @@ namespace Project
             this.контрольКачестваToolStripMenuItem.Name = "контрольКачестваToolStripMenuItem";
             this.контрольКачестваToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.контрольКачестваToolStripMenuItem.Text = "Контроль качества";
-            this.контрольКачестваToolStripMenuItem.Click += new System.EventHandler(this.контрольКачестваToolStripMenuItem_Click);
             // 
             // отправитьНаДоработкуToolStripMenuItem
             // 

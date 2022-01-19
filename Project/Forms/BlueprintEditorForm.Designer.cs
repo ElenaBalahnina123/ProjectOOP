@@ -38,22 +38,25 @@ namespace Project
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(19, 64);
+            this.listBox1.ItemHeight = 25;
+            this.listBox1.Location = new System.Drawing.Point(27, 107);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(236, 94);
+            this.listBox1.Size = new System.Drawing.Size(335, 154);
             this.listBox1.TabIndex = 0;
             // 
             // look_sketch
             // 
-            this.look_sketch.Location = new System.Drawing.Point(22, 320);
+            this.look_sketch.Location = new System.Drawing.Point(31, 533);
+            this.look_sketch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.look_sketch.Name = "look_sketch";
-            this.look_sketch.Size = new System.Drawing.Size(233, 23);
+            this.look_sketch.Size = new System.Drawing.Size(333, 38);
             this.look_sketch.TabIndex = 2;
             this.look_sketch.Text = "Посмотреть художественный эскиз";
             this.look_sketch.UseVisualStyleBackColor = true;
@@ -61,9 +64,10 @@ namespace Project
             // 
             // save_btn
             // 
-            this.save_btn.Location = new System.Drawing.Point(83, 349);
+            this.save_btn.Location = new System.Drawing.Point(119, 582);
+            this.save_btn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.save_btn.Name = "save_btn";
-            this.save_btn.Size = new System.Drawing.Size(101, 23);
+            this.save_btn.Size = new System.Drawing.Size(144, 38);
             this.save_btn.TabIndex = 3;
             this.save_btn.Text = "Сохранить";
             this.save_btn.UseVisualStyleBackColor = true;
@@ -72,42 +76,47 @@ namespace Project
             // name_sketch
             // 
             this.name_sketch.AutoSize = true;
-            this.name_sketch.Location = new System.Drawing.Point(19, 9);
+            this.name_sketch.Location = new System.Drawing.Point(27, 15);
+            this.name_sketch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.name_sketch.Name = "name_sketch";
-            this.name_sketch.Size = new System.Drawing.Size(38, 15);
+            this.name_sketch.Size = new System.Drawing.Size(59, 25);
             this.name_sketch.TabIndex = 4;
             this.name_sketch.Text = "label1";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 46);
+            this.label1.Location = new System.Drawing.Point(27, 77);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 15);
+            this.label1.Size = new System.Drawing.Size(105, 25);
             this.label1.TabIndex = 5;
             this.label1.Text = "Материалы";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(22, 279);
+            this.dateTimePicker1.Location = new System.Drawing.Point(31, 465);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(233, 23);
+            this.dateTimePicker1.Size = new System.Drawing.Size(331, 31);
             this.dateTimePicker1.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 252);
+            this.label3.Location = new System.Drawing.Point(27, 420);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 15);
+            this.label3.Size = new System.Drawing.Size(129, 25);
             this.label3.TabIndex = 9;
             this.label3.Text = "Дата создания";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(37, 164);
+            this.button1.Location = new System.Drawing.Point(53, 273);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(193, 23);
+            this.button1.Size = new System.Drawing.Size(276, 38);
             this.button1.TabIndex = 10;
             this.button1.Text = "Добавить материалы";
             this.button1.UseVisualStyleBackColor = true;
@@ -116,17 +125,27 @@ namespace Project
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 190);
+            this.label2.Location = new System.Drawing.Point(27, 317);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 15);
+            this.label2.Size = new System.Drawing.Size(72, 25);
             this.label2.TabIndex = 11;
             this.label2.Text = "Размер";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(27, 354);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(335, 33);
+            this.comboBox1.TabIndex = 12;
+            // 
             // BlueprintEditorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 384);
+            this.ClientSize = new System.Drawing.Size(427, 640);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
@@ -136,6 +155,7 @@ namespace Project
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.look_sketch);
             this.Controls.Add(this.listBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BlueprintEditorForm";
             this.Text = "BlueprintEditorForm";
             this.Load += new System.EventHandler(this.BlueprintEditorForm_Load);
@@ -155,5 +175,6 @@ namespace Project
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

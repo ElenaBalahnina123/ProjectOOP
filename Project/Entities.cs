@@ -16,6 +16,20 @@ namespace ProjectOop
             TECHNOLOGIST // технолог, контроль качества
         }
 
+        public static class Example
+        {
+            public static void Main()
+            {
+
+                var list = new List<Role>(Enum.GetValues<Role>());
+                
+
+                /*var list = new List<Role>();
+                list.Add(Role.DIRECTOR);
+                list.Add(Role.SEAMSTRESS);*/
+            }
+        }
+
         public class Employee // сотрудник
         {
             public int ID { get; set; }

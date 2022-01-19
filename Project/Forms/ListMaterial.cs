@@ -27,6 +27,9 @@ namespace Project
 
         private async Task loadMaterialList()
         {
+            var colors = await Task.Run(() => (from c in db.Colors select c).ToList());
+            Debug.WriteLine("colors count: " + colors.Count);
+
             materials = await Task.Run(() => (from m in db.Materials select m).ToList());
             var items = materials.ConvertAll(m => m.Name + " " + m.color.TextName);
             listBox1.Invoke((MethodInvoker)delegate
