@@ -40,6 +40,9 @@ namespace Project
                     .AddSingleton(this)
                     .AddTransient<DesignerForm>()
                     .AddTransient<SketchArtEditorForm>()
+                    .AddTransient<SewingEditorForm>()
+                    .AddTransient<CuttingEditorForm>()
+                    .AddTransient<BlueprintEditorForm>()
                 ).Build();
 
             host.StartAsync();
@@ -166,6 +169,31 @@ namespace Project
             if (existing == null)
             {
                 Debug.WriteLine("cannot find cutting in db, return");
+                return;
+            }
+
+            db.Entry(existing).CurrentValues.SetValues(s);
+            Debug.WriteLine("saving changes");
+            db.SaveChanges();
+            Debug.WriteLine("changes saved");
+        }
+
+        internal async Task EditSewing(Sewing sewing)
+        {
+            var s = await CreateForm<SewingEditorForm>().SetSewing(sewing).SewingAsync(showModal: true);
+            if (s == null)
+            {
+                Debug.WriteLine("sewing edit cancelled");
+                return;
+            }
+            Debug.WriteLine("sewing edit complete, saving");
+
+            var db = host.Services.GetRequiredService<AppDbContext>();
+
+            var existing = await db.Cuts.FindAsync(s.ID);
+            if (existing == null)
+            {
+                Debug.WriteLine("cannot find sewing in db, return");
                 return;
             }
 

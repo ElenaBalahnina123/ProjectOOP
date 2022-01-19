@@ -186,9 +186,15 @@ namespace Project
             }
         }
 
-        private void edit_sewing_ToolStripMenuItem3_Click(object sender, EventArgs e)
+        private async void edit_sewing_ToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-
+            var index = sewing_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                var sewing = Sewing[index].Sewing;
+                await context.EditSewing(sewing);
+                LoadContent();
+            }
         }
         #endregion
 
