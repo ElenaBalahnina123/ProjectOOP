@@ -207,7 +207,7 @@ namespace Project
         internal async Task ConvertFromSketchToBlueprint(Product product)
         {
             if (product.Blueprint != null) return;
-            var blueprint = await ShowForm<BlueprintEditorForm>().GetBlueprintAsync();
+            var blueprint = await ShowForm<BlueprintEditorForm>().BlueprintAsync(product);
 
             var db = host.Services.GetRequiredService<AppDbContext>();
             db.Blueprints.Add(blueprint);

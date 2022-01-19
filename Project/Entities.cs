@@ -16,19 +16,15 @@ namespace ProjectOop
             TECHNOLOGIST // технолог, контроль качества
         }
 
-        public static class Example
+        public enum Size
         {
-            public static void Main()
-            {
-
-                var list = new List<Role>(Enum.GetValues<Role>());
-                
-
-                /*var list = new List<Role>();
-                list.Add(Role.DIRECTOR);
-                list.Add(Role.SEAMSTRESS);*/
-            }
+            XS,
+            S,
+            M,
+            L,
+            XL      
         }
+
 
         public class Employee // сотрудник
         {
@@ -80,6 +76,8 @@ namespace ProjectOop
         {
             public int ID { get; set; }
 
+            public Size Size { get; set; }
+
             public List<MaterialInBlueprint> Materials { get; set; }   
 
             public DateTime CreationDate { get; set; }
@@ -128,6 +126,7 @@ namespace ProjectOop
             public Sewing Sewing { get; set; }
 
             public bool QaPassed { get; set; }
+           
         }
 
         public enum Stage
