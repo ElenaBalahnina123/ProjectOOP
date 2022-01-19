@@ -1,8 +1,6 @@
 ﻿using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,31 +12,28 @@ namespace Project
         private Blueprint? InitialBlueprint;
         public EventHandler<Blueprint> OnBlueprintEditor;
 
-        private List<Material> Materials;
+        //private List<Material> Materials;
         private List<Size> Sizes;
+
+        private readonly AppDbContext db;
+
+
         public BlueprintEditorForm(AppDbContext db)
         {
             InitializeComponent();
-            Materials = (from m in db.Materials select m).ToList();
+            this.db = db;
+            //Materials = (from m in db.Materials select m).ToList();
         }
 
-        public BlueprintEditorForm SetProduct(Product product)
+        public async Task<Blueprint> BlueprintAsync(Product initialProduct, bool showModal = true, bool closeForm = true)
         {
-            name_sketch.Text = product.Sketch.Name;
-            //listBox1.SelectedItem = product.Materials;
-            //comboBox1.SelectedIndex = (int)product.Size;
-           // dateTimePicker1.Value = product.CreationDate;
-            return this;
-        }
 
-        public async Task<Blueprint> BlueprintAsync(Product initialProduct, bool showModal = false, bool closeForm = true)
-        {
-            var tcs = new TaskCompletionSource<Blueprint?>();
-
-            SetProduct(initialProduct);
+            name_sketch.Text = initialProduct.Sketch.Name;
 
             var formClosed = false;
             var gotResult = false;
+
+            var tcs = new TaskCompletionSource<Blueprint?>();
 
             FormClosed += (_, _) =>
             {
@@ -70,7 +65,7 @@ namespace Project
             return blueprint;
         }
 
-    private void look_sketch_Click(object sender, EventArgs e)
+        private void look_sketch_Click(object sender, EventArgs e)
         {
 
         }
@@ -104,7 +99,7 @@ namespace Project
                 {
                     ID = InitialBlueprint.ID,
                     Size = selectedSize,
-                    
+
                     CreationDate = dateDevice
                 };
             }
@@ -128,9 +123,9 @@ namespace Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
         }
 
-       
+
     }
 }

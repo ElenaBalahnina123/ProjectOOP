@@ -1,4 +1,5 @@
-﻿using ProjectOop.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,7 +19,7 @@ namespace Project
         private List<Product> Blueprinting = new();
         private List<Product> Cutting = new();
         private List<Product> Sewing = new();
-       // private List<Product> QualityControl = new();
+        // private List<Product> QualityControl = new();
         private List<Product> ReadyProducts = new();
 
         public ProductionForm(ProgramContext context, AppDbContext db)
@@ -31,7 +32,7 @@ namespace Project
             this.db = db;
         }
 
-        private  async void btnAddSketchClick(object sender, EventArgs e)
+        private async void btnAddSketchClick(object sender, EventArgs e)
         {
             await context.CreateSketchAndProduct();
             LoadContent();
@@ -39,37 +40,53 @@ namespace Project
 
         private async void ProductionForm_Load(object sender, EventArgs e)
         {
+
+
             LoadContent();
         }
 
         private async void LoadContent()
         {
-            var allProducts = await Task.Run(() => (from p in db.Products select p).ToList());
+            var allProducts = await db.Products
+                .Include(p => p.Sketch)
+                .Include(p => p.Blueprint)
+                .Include(p => p.Cut)
+                .Include(p => p.Sewing)
+                .ToListAsync();
+
+            Debug.WriteLine("total products count: " + allProducts);
+
             IEnumerable<IGrouping<Stage, Product>> staged = allProducts.GroupBy(p => p.GetStage());
-            foreach(var st in staged)
+            foreach (var st in staged)
             {
                 switch (st.Key)
                 {
                     case Stage.INITIAL:
+                        Debug.WriteLine("products in INITAL stage: " + st.Count());
                         break;
                     case Stage.SKETCH:
                         Sketching = st.ToList();
+                        Debug.WriteLine("products in SKETCH stage: " + Sketching.Count());
                         sketches_list_box.DataSource = Sketching.ConvertAll(product => product.Sketch.Name);
                         break;
                     case Stage.BLUEPRINT:
                         Blueprinting = st.ToList();
+                        Debug.WriteLine("products in BLUEPRINT stage: " + Blueprinting.Count());
                         blueprint_list_box.DataSource = Blueprinting.ConvertAll(product => product.Sketch.Name);
                         break;
                     case Stage.CUT:
                         Cutting = st.ToList();
+                        Debug.WriteLine("products in CUT stage: " + Cutting.Count());
                         cutting_list_box.DataSource = Cutting.ConvertAll(product => product.Sketch.Name);
                         break;
                     case Stage.SEWING:
                         Sewing = st.ToList();
+                        Debug.WriteLine("products in SEWING stage: " + Sewing.Count());
                         sewing_list_box.DataSource = Sewing.ConvertAll(product => product.Sketch.Name);
                         break;
                     case Stage.READY:
                         ReadyProducts = st.ToList();
+                        Debug.WriteLine("products in READY stage: " + ReadyProducts.Count());
                         ready_list_box.DataSource = ReadyProducts.ConvertAll(product => product.Sketch.Name);
                         break;
                 }
@@ -143,7 +160,7 @@ namespace Project
             }
         }
 
-      
+
 
         private void ready_list_box_MouseDown(object sender, MouseEventArgs e)
         {

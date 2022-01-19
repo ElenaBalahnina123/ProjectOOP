@@ -1,12 +1,9 @@
 ﻿using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -157,7 +154,7 @@ namespace Project.Forms
 
         private void CuttingEditorForm_Load(object sender, EventArgs e)
         {
-            employee_combobox.DataSource = Employees.ConvertAll(employees => employees.Surname +" " +  employees.Name);
+            employee_combobox.DataSource = Employees.ConvertAll(employees => employees.Surname + " " + employees.Name);
         }
     }
 }

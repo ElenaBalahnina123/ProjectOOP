@@ -116,7 +116,7 @@ namespace Project.Forms
             return material;
         }
 
-        public static async Task<Material?> GetMaterialAsync(ProgramContext context, Material initialMaterial = null)
+        /*public static async Task<Material?> GetMaterialAsync(ProgramContext context, Material initialMaterial = null)
         {
             var form = context.CreateForm<MaterialEditorForm>();
             Debug.WriteLine("form created");
@@ -150,7 +150,7 @@ namespace Project.Forms
                 form.Close();
             }
             return material;
-        }
+        }*/
         private void MaterialEditorForm_FormClosed(object sender, FormClosedEventArgs e)
         {
 

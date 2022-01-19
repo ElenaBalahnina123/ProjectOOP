@@ -47,7 +47,7 @@ namespace Project.Forms
             var selectedEmployee = Employees[comboBox1.SelectedIndex];
 
 
-           
+
             var dateDevice = dateTimePicker1.Value;
 
             var currentDate = DateTime.Now;
@@ -58,7 +58,7 @@ namespace Project.Forms
                 return;
             }
 
-           
+
 
             Sketch result;
             if (InitialSketch != null)
@@ -70,7 +70,7 @@ namespace Project.Forms
                     FileLocation = location,
                     Author = selectedEmployee,
                     CreationDate = dateDevice,
-                    
+
                 };
             }
             else

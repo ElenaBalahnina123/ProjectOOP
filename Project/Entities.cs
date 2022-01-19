@@ -22,7 +22,7 @@ namespace ProjectOop
             S,
             M,
             L,
-            XL      
+            XL
         }
 
 
@@ -78,13 +78,13 @@ namespace ProjectOop
 
             public Size Size { get; set; }
 
-            public List<MaterialInBlueprint> Materials { get; set; }   
+            public List<MaterialInBlueprint> Materials { get; set; }
 
             public DateTime CreationDate { get; set; }
 
         }
 
-        
+
 
         public class MaterialInBlueprint
         {
@@ -126,7 +126,7 @@ namespace ProjectOop
             public Sewing Sewing { get; set; }
 
             public bool QaPassed { get; set; }
-           
+
         }
 
         public enum Stage
@@ -141,6 +141,13 @@ namespace ProjectOop
 
         public static class ProductExtension
         {
+            /// <summary>
+            /// Продукт должен быть загружен вместе со связанными сущностями
+            /// 
+            /// https://docs.microsoft.com/ru-ru/ef/ef6/querying/related-data
+            /// </summary>
+            /// <param name="product"></param>
+            /// <returns></returns>
             public static Stage GetStage(this Product product)
             {
                 if (product.Sketch == null) return Stage.INITIAL;
@@ -157,24 +164,24 @@ namespace ProjectOop
 
             public static async Task RemoveFromDb(this Product product, AppDbContext db)
             {
-                if(product.Sketch != null)
+                if (product.Sketch != null)
                 {
                     db.Remove(product.Sketch);
                 }
-                if(product.Blueprint != null)
+                if (product.Blueprint != null)
                 {
-                    foreach(MaterialInBlueprint m in product.Blueprint.Materials)
+                    foreach (MaterialInBlueprint m in product.Blueprint.Materials)
                     {
                         db.Remove(m);
                     }
 
                     db.Remove(product.Blueprint);
                 }
-                if(product.Cut != null)
+                if (product.Cut != null)
                 {
                     db.Remove(product.Cut);
                 }
-                if(product.Sewing != null)
+                if (product.Sewing != null)
                 {
                     db.Remove(product.Sewing);
                 }

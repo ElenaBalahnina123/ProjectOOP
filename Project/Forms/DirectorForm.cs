@@ -1,5 +1,4 @@
-﻿using Project.Forms;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -27,7 +26,7 @@ namespace Project
             programState.ShowProductionList();
         }
 
-       
+
 
         private void btn_edit_colors_Click(object sender, EventArgs e)
         {

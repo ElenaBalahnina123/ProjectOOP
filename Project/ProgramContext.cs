@@ -257,7 +257,7 @@ namespace Project
             {
                 Sketch = sketch
             });
-           
+
             await db.SaveChangesAsync();
         }
 
@@ -396,7 +396,18 @@ namespace Project
 
         public void ShowMainForm(Employee employee)
         {
-            CreateMainForm(employee).Show();
+            var form = CreateMainForm(employee);
+            form.Load += MainFormLoaded;
+
+            form.Show();
+
+            //CreateMainForm(employee).Show();
+        }
+
+        private async void MainFormLoaded(object sender, EventArgs e)
+        {
+            var db = host.Services.GetRequiredService<AppDbContext>();
+            db.Warmup();
         }
 
         public void DoColorEdit()
