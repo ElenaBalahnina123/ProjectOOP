@@ -150,6 +150,31 @@ namespace Project
             Debug.WriteLine("changes saved");
         }
 
+        internal async Task EditCutting(Cut cut)
+        {
+            var s = await CreateForm<CuttingEditorForm>().SetCutting(cut).CutAsync(showModal: true);
+            if (s == null)
+            {
+                Debug.WriteLine("cutting edit cancelled");
+                return;
+            }
+            Debug.WriteLine("cutting edit complete, saving");
+
+            var db = host.Services.GetRequiredService<AppDbContext>();
+
+            var existing = await db.Cuts.FindAsync(s.ID);
+            if (existing == null)
+            {
+                Debug.WriteLine("cannot find cutting in db, return");
+                return;
+            }
+
+            db.Entry(existing).CurrentValues.SetValues(s);
+            Debug.WriteLine("saving changes");
+            db.SaveChanges();
+            Debug.WriteLine("changes saved");
+        }
+
         internal async Task ConvertFromSketchToBlueprint(Product product)
         {
             if (product.Blueprint != null) return;

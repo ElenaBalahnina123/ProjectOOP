@@ -66,11 +66,13 @@ namespace ProjectOop
         {
             public int ID { get; set; }
 
-            public List<MaterialInBlueprint> Materials { get; set; }
+            public List<MaterialInBlueprint> Materials { get; set; }   
 
             public DateTime CreationDate { get; set; }
 
         }
+
+        
 
         public class MaterialInBlueprint
         {

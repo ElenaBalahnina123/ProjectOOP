@@ -83,7 +83,7 @@ namespace Project.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 256);
+            this.ClientSize = new System.Drawing.Size(269, 248);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);

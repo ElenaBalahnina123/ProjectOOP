@@ -56,14 +56,14 @@ namespace Project
             this.sewing_context_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ready_context_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.завершитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.контрольКачестваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отправитьНаДоработкуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.утилизироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.контрольКачестваПройденToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.раскройToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пошивToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.утилизироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.контрольКачестваПройденToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ready_context_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.завершитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sketch_group.SuspendLayout();
             this.blueprint_box.SuspendLayout();
             this.cut_box.SuspendLayout();
@@ -205,14 +205,14 @@ namespace Project
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.editToolStripMenuItem.Text = "Редактировать";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.edit_sketch_toolstrip_MenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.deleteToolStripMenuItem.Text = "Удалить";
             this.deleteToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.delete_sketch_toolstrip_MenuItem_Click);
@@ -237,14 +237,16 @@ namespace Project
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(223, 22);
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
             this.editToolStripMenuItem1.Text = "Edit";
+            this.editToolStripMenuItem1.Click += new System.EventHandler(this.edit_blueprint_ToolStripMenuItem1_Click);
             // 
             // deleteToolStripMenuItem1
             // 
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(223, 22);
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
             this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.delete_blueprint_ToolStripMenuItem1_Click);
             // 
             // создатьТехническийЭскизToolStripMenuItem
             // 
@@ -264,16 +266,16 @@ namespace Project
             // editToolStripMenuItem2
             // 
             this.editToolStripMenuItem2.Name = "editToolStripMenuItem2";
-            this.editToolStripMenuItem2.Size = new System.Drawing.Size(175, 22);
+            this.editToolStripMenuItem2.Size = new System.Drawing.Size(167, 22);
             this.editToolStripMenuItem2.Text = "Edit";
-            this.editToolStripMenuItem2.Click += new System.EventHandler(this.editToolStripMenuItem2_Click);
+            this.editToolStripMenuItem2.Click += new System.EventHandler(this.edit_cutting_ToolStripMenuItem2_Click);
             // 
             // deleteToolStripMenuItem2
             // 
             this.deleteToolStripMenuItem2.Name = "deleteToolStripMenuItem2";
-            this.deleteToolStripMenuItem2.Size = new System.Drawing.Size(175, 22);
+            this.deleteToolStripMenuItem2.Size = new System.Drawing.Size(167, 22);
             this.deleteToolStripMenuItem2.Text = "Delete";
-            this.deleteToolStripMenuItem2.Click += new System.EventHandler(this.deleteToolStripMenuItem2_Click);
+            this.deleteToolStripMenuItem2.Click += new System.EventHandler(this.delete_cutting_ToolStripMenuItem2_Click);
             // 
             // добавитьРаскройToolStripMenuItem
             // 
@@ -293,27 +295,16 @@ namespace Project
             // editToolStripMenuItem3
             // 
             this.editToolStripMenuItem3.Name = "editToolStripMenuItem3";
-            this.editToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem3.Size = new System.Drawing.Size(178, 22);
             this.editToolStripMenuItem3.Text = "Edit";
+            this.editToolStripMenuItem3.Click += new System.EventHandler(this.edit_sewing_ToolStripMenuItem3_Click);
             // 
             // deleteToolStripMenuItem3
             // 
             this.deleteToolStripMenuItem3.Name = "deleteToolStripMenuItem3";
-            this.deleteToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem3.Size = new System.Drawing.Size(178, 22);
             this.deleteToolStripMenuItem3.Text = "Delete";
-            // 
-            // ready_context_menu
-            // 
-            this.ready_context_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.завершитьToolStripMenuItem});
-            this.ready_context_menu.Name = "ready_context_menu";
-            this.ready_context_menu.Size = new System.Drawing.Size(136, 26);
-            // 
-            // завершитьToolStripMenuItem
-            // 
-            this.завершитьToolStripMenuItem.Name = "завершитьToolStripMenuItem";
-            this.завершитьToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.завершитьToolStripMenuItem.Text = "Завершить";
+            this.deleteToolStripMenuItem3.Click += new System.EventHandler(this.delete_sewing_ToolStripMenuItem3_Click);
             // 
             // контрольКачестваToolStripMenuItem
             // 
@@ -335,6 +326,18 @@ namespace Project
             this.отправитьНаДоработкуToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.отправитьНаДоработкуToolStripMenuItem.Text = "Отправить на доработку";
             // 
+            // раскройToolStripMenuItem
+            // 
+            this.раскройToolStripMenuItem.Name = "раскройToolStripMenuItem";
+            this.раскройToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.раскройToolStripMenuItem.Text = "Раскрой";
+            // 
+            // пошивToolStripMenuItem
+            // 
+            this.пошивToolStripMenuItem.Name = "пошивToolStripMenuItem";
+            this.пошивToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.пошивToolStripMenuItem.Text = "Пошив";
+            // 
             // утилизироватьToolStripMenuItem
             // 
             this.утилизироватьToolStripMenuItem.Name = "утилизироватьToolStripMenuItem";
@@ -347,23 +350,25 @@ namespace Project
             this.контрольКачестваПройденToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.контрольКачестваПройденToolStripMenuItem.Text = "Контроль качества пройден";
             // 
-            // раскройToolStripMenuItem
+            // ready_context_menu
             // 
-            this.раскройToolStripMenuItem.Name = "раскройToolStripMenuItem";
-            this.раскройToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.раскройToolStripMenuItem.Text = "Раскрой";
+            this.ready_context_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.завершитьToolStripMenuItem});
+            this.ready_context_menu.Name = "ready_context_menu";
+            this.ready_context_menu.Size = new System.Drawing.Size(181, 48);
             // 
-            // пошивToolStripMenuItem
+            // завершитьToolStripMenuItem
             // 
-            this.пошивToolStripMenuItem.Name = "пошивToolStripMenuItem";
-            this.пошивToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.пошивToolStripMenuItem.Text = "Пошив";
+            this.завершитьToolStripMenuItem.Name = "завершитьToolStripMenuItem";
+            this.завершитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.завершитьToolStripMenuItem.Text = "Завершить";
+            this.завершитьToolStripMenuItem.Click += new System.EventHandler(this.delete_ready_ToolStripMenuItem_Click);
             // 
             // ProductionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1575, 564);
+            this.ClientSize = new System.Drawing.Size(1341, 564);
             this.Controls.Add(this.ready_box);
             this.Controls.Add(this.sewing_box);
             this.Controls.Add(this.cut_box);

@@ -18,7 +18,7 @@ namespace Project
         private List<Product> Blueprinting = new();
         private List<Product> Cutting = new();
         private List<Product> Sewing = new();
-        private List<Product> QualityControl = new();
+       // private List<Product> QualityControl = new();
         private List<Product> ReadyProducts = new();
 
         public ProductionForm(ProgramContext context, AppDbContext db)
@@ -73,30 +73,6 @@ namespace Project
                         ready_list_box.DataSource = ReadyProducts.ConvertAll(product => product.Sketch.Name);
                         break;
                 }
-            }
-        }
-
-       
-
-        private async void edit_sketch_toolstrip_MenuItem_Click(object sender, EventArgs e)
-        {
-            var index = sketches_list_box.SelectedIndex;
-            if (index != ListBox.NoMatches)
-            {
-                var sketch = Sketching[index].Sketch;
-                await context.EditSketch(sketch);
-                LoadContent();
-            }
-        }
-
-        private async void delete_sketch_toolstrip_MenuItem_Click(object sender, EventArgs e)
-        {
-            var index = sketches_list_box.SelectedIndex;
-            if (index != ListBox.NoMatches)
-            {
-                var product = Sketching[index];
-                await product.RemoveFromDb(db);
-                LoadContent();
             }
         }
 
@@ -181,35 +157,96 @@ namespace Project
                 }
             }
         }
+        #endregion 
+
+        #region "edit"
+        private async void edit_sketch_toolstrip_MenuItem_Click(object sender, EventArgs e)
+        {
+            var index = sketches_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                var sketch = Sketching[index].Sketch;
+                await context.EditSketch(sketch);
+                LoadContent();
+            }
+        }
+        private void edit_blueprint_ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void edit_cutting_ToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            var index = cutting_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                var cutting = Cutting[index].Cut;
+                await context.EditCutting(cutting);
+                LoadContent();
+            }
+        }
+
+        private void edit_sewing_ToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
-        private void toCuttingToolStripMenuItem_Click(object sender, EventArgs e)
+
+        #region "delete"
+        private async void delete_sketch_toolstrip_MenuItem_Click(object sender, EventArgs e)
         {
-
+            var index = sketches_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                var product = Sketching[index];
+                await product.RemoveFromDb(db);
+                LoadContent();
+            }
         }
-        
-        private void editToolStripMenuItem2_Click(object sender, EventArgs e)
+        private async void delete_blueprint_ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            var index = blueprint_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                var product = Blueprinting[index];
+                await product.RemoveFromDb(db);
+                LoadContent();
+            }
         }
-
-        private void deleteToolStripMenuItem2_Click(object sender, EventArgs e)
+        private async void delete_cutting_ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-
+            var index = cutting_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                var product = Cutting[index];
+                await product.RemoveFromDb(db);
+                LoadContent();
+            }
         }
 
-        private void добавитьПошивToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void delete_sewing_ToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-
+            var index = sewing_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                var product = Sewing[index];
+                await product.RemoveFromDb(db);
+                LoadContent();
+            }
         }
 
-        private void editToolStripMenuItem4_Click(object sender, EventArgs e)
+        private async void delete_ready_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            var index = ready_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                var product = ReadyProducts[index];
+                await product.RemoveFromDb(db);
+                LoadContent();
+            }
         }
+        #endregion
 
-        private void контрольКачестваToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }
