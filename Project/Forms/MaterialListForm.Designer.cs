@@ -65,30 +65,30 @@ namespace Project
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 48);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.editToolStripMenuItem.Text = "Редактировать";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.deleteToolStripMenuItem.Text = "Удалить";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
-            // ListMaterial
+            // MaterialListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 447);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
-            this.Name = "ListMaterial";
+            this.Name = "MaterialListForm";
             this.Text = "ListMaterial";
             this.Load += new System.EventHandler(this.ListMaterial_Load);
             this.contextMenuStrip1.ResumeLayout(false);
