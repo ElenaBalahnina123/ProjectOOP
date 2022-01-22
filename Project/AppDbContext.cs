@@ -20,6 +20,8 @@ public class AppDbContext : DbContext
 
     public DbSet<Material> Materials { get; set; }
 
+    public DbSet<MaterialInBlueprint> MaterialInBlueprints { get; set; }
+
     public AppDbContext()
     {
         Database.EnsureCreated();
@@ -41,7 +43,7 @@ public class AppDbContext : DbContext
         await WarmupSingle(Products);
     }
 
-    
+
     private async Task WarmupSingle<T>(DbSet<T> dbSet) where T : class
     {
         var list = (from e in dbSet select e).ToListAsync();
@@ -67,5 +69,6 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Cut>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Sewing>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Product>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<MaterialInBlueprint>().HasIndex(e => e.ID).IsUnique();
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace Project.Forms
 {
-    partial class AddMaterials
+    partial class MaterialsSelectorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,18 +29,18 @@ namespace Project.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.materials_checked_list_box = new System.Windows.Forms.CheckedListBox();
             this.save_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // checkedListBox1
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(30, 35);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(378, 480);
-            this.checkedListBox1.TabIndex = 0;
+            this.materials_checked_list_box.FormattingEnabled = true;
+            this.materials_checked_list_box.Location = new System.Drawing.Point(30, 35);
+            this.materials_checked_list_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.materials_checked_list_box.Name = "checkedListBox1";
+            this.materials_checked_list_box.Size = new System.Drawing.Size(378, 480);
+            this.materials_checked_list_box.TabIndex = 0;
             // 
             // save_btn
             // 
@@ -59,7 +59,7 @@ namespace Project.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(467, 667);
             this.Controls.Add(this.save_btn);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.materials_checked_list_box);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AddMaterials";
             this.Text = "AddMaterials";
@@ -70,7 +70,7 @@ namespace Project.Forms
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox materials_checked_list_box;
         private System.Windows.Forms.Button save_btn;
     }
 }

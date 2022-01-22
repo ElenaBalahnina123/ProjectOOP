@@ -22,6 +22,8 @@ namespace Project
 
         private bool disposing = false;
 
+        private readonly AppDbContext db;
+
         public ProgramContext()
         {
             host = Host.CreateDefaultBuilder()
@@ -30,7 +32,7 @@ namespace Project
                     .AddTransient<LoginForm>()
                     .AddTransient<ProductionForm>()
                     .AddTransient<EmployeeListForm>()
-                    .AddTransient<ListMaterial>()
+                    .AddTransient<MaterialListForm>()
                     .AddTransient<MaterialEditorForm>()
                     .AddTransient<ColorListForm>()
                     .AddTransient<ColorEditor>()
@@ -43,10 +45,12 @@ namespace Project
                     .AddTransient<SewingEditorForm>()
                     .AddTransient<CuttingEditorForm>()
                     .AddTransient<BlueprintEditorForm>()
-                    .AddTransient<AddMaterials>()
+                    .AddTransient<MaterialsSelectorForm>()
                 ).Build();
 
             host.StartAsync();
+
+            db = host.Services.GetRequiredService<AppDbContext>();
 
             OnStart();
         }
@@ -64,8 +68,6 @@ namespace Project
                 return;
             }
             Debug.WriteLine("employee edit complete, saving");
-
-            var db = host.Services.GetRequiredService<AppDbContext>();
 
             var existing = await db.Employees.FindAsync(e.ID);
             if (existing == null)
@@ -88,8 +90,6 @@ namespace Project
                 return;
             }
             Debug.WriteLine("color edit complete, saving");
-
-            var db = host.Services.GetRequiredService<AppDbContext>();
 
             var existing = await db.Colors.FindAsync(c.ID);
             if (existing == null)
@@ -114,8 +114,6 @@ namespace Project
             }
             Debug.WriteLine("material edit complete, saving");
 
-            var db = host.Services.GetRequiredService<AppDbContext>();
-
             var existing = await db.Materials.FindAsync(c.ID);
             if (existing == null)
             {
@@ -138,8 +136,6 @@ namespace Project
                 return;
             }
             Debug.WriteLine("sketch edit complete, saving");
-
-            var db = host.Services.GetRequiredService<AppDbContext>();
 
             var existing = await db.Sketches.FindAsync(s.ID);
             if (existing == null)
@@ -164,8 +160,6 @@ namespace Project
             }
             Debug.WriteLine("cutting edit complete, saving");
 
-            var db = host.Services.GetRequiredService<AppDbContext>();
-
             var existing = await db.Cuts.FindAsync(s.ID);
             if (existing == null)
             {
@@ -189,8 +183,6 @@ namespace Project
             }
             Debug.WriteLine("sewing edit complete, saving");
 
-            var db = host.Services.GetRequiredService<AppDbContext>();
-
             var existing = await db.Cuts.FindAsync(s.ID);
             if (existing == null)
             {
@@ -206,10 +198,12 @@ namespace Project
 
         internal async Task ConvertFromSketchToBlueprint(Product product)
         {
+
+
             if (product.Blueprint != null) return;
+
             var blueprint = await ShowForm<BlueprintEditorForm>().BlueprintAsync(product);
 
-            var db = host.Services.GetRequiredService<AppDbContext>();
             db.Blueprints.Add(blueprint);
             db.SaveChanges();
 
@@ -224,7 +218,6 @@ namespace Project
 
             if (employee == null) return;
 
-            var db = host.Services.GetRequiredService<AppDbContext>();
             db.Employees.Add(employee);
 
             await db.SaveChangesAsync();
@@ -238,7 +231,6 @@ namespace Project
 
             if (color == null) return;
 
-            var db = host.Services.GetRequiredService<AppDbContext>();
             db.Colors.Add(color);
 
             await db.SaveChangesAsync();
@@ -250,7 +242,6 @@ namespace Project
 
             if (sketch == null) return;
 
-            var db = host.Services.GetRequiredService<AppDbContext>();
             db.Sketches.Add(sketch);
 
             db.Products.Add(new Product()
@@ -267,7 +258,6 @@ namespace Project
 
             if (material == null) return;
 
-            var db = host.Services.GetRequiredService<AppDbContext>();
             db.Materials.Add(material);
 
             await db.SaveChangesAsync();
@@ -277,7 +267,6 @@ namespace Project
         {
             Debug.WriteLine("call onStart");
 
-            var db = host.Services.GetRequiredService<AppDbContext>();
 
             if (db.Employees.Any())
             {
@@ -319,27 +308,23 @@ namespace Project
 
         internal async Task DeleteEmployee(Employee employee)
         {
-            var db = host.Services.GetRequiredService<AppDbContext>();
             db.Employees.Remove(employee);
             db.SaveChanges();
         }
 
         internal async Task DeleteSketch(Sketch sketch)
         {
-            var db = host.Services.GetRequiredService<AppDbContext>();
             db.Sketches.Remove(sketch);
             db.SaveChanges();
         }
         internal async Task DeleteColor(ModelColor color)
         {
-            var db = host.Services.GetRequiredService<AppDbContext>();
             db.Colors.Remove(color);
             db.SaveChanges();
         }
 
         internal async Task DeleteMaterial(Material material)
         {
-            var db = host.Services.GetRequiredService<AppDbContext>();
             db.Materials.Remove(material);
             db.SaveChanges();
         }
@@ -397,17 +382,7 @@ namespace Project
         public void ShowMainForm(Employee employee)
         {
             var form = CreateMainForm(employee);
-            form.Load += MainFormLoaded;
-
             form.Show();
-
-            //CreateMainForm(employee).Show();
-        }
-
-        private async void MainFormLoaded(object sender, EventArgs e)
-        {
-            var db = host.Services.GetRequiredService<AppDbContext>();
-            db.Warmup();
         }
 
         public void DoColorEdit()
@@ -427,7 +402,7 @@ namespace Project
 
         public void ShowMaterialList()
         {
-            ShowForm<ListMaterial>();
+            ShowForm<MaterialListForm>();
         }
 
     }

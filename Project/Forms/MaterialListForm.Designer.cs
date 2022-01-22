@@ -1,7 +1,7 @@
 ﻿
 namespace Project
 {
-    partial class ListMaterial
+    partial class MaterialListForm
     {
         /// <summary>
         /// Required designer variable.

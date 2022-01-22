@@ -1,14 +1,14 @@
-﻿using ProjectOop.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class ListMaterial : Form
+    public partial class MaterialListForm : Form
     {
 
 
@@ -16,21 +16,19 @@ namespace Project
         private AppDbContext db;
         private List<Material> materials;
 
-        public ListMaterial(ProgramContext context, AppDbContext dbContext)
+        public MaterialListForm(ProgramContext context, AppDbContext dbContext)
         {
             this.context = context;
             InitializeComponent();
             db = dbContext;
         }
 
-
-
         private async Task loadMaterialList()
         {
-            var colors = await Task.Run(() => (from c in db.Colors select c).ToList());
-            Debug.WriteLine("colors count: " + colors.Count);
+            materials = await db.Materials // загружаем все материалы
+                .Include(m => m.color) // метод Include позволяет подгрузить связанный с материалом цвет
+                .ToListAsync();
 
-            materials = await Task.Run(() => (from m in db.Materials select m).ToList());
             var items = materials.ConvertAll(m => m.Name + " " + m.color.TextName);
             listBox1.Invoke((MethodInvoker)delegate
             {

@@ -29,27 +29,27 @@ namespace Project
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.selected_materials_list_box = new System.Windows.Forms.ListBox();
             this.look_sketch = new System.Windows.Forms.Button();
             this.save_btn = new System.Windows.Forms.Button();
             this.name_sketch = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_edit_materials = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.size_combo_box = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // listBox1
+            // selected_materials_list_box
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 25;
-            this.listBox1.Location = new System.Drawing.Point(27, 107);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(335, 154);
-            this.listBox1.TabIndex = 0;
+            this.selected_materials_list_box.FormattingEnabled = true;
+            this.selected_materials_list_box.ItemHeight = 25;
+            this.selected_materials_list_box.Location = new System.Drawing.Point(13, 82);
+            this.selected_materials_list_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.selected_materials_list_box.Name = "selected_materials_list_box";
+            this.selected_materials_list_box.Size = new System.Drawing.Size(401, 154);
+            this.selected_materials_list_box.TabIndex = 0;
             // 
             // look_sketch
             // 
@@ -76,7 +76,7 @@ namespace Project
             // name_sketch
             // 
             this.name_sketch.AutoSize = true;
-            this.name_sketch.Location = new System.Drawing.Point(27, 15);
+            this.name_sketch.Location = new System.Drawing.Point(13, 9);
             this.name_sketch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.name_sketch.Name = "name_sketch";
             this.name_sketch.Size = new System.Drawing.Size(59, 25);
@@ -86,7 +86,7 @@ namespace Project
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 77);
+            this.label1.Location = new System.Drawing.Point(13, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 25);
@@ -111,16 +111,16 @@ namespace Project
             this.label3.TabIndex = 9;
             this.label3.Text = "Дата создания";
             // 
-            // button1
+            // btn_edit_materials
             // 
-            this.button1.Location = new System.Drawing.Point(53, 273);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(276, 38);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Добавить материалы";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_edit_materials.Location = new System.Drawing.Point(13, 246);
+            this.btn_edit_materials.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_edit_materials.Name = "btn_edit_materials";
+            this.btn_edit_materials.Size = new System.Drawing.Size(401, 38);
+            this.btn_edit_materials.TabIndex = 10;
+            this.btn_edit_materials.Text = "Изменить материалы";
+            this.btn_edit_materials.UseVisualStyleBackColor = true;
+            this.btn_edit_materials.Click += new System.EventHandler(this.btn_edit_materials_Click);
             // 
             // label2
             // 
@@ -132,29 +132,29 @@ namespace Project
             this.label2.TabIndex = 11;
             this.label2.Text = "Размер";
             // 
-            // comboBox1
+            // size_combo_box
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(27, 354);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(335, 33);
-            this.comboBox1.TabIndex = 12;
+            this.size_combo_box.FormattingEnabled = true;
+            this.size_combo_box.Location = new System.Drawing.Point(27, 354);
+            this.size_combo_box.Name = "size_combo_box";
+            this.size_combo_box.Size = new System.Drawing.Size(335, 33);
+            this.size_combo_box.TabIndex = 12;
             // 
             // BlueprintEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(427, 640);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.size_combo_box);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_edit_materials);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.name_sketch);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.look_sketch);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.selected_materials_list_box);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BlueprintEditorForm";
             this.Text = "BlueprintEditorForm";
@@ -166,15 +166,15 @@ namespace Project
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox selected_materials_list_box;
         private System.Windows.Forms.Button look_sketch;
         private System.Windows.Forms.Button save_btn;
         private System.Windows.Forms.Label name_sketch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_edit_materials;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox size_combo_box;
     }
 }
