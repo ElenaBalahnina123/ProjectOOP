@@ -71,7 +71,7 @@ namespace Project
             this.save_btn.TabIndex = 3;
             this.save_btn.Text = "Сохранить";
             this.save_btn.UseVisualStyleBackColor = true;
-            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
+
             // 
             // name_sketch
             // 

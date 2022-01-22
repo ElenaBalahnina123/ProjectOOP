@@ -18,7 +18,6 @@ namespace Project
         private List<Product> Blueprinting = new();
         private List<Product> Cutting = new();
         private List<Product> Sewing = new();
-        // private List<Product> QualityControl = new();
         private List<Product> ReadyProducts = new();
 
         public ProductionForm(ProgramContext context, AppDbContext db)

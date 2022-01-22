@@ -238,14 +238,14 @@ namespace Project
             // 
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
             this.editToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
-            this.editToolStripMenuItem1.Text = "Edit";
+            this.editToolStripMenuItem1.Text = "Редактировать";
             this.editToolStripMenuItem1.Click += new System.EventHandler(this.edit_blueprint_ToolStripMenuItem1_Click);
             // 
             // deleteToolStripMenuItem1
             // 
             this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
             this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
-            this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Text = "Удалить";
             this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.delete_blueprint_ToolStripMenuItem1_Click);
             // 
             // создатьТехническийЭскизToolStripMenuItem
@@ -267,14 +267,14 @@ namespace Project
             // 
             this.editToolStripMenuItem2.Name = "editToolStripMenuItem2";
             this.editToolStripMenuItem2.Size = new System.Drawing.Size(167, 22);
-            this.editToolStripMenuItem2.Text = "Edit";
+            this.editToolStripMenuItem2.Text = "Редактировать";
             this.editToolStripMenuItem2.Click += new System.EventHandler(this.edit_cutting_ToolStripMenuItem2_Click);
             // 
             // deleteToolStripMenuItem2
             // 
             this.deleteToolStripMenuItem2.Name = "deleteToolStripMenuItem2";
             this.deleteToolStripMenuItem2.Size = new System.Drawing.Size(167, 22);
-            this.deleteToolStripMenuItem2.Text = "Delete";
+            this.deleteToolStripMenuItem2.Text = "Удалить";
             this.deleteToolStripMenuItem2.Click += new System.EventHandler(this.delete_cutting_ToolStripMenuItem2_Click);
             // 
             // добавитьРаскройToolStripMenuItem
@@ -290,19 +290,19 @@ namespace Project
             this.deleteToolStripMenuItem3,
             this.контрольКачестваToolStripMenuItem});
             this.sewing_context_menu.Name = "sewing_context_menu";
-            this.sewing_context_menu.Size = new System.Drawing.Size(179, 70);
+            this.sewing_context_menu.Size = new System.Drawing.Size(181, 92);
             // 
             // editToolStripMenuItem3
             // 
             this.editToolStripMenuItem3.Name = "editToolStripMenuItem3";
-            this.editToolStripMenuItem3.Size = new System.Drawing.Size(178, 22);
+            this.editToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.editToolStripMenuItem3.Text = "Edit";
             this.editToolStripMenuItem3.Click += new System.EventHandler(this.edit_sewing_ToolStripMenuItem3_Click);
             // 
             // deleteToolStripMenuItem3
             // 
             this.deleteToolStripMenuItem3.Name = "deleteToolStripMenuItem3";
-            this.deleteToolStripMenuItem3.Size = new System.Drawing.Size(178, 22);
+            this.deleteToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem3.Text = "Delete";
             this.deleteToolStripMenuItem3.Click += new System.EventHandler(this.delete_sewing_ToolStripMenuItem3_Click);
             // 
@@ -313,7 +313,7 @@ namespace Project
             this.утилизироватьToolStripMenuItem,
             this.контрольКачестваПройденToolStripMenuItem});
             this.контрольКачестваToolStripMenuItem.Name = "контрольКачестваToolStripMenuItem";
-            this.контрольКачестваToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.контрольКачестваToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.контрольКачестваToolStripMenuItem.Text = "Контроль качества";
             // 
             // отправитьНаДоработкуToolStripMenuItem
@@ -328,13 +328,13 @@ namespace Project
             // раскройToolStripMenuItem
             // 
             this.раскройToolStripMenuItem.Name = "раскройToolStripMenuItem";
-            this.раскройToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.раскройToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.раскройToolStripMenuItem.Text = "Раскрой";
             // 
             // пошивToolStripMenuItem
             // 
             this.пошивToolStripMenuItem.Name = "пошивToolStripMenuItem";
-            this.пошивToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.пошивToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.пошивToolStripMenuItem.Text = "Пошив";
             // 
             // утилизироватьToolStripMenuItem
