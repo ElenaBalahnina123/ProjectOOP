@@ -16,7 +16,7 @@ namespace ProjectOop
             TECHNOLOGIST // технолог, контроль качества
         }
 
-        public enum Size
+        public enum WearSize
         {
             XS,
             S,
@@ -76,7 +76,7 @@ namespace ProjectOop
         {
             public int ID { get; set; }
 
-            public Size Size { get; set; }
+            public WearSize Size { get; set; }
 
             public List<MaterialInBlueprint> Materials { get; set; }
 

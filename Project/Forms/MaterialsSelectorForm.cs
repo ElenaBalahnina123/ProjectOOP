@@ -2,6 +2,7 @@
 using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,17 +15,17 @@ namespace Project.Forms
     public partial class MaterialsSelectorForm : Form
     {
 
-        private ProgramContext context;
         private AppDbContext db;
         private List<Material> materials;
 
+        private List<int> previousSelectedMaterialIds = new();
+
         private EventHandler<List<Material>> OnMaterialsReady;
 
-        public MaterialsSelectorForm(ProgramContext context, AppDbContext dbContext)
+        public MaterialsSelectorForm(AppDbContext dbContext)
         {
-            this.context = context;
-            InitializeComponent();
             db = dbContext;
+            InitializeComponent();
         }
 
         private async void AddMaterials_Load(object sender, EventArgs e)
@@ -33,7 +34,13 @@ namespace Project.Forms
                 .Include(material => material.color)
                 .ToListAsync();
 
-            materials_checked_list_box.Items.AddRange(materials.ConvertAll(m => m.Name + " " + m.color.TextName).ToArray());
+            foreach(var material in materials)
+            {
+                materials_checked_list_box.Items.Add(
+                    item: material.Name + " " + material.color.TextName,
+                    isChecked: previousSelectedMaterialIds.Contains(material.ID)
+                    );
+            }
         }
 
         private void save_btn_Click(object sender, EventArgs e)
@@ -44,10 +51,7 @@ namespace Project.Forms
 
             for (int i = 0; i < materials.Count; i++)
             {
-                if (indices.Contains(i))
-                {
-                    selectedMaterials.Add(materials[i]);
-                }
+                if (materials_checked_list_box.GetItemChecked(i)) selectedMaterials.Add(materials[i]);
             }
 
             OnMaterialsReady?.Invoke(this, selectedMaterials);
@@ -61,12 +65,7 @@ namespace Project.Forms
         /// <returns></returns>
         public async Task<List<Material>> GetMaterialsAsync(List<Material> previousMaterials = null, bool shouldCloseForm = false)
         {
-            var dict = previousMaterials?.ToDictionary(m => m.ID);
-
-            for (var i = 0; i < materials.Count; i++)
-            {
-                materials_checked_list_box.SetItemChecked(i, dict?.ContainsKey(materials[i].ID) ?? false);
-            }
+            previousSelectedMaterialIds = previousMaterials?.ConvertAll(m => m.ID) ?? new();
 
             var completionSource = new TaskCompletionSource<List<Material>>();
 
@@ -77,8 +76,8 @@ namespace Project.Forms
             {
                 if (!isResumed)
                 {
-                    completionSource.SetResult(list);
                     isResumed = true;
+                    completionSource.SetResult(list);
                 }
             };
 
@@ -92,12 +91,14 @@ namespace Project.Forms
                 }
             };
 
+            var result = await completionSource.Task;
+
             if (shouldCloseForm && !isClosed)
             {
                 Close();
             }
 
-            return await completionSource.Task;
+            return result;
         }
     }
 }

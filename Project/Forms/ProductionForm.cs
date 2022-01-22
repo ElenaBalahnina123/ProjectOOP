@@ -39,8 +39,6 @@ namespace Project
 
         private async void ProductionForm_Load(object sender, EventArgs e)
         {
-
-
             LoadContent();
         }
 
@@ -54,6 +52,12 @@ namespace Project
                 .ToListAsync();
 
             Debug.WriteLine("total products count: " + allProducts);
+
+            sketches_list_box.DataSource = null;
+            blueprint_list_box.DataSource = null;
+            cutting_list_box.DataSource = null;
+            sewing_list_box.DataSource = null;
+            ready_list_box.DataSource = null;
 
             IEnumerable<IGrouping<Stage, Product>> staged = allProducts.GroupBy(p => p.GetStage());
             foreach (var st in staged)

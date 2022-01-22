@@ -33,20 +33,7 @@ public class AppDbContext : DbContext
     /// <returns></returns>
     public async Task Warmup()
     {
-        await WarmupSingle(Colors);
-        await WarmupSingle(Materials);
-        await WarmupSingle(Employees);
-        await WarmupSingle(Sketches);
-        await WarmupSingle(Blueprints);
-        await WarmupSingle(Cuts);
-        await WarmupSingle(Sewings);
-        await WarmupSingle(Products);
-    }
-
-
-    private async Task WarmupSingle<T>(DbSet<T> dbSet) where T : class
-    {
-        var list = (from e in dbSet select e).ToListAsync();
+        
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

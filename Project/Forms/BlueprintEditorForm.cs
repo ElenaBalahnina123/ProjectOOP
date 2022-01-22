@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Project.Forms;
 using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,6 @@ namespace Project
         /// Список материалов для эскиза
         /// </summary>
         private List<Material> SelectedMaterials;
-        private List<Size> Sizes;
 
         private readonly AppDbContext db;
 
@@ -66,7 +66,6 @@ namespace Project
 
             // материалы, которые были выбраны для этого чертежа ранее
             SelectedMaterials = await GetSavedMaterialsForBlueprint(fetchedProduct.Blueprint?.ID);
-
             selected_materials_list_box.DataSource = SelectedMaterials.ConvertAll(material => material.Name + " " + material.color.TextName);
         }
 
@@ -125,8 +124,41 @@ namespace Project
         {
 
         }
+        
 
-        private async Task save_btn_Click(object sender, EventArgs e)
+        private void RefreshBlueprintToMaterialLinks(Blueprint blueprint)
+        {
+            if(blueprint.Materials?.Any() == true) // Удаляем старую информацию
+            {
+                db.RemoveRange(blueprint.Materials.FindAll(m => m.ID != 0));
+                db.SaveChanges();
+            }
+
+            blueprint.Materials = SelectedMaterials.ConvertAll(material => new MaterialInBlueprint()
+            {
+                Blueprint = blueprint,
+                material = material
+            });
+        }
+
+        private void BlueprintEditorForm_Load(object sender, EventArgs e)
+        {
+            size_combo_box.DataSource = Enum.GetValues<WearSize>();
+        }
+
+        private async void btn_edit_materials_Click(object sender, EventArgs e)
+        {
+            var list = await context.ShowForm<MaterialsSelectorForm>().GetMaterialsAsync(SelectedMaterials, true);
+            if(list == null)
+            {
+                return;
+            }
+
+            SelectedMaterials = list;
+            selected_materials_list_box.DataSource = SelectedMaterials.ConvertAll(material => material.Name + " " + material.color.TextName);
+        }
+
+        private void save_btn_Click(object sender, EventArgs e)
         {
 
             if (size_combo_box.SelectedIndex == -1)
@@ -135,7 +167,7 @@ namespace Project
                 return;
             }
 
-            var selectedSize = Sizes[size_combo_box.SelectedIndex];
+            var selectedSize = Enum.GetValues<WearSize>()[size_combo_box.SelectedIndex];
 
             var dateDevice = dateTimePicker1.Value;
 
@@ -146,7 +178,6 @@ namespace Project
                 MessageBox.Show("Неверная дата");
                 return;
             }
-
 
             Blueprint result;
             if (InitialBlueprint != null)
@@ -167,41 +198,15 @@ namespace Project
                     CreationDate = dateDevice
                 };
             };
-            await RefreshBlueprintToMaterialLinks(result);
 
+            db.SaveChanges();
+
+            RefreshBlueprintToMaterialLinks(result);
+
+            db.SaveChanges();
 
             OnBlueprintEditor?.Invoke(this, result);
             Close();
         }
-
-        private async Task RefreshBlueprintToMaterialLinks(Blueprint blueprint)
-        {
-            if (blueprint.ID == 0) // эскиз ещё не был сохранён в бд, будут добавлены все выбранные материалы
-            {
-                blueprint.Materials = SelectedMaterials.ConvertAll(material => new MaterialInBlueprint()
-                {
-                    Blueprint = blueprint,
-                    material = material
-                });
-            }
-            else // эскиз существовал ранее, нужно удалить связи, которые пропали из списка и добавить новые
-            {
-                var excludedMaterialsInBlueprint = new List<MaterialInBlueprint>();
-                var addedMaterialsInBlueprint = new List<MaterialInBlueprint>();
-
-                // TODO
-            }
-        }
-
-        private void BlueprintEditorForm_Load(object sender, EventArgs e)
-        {
-            var list = new List<Size>(Enum.GetValues<Size>());
-            size_combo_box.DataSource = list;
-        }
-
-        private void btn_edit_materials_Click(object sender, EventArgs e)
-        {
-        }
-
     }
 }
