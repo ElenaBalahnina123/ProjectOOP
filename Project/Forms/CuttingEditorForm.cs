@@ -21,8 +21,10 @@ namespace Project.Forms
             Employees = (from e in db.Employees select e).ToList();
         }
 
-        public CuttingEditorForm SetCutting(Cut initialCut)
+        public CuttingEditorForm SetCutting(Cut? initialCut)
         {
+            if (initialCut == null) return this;
+
             InitialCutting = initialCut;
 
             employee_combobox.Text = initialCut.Author.ToString();

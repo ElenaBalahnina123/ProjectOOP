@@ -124,11 +124,11 @@ namespace Project
         {
 
         }
-        
+
 
         private void RefreshBlueprintToMaterialLinks(Blueprint blueprint)
         {
-            if(blueprint.Materials?.Any() == true) // Удаляем старую информацию
+            if (blueprint.Materials?.Any() == true) // Удаляем старую информацию
             {
                 db.RemoveRange(blueprint.Materials.FindAll(m => m.ID != 0));
                 db.SaveChanges();
@@ -149,7 +149,7 @@ namespace Project
         private async void btn_edit_materials_Click(object sender, EventArgs e)
         {
             var list = await context.ShowForm<MaterialsSelectorForm>().GetMaterialsAsync(SelectedMaterials, true);
-            if(list == null)
+            if (list == null)
             {
                 return;
             }

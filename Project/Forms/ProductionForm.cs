@@ -30,14 +30,14 @@ namespace Project
             this.db = db;
         }
 
-        private async void btnAddSketchClick(object sender, EventArgs e)
+        private async void ProductionForm_Load(object sender, EventArgs e)
         {
-            await context.CreateSketchAndProduct();
             LoadContent();
         }
 
-        private async void ProductionForm_Load(object sender, EventArgs e)
+        private async void btnAddSketchClick(object sender, EventArgs e)
         {
+            await context.CreateSketchAndProduct();
             LoadContent();
         }
 
@@ -107,8 +107,6 @@ namespace Project
                 LoadContent();
             }
         }
-
-
 
         #region "MouseDown list Box"
         private void sketches_list_box_MouseDown(object sender, MouseEventArgs e)
@@ -189,9 +187,14 @@ namespace Project
                 LoadContent();
             }
         }
-        private void edit_blueprint_ToolStripMenuItem1_Click(object sender, EventArgs e)
+        private async void edit_blueprint_ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            var index = blueprint_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                await context.EditBlueprint(Blueprinting[index]);
+                LoadContent();
+            }
         }
 
         private async void edit_cutting_ToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -199,8 +202,7 @@ namespace Project
             var index = cutting_list_box.SelectedIndex;
             if (index != ListBox.NoMatches)
             {
-                var cutting = Cutting[index].Cut;
-                await context.EditCutting(cutting);
+                await context.EditCutting(Cutting[index]);
                 LoadContent();
             }
         }
@@ -210,14 +212,13 @@ namespace Project
             var index = sewing_list_box.SelectedIndex;
             if (index != ListBox.NoMatches)
             {
-                var sewing = Sewing[index].Sewing;
-                await context.EditSewing(sewing);
+                await context.EditSewing(Sewing[index]);
                 LoadContent();
             }
         }
         #endregion
 
-        #region "delete"
+        #region "Удаление продуктов"
         private async void delete_sketch_toolstrip_MenuItem_Click(object sender, EventArgs e)
         {
             var index = sketches_list_box.SelectedIndex;
@@ -272,6 +273,39 @@ namespace Project
         }
         #endregion
 
+        private async void blueprint_menu_item_click_add_cut(object sender, EventArgs e)
+        {
+            var index = blueprint_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                await context.EditCutting(Blueprinting[index]);
+                LoadContent();
+            }
+        }
 
+        private async void cutting_menu_item_click_add_sewing(object sender, EventArgs e)
+        {
+            var index = cutting_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                await context.EditSewing(Cutting[index]);
+                LoadContent();
+            }
+        }
+
+        private void sewing_menu_item_click_utilize(object sender, EventArgs e)
+        {
+            // TODO: удалить
+        }
+
+        private async void sewing_menu_item_click_quality_control_passed(object sender, EventArgs e)
+        {
+            var index = sewing_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                await context.EditSewing(Cutting[index]);
+                LoadContent();
+            }
+        }
     }
 }

@@ -2,8 +2,6 @@
 using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -34,7 +32,7 @@ namespace Project.Forms
                 .Include(material => material.color)
                 .ToListAsync();
 
-            foreach(var material in materials)
+            foreach (var material in materials)
             {
                 materials_checked_list_box.Items.Add(
                     item: material.Name + " " + material.color.TextName,

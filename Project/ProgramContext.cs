@@ -150,40 +150,45 @@ namespace Project
             Debug.WriteLine("changes saved");
         }
 
-        internal async Task EditCutting(Cut cut)
+        internal async Task EditCutting(Product product)
         {
-            var s = await CreateForm<CuttingEditorForm>().SetCutting(cut).CutAsync(showModal: true);
-            if (s == null)
+            var cut = await CreateForm<CuttingEditorForm>().SetCutting(product.Cut).CutAsync(showModal: true);
+            if (cut == null)
             {
                 Debug.WriteLine("cutting edit cancelled");
                 return;
             }
-            Debug.WriteLine("cutting edit complete, saving");
+            product.Cut = cut;
+            db.SaveChanges();
 
-            var existing = await db.Cuts.FindAsync(s.ID);
+            /*Debug.WriteLine("cutting edit complete, saving");
+
+            var existing = await db.Cuts.FindAsync(cut.ID);
             if (existing == null)
             {
                 Debug.WriteLine("cannot find cutting in db, return");
                 return;
             }
 
-            db.Entry(existing).CurrentValues.SetValues(s);
+            db.Entry(existing).CurrentValues.SetValues(cut);
             Debug.WriteLine("saving changes");
             db.SaveChanges();
-            Debug.WriteLine("changes saved");
+            Debug.WriteLine("changes saved");*/
         }
 
-        internal async Task EditSewing(Sewing sewing)
+        internal async Task EditSewing(Product product  )
         {
-            var s = await CreateForm<SewingEditorForm>().SetSewing(sewing).SewingAsync(showModal: true);
-            if (s == null)
+            var sewing = await CreateForm<SewingEditorForm>().EditSewingAsync(product);
+            if (sewing == null)
             {
                 Debug.WriteLine("sewing edit cancelled");
                 return;
             }
-            Debug.WriteLine("sewing edit complete, saving");
+            //Debug.WriteLine("sewing edit complete, saving");
+            product.Sewing = sewing;
+            db.SaveChanges();
 
-            var existing = await db.Cuts.FindAsync(s.ID);
+            /*var existing = await db.Cuts.FindAsync(s.ID);
             if (existing == null)
             {
                 Debug.WriteLine("cannot find sewing in db, return");
@@ -193,7 +198,7 @@ namespace Project
             db.Entry(existing).CurrentValues.SetValues(s);
             Debug.WriteLine("saving changes");
             db.SaveChanges();
-            Debug.WriteLine("changes saved");
+            Debug.WriteLine("changes saved");*/
         }
 
         internal async Task ConvertFromSketchToBlueprint(Product product)
@@ -224,6 +229,11 @@ namespace Project
             await db.SaveChangesAsync();
 
             //await ShowFormModal<EmployeeEditorForm>().EmployeeAsync();
+        }
+
+        internal async Task EditBlueprint(Product product)
+        {
+            await CreateForm<BlueprintEditorForm>().BlueprintAsync(product);
         }
 
         internal async Task AddNewColor()

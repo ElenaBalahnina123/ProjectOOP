@@ -39,55 +39,62 @@ namespace Project.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 46);
+            this.label3.Location = new System.Drawing.Point(41, 77);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 15);
+            this.label3.Size = new System.Drawing.Size(63, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "Автор";
             // 
             // employee_combobox
             // 
             this.employee_combobox.FormattingEnabled = true;
-            this.employee_combobox.Location = new System.Drawing.Point(29, 77);
+            this.employee_combobox.Location = new System.Drawing.Point(41, 128);
+            this.employee_combobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.employee_combobox.Name = "employee_combobox";
-            this.employee_combobox.Size = new System.Drawing.Size(195, 23);
+            this.employee_combobox.Size = new System.Drawing.Size(277, 33);
             this.employee_combobox.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 115);
+            this.label4.Location = new System.Drawing.Point(41, 192);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 15);
+            this.label4.Size = new System.Drawing.Size(129, 25);
             this.label4.TabIndex = 11;
             this.label4.Text = "Дата создания";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(29, 143);
+            this.dateTimePicker1.Location = new System.Drawing.Point(41, 238);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker1.Size = new System.Drawing.Size(284, 31);
             this.dateTimePicker1.TabIndex = 12;
             // 
             // save_btn
             // 
-            this.save_btn.Location = new System.Drawing.Point(139, 196);
+            this.save_btn.Location = new System.Drawing.Point(199, 327);
+            this.save_btn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.save_btn.Name = "save_btn";
-            this.save_btn.Size = new System.Drawing.Size(90, 23);
+            this.save_btn.Size = new System.Drawing.Size(129, 38);
             this.save_btn.TabIndex = 13;
             this.save_btn.Text = "Сохранить";
             this.save_btn.UseVisualStyleBackColor = true;
+            this.save_btn.Click += new System.EventHandler(this.save_btn_Click_1);
             // 
             // SewingEditorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(260, 259);
+            this.ClientSize = new System.Drawing.Size(371, 432);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.employee_combobox);
             this.Controls.Add(this.label3);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "SewingEditorForm";
             this.Text = "SewingEditorForm";
             this.Load += new System.EventHandler(this.SewingEditorForm_Load);

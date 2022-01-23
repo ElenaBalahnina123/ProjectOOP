@@ -21,17 +21,24 @@ namespace Project.Forms
             Employees = (from e in db.Employees select e).ToList();
         }
 
-        public SewingEditorForm SetSewing(Sewing initialSewing)
+        /*public SewingEditorForm SetSewing(Sewing initialSewing)
         {
             InitialSewing = initialSewing;
 
             employee_combobox.Text = initialSewing.Author.ToString();
             dateTimePicker1.Value = initialSewing.CreationDate;
             return this;
-        }
+        }*/
 
-        public async Task<Sewing> SewingAsync(bool showModal = false, bool closeForm = true)
+        public async Task<Sewing> EditSewingAsync(Product product, bool showModal = true, bool closeForm = true)
         {
+            if(product.Sewing != null)
+            {
+                InitialSewing = product.Sewing;
+                employee_combobox.Text = InitialSewing.Author.ToString();
+                dateTimePicker1.Value = InitialSewing.CreationDate;
+            }
+
             var tcs = new TaskCompletionSource<Sewing?>();
 
             var formClosed = false;
@@ -68,7 +75,7 @@ namespace Project.Forms
         }
 
 
-        public static async Task<Sewing?> GetSewingAsync(ProgramContext context, Sewing initialSewing = null)
+        /*public static async Task<Sewing?> GetSewingAsync(ProgramContext context, Sewing initialSewing = null)
         {
             var form = context.CreateForm<SewingEditorForm>();
             Debug.WriteLine("form created");
@@ -102,7 +109,7 @@ namespace Project.Forms
                 form.Close();
             }
             return sewing;
-        }
+        }*/
 
         private void save_btn_Click(object sender, EventArgs e)
         {
@@ -113,8 +120,6 @@ namespace Project.Forms
             }
 
             var selectedEmployee = Employees[employee_combobox.SelectedIndex];
-
-
 
             var dateDevice = dateTimePicker1.Value;
 
@@ -154,6 +159,11 @@ namespace Project.Forms
         private void SewingEditorForm_Load(object sender, EventArgs e)
         {
             employee_combobox.DataSource = Employees.ConvertAll(employees => employees.Surname + " " + employees.Name);
+        }
+
+        private void save_btn_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

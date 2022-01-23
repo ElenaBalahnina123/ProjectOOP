@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectOop.Entities;
-using System.Linq;
 using System.Threading.Tasks;
 
 public class AppDbContext : DbContext
@@ -33,7 +32,7 @@ public class AppDbContext : DbContext
     /// <returns></returns>
     public async Task Warmup()
     {
-        
+
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
