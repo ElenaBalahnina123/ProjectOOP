@@ -20,6 +20,15 @@ namespace Project
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            if (comboBox_role.SelectedIndex == -1)
+            {
+                MessageBox.Show("Не выбрана должность");
+                return;
+            }
+
+            var selectedRole = Enum.GetValues<Role>()[comboBox_role.SelectedIndex];
+
             var login = login_box.Text.Trim();
             if (login.Length == 0)
             {
@@ -76,6 +85,7 @@ namespace Project
                     Salary = trimmedSalary,
                     Password = password,
                     Login = login,
+                    Role = selectedRole
                 };
             }
             else // else
@@ -89,6 +99,7 @@ namespace Project
                     Salary = trimmedSalary,
                     Password = password,
                     Login = login,
+                    Role = selectedRole
                 };
             };
 
@@ -146,42 +157,9 @@ namespace Project
             return employee;
         }
 
-        // статический асинхронный метод. 
-        public static async Task<Employee?> GetEmployeeAsync(ProgramContext context, Employee initialEmployee = null)
+        private void EmployeeEditorForm_Load(object sender, EventArgs e)
         {
-            var form = context.CreateForm<EmployeeEditorForm>();
-            Debug.WriteLine("form created");
-
-            form.SetEmployee(initialEmployee);
-
-            var tcs = new TaskCompletionSource<Employee?>();
-
-            var formClosed = false;
-            var gotResult = false;
-
-            form.FormClosed += (_, _) =>
-            {
-                if (formClosed) return;
-                formClosed = true;
-                tcs.SetResult(null);
-            };
-            form.OnEmployeeReady += (_, employee) =>
-            {
-                if (gotResult) return;
-                gotResult = true;
-                tcs.SetResult(employee);
-            };
-
-            form.Show();
-
-            var employee = await tcs.Task;
-
-            if (!formClosed)
-            {
-                form.Close();
-            }
-            return employee;
+            comboBox_role.DataSource = Enum.GetValues<Role>();
         }
-
     }
 }

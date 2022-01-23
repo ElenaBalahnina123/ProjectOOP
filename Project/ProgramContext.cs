@@ -303,7 +303,7 @@ namespace Project
                     readyCalled = true;
                     exitAllowed = true;
 
-                    employee.Role = Role.DIRECTOR;
+                    employee.Role = Role.Директор;
                     db.Employees.Add(employee);
                     db.SaveChanges();
                     ShowMainForm(employee);
@@ -389,7 +389,7 @@ namespace Project
             this.employee = employee;
             switch (employee.Role)
             {
-                case Role.DIRECTOR: return CreateForm<DirectorForm>();
+                case Role.Директор: return CreateForm<DirectorForm>();
                 //case Role.DESIGNER: return CreateForm<DesignerForm>();
                 default: throw new NotImplementedException("not implemented");
             }

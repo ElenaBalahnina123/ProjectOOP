@@ -26,7 +26,7 @@ namespace Project
             InitializeComponent();
             role = context.employee.Role;
 
-            button_add_sketch.Visible = role == Role.DESIGNER || role == Role.DIRECTOR;
+            button_add_sketch.Visible = role == Role.Дизайнер || role == Role.Директор;
             this.db = db;
         }
 
@@ -34,19 +34,107 @@ namespace Project
         {
             switch (context.employee.Role)
             {
-                case Role.DIRECTOR:
+                case Role.Директор:
+                    edit_sketch.Visible = true;
+                    delete_sketch.Visible = true;
+                    to_blueprint_sketch_context_MenuItem.Visible = true;
+
+                    edit_blueprint.Visible = true;
+                    delete_blueprint.Visible = true;
+                    add_cutting_ToolStripMenuItem.Visible = true;
+
+                    edit_cutting.Visible = true;
+                    delete_cutting.Visible = true;
+                    add_sewing_ToolStripMenuItem.Visible = true;
+
+                    edit_sewing.Visible = true;
+                    delete_sewing.Visible = true;
+                    qual_ToolStripMenuItem.Visible = true;
+
                     close_product_menu_item.Visible = true;
                     break;
-                case Role.SEAMSTRESS:
+
+                case Role.Швея:
+
+                    edit_sketch.Visible = false;
+                    delete_sketch.Visible = false;
+                    to_blueprint_sketch_context_MenuItem.Visible = false;
+
+                    edit_blueprint.Visible = false;
+                    delete_blueprint.Visible = false;
+                    add_cutting_ToolStripMenuItem.Visible = false;
+
+                    edit_cutting.Visible = false;
+                    delete_cutting.Visible = false;
+                    add_sewing_ToolStripMenuItem.Visible = true;
+
+                    edit_sewing.Visible = true;
+                    delete_sewing.Visible = true;
+                    qual_ToolStripMenuItem.Visible = false;
+
                     close_product_menu_item.Visible = false;
                     break;
-                case Role.CUTTER:
+
+
+                case Role.Раскройщик:
+                    edit_sketch.Visible = false;
+                    delete_sketch.Visible = false;
+                    to_blueprint_sketch_context_MenuItem.Visible = false;
+
+                    edit_blueprint.Visible = false;
+                    delete_blueprint.Visible = false;
+                    add_cutting_ToolStripMenuItem.Visible = true;
+
+                    edit_cutting.Visible = true;
+                    delete_cutting.Visible = true;
+                    add_sewing_ToolStripMenuItem.Visible = false;
+
+                    edit_sewing.Visible = false;
+                    delete_sewing.Visible = false;
+                    qual_ToolStripMenuItem.Visible = false;
+
                     close_product_menu_item.Visible = false;
                     break;
-                case Role.DESIGNER:
+
+                case Role.Дизайнер:
+
+                    edit_sketch.Visible = true;
+                    delete_sketch.Visible = true;
+                    to_blueprint_sketch_context_MenuItem.Visible = true;
+
+                    edit_blueprint.Visible = true;
+                    delete_blueprint.Visible = true;
+                    add_cutting_ToolStripMenuItem.Visible = false;
+
+                    edit_cutting.Visible = false;
+                    delete_cutting.Visible = false;
+                    add_sewing_ToolStripMenuItem.Visible = false;
+
+                    edit_sewing.Visible = false;
+                    delete_sewing.Visible = false;
+                    qual_ToolStripMenuItem.Visible = false;
+
                     close_product_menu_item.Visible = false;
                     break;
-                case Role.TECHNOLOGIST:
+
+                case Role.Технолог:
+
+                    edit_sketch.Visible = false;
+                    delete_sketch.Visible = false;
+                    to_blueprint_sketch_context_MenuItem.Visible = false;
+
+                    edit_blueprint.Visible = false;
+                    delete_blueprint.Visible = false;
+                    add_cutting_ToolStripMenuItem.Visible = false;
+
+                    edit_cutting.Visible = false;
+                    delete_cutting.Visible = false;
+                    add_sewing_ToolStripMenuItem.Visible = false;
+
+                    edit_sewing.Visible = false;
+                    delete_sewing.Visible = false;
+                    qual_ToolStripMenuItem.Visible = true;
+
                     close_product_menu_item.Visible = false;
                     break;
             }

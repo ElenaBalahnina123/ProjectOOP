@@ -46,6 +46,8 @@ namespace Project
             this.password_box = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.comboBox_role = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -127,7 +129,7 @@ namespace Project
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 429);
+            this.button1.Location = new System.Drawing.Point(12, 450);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(95, 23);
             this.button1.TabIndex = 10;
@@ -145,7 +147,7 @@ namespace Project
             // login_box
             // 
             this.login_box.Location = new System.Drawing.Point(13, 309);
-            this.login_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.login_box.Margin = new System.Windows.Forms.Padding(2);
             this.login_box.Name = "login_box";
             this.login_box.Size = new System.Drawing.Size(324, 23);
             this.login_box.TabIndex = 12;
@@ -154,7 +156,7 @@ namespace Project
             // password_box
             // 
             this.password_box.Location = new System.Drawing.Point(12, 357);
-            this.password_box.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.password_box.Margin = new System.Windows.Forms.Padding(2);
             this.password_box.Name = "password_box";
             this.password_box.Size = new System.Drawing.Size(322, 23);
             this.password_box.TabIndex = 13;
@@ -178,11 +180,30 @@ namespace Project
             this.label7.TabIndex = 15;
             this.label7.Text = "Пароль";
             // 
+            // comboBox_role
+            // 
+            this.comboBox_role.FormattingEnabled = true;
+            this.comboBox_role.Location = new System.Drawing.Point(10, 407);
+            this.comboBox_role.Name = "comboBox_role";
+            this.comboBox_role.Size = new System.Drawing.Size(324, 23);
+            this.comboBox_role.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 389);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 15);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Должность";
+            // 
             // EmployeeEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 540);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.comboBox_role);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.password_box);
@@ -200,6 +221,7 @@ namespace Project
             this.Controls.Add(this.label1);
             this.Name = "EmployeeEditorForm";
             this.Text = "EmployeeEditorForm";
+            this.Load += new System.EventHandler(this.EmployeeEditorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +244,7 @@ namespace Project
         private System.Windows.Forms.TextBox password_box;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboBox_role;
+        private System.Windows.Forms.Label label8;
     }
 }
