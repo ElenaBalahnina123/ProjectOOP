@@ -1,5 +1,6 @@
 ﻿using ProjectOop.Entities;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,9 +13,13 @@ namespace Project
 
         public EventHandler<Employee> OnEmployeeReady;
 
+        private readonly List<Role> roles;
+
         public EmployeeEditorForm()
         {
             InitializeComponent();
+            roles = new List<Role>(Enum.GetValues<Role>());
+            comboBox_role.DataSource = roles;
         }
 
 
@@ -117,6 +122,9 @@ namespace Project
             textBox5.Text = initialEmployee.Salary.ToString();
             password_box.Text = initialEmployee.Password;
             login_box.Text = initialEmployee.Login;
+
+            comboBox_role.SelectedIndex = roles.IndexOf(initialEmployee.Role);
+            
             return this;
         }
 
@@ -154,12 +162,13 @@ namespace Project
             {
                 Close();
             }
+            Debug.WriteLine("employee: " + employee);
             return employee;
         }
 
         private void EmployeeEditorForm_Load(object sender, EventArgs e)
         {
-            comboBox_role.DataSource = Enum.GetValues<Role>();
+            
         }
     }
 }

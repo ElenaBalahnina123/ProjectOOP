@@ -159,20 +159,6 @@ namespace Project
             }
             product.Cut = cut;
             db.SaveChanges();
-
-            /*Debug.WriteLine("cutting edit complete, saving");
-
-            var existing = await db.Cuts.FindAsync(cut.ID);
-            if (existing == null)
-            {
-                Debug.WriteLine("cannot find cutting in db, return");
-                return;
-            }
-
-            db.Entry(existing).CurrentValues.SetValues(cut);
-            Debug.WriteLine("saving changes");
-            db.SaveChanges();
-            Debug.WriteLine("changes saved");*/
         }
 
         internal async Task EditSewing(Product product)
@@ -186,18 +172,6 @@ namespace Project
             Debug.WriteLine("sewing not null");
             product.Sewing = sewing;
             db.SaveChanges();
-
-            /*var existing = await db.Cuts.FindAsync(s.ID);
-            if (existing == null)
-            {
-                Debug.WriteLine("cannot find sewing in db, return");
-                return;
-            }
-
-            db.Entry(existing).CurrentValues.SetValues(s);
-            Debug.WriteLine("saving changes");
-            db.SaveChanges();
-            Debug.WriteLine("changes saved");*/
         }
 
         internal void QualityControlPassed(Product product)
@@ -232,8 +206,6 @@ namespace Project
             db.Employees.Add(employee);
 
             await db.SaveChangesAsync();
-
-            //await ShowFormModal<EmployeeEditorForm>().EmployeeAsync();
         }
 
         internal async Task EditBlueprint(Product product)
@@ -281,9 +253,6 @@ namespace Project
 
         private void OnStart()
         {
-            Debug.WriteLine("call onStart");
-
-
             if (db.Employees.Any())
             {
                 Debug.WriteLine("has accounts, show login form");
@@ -338,7 +307,6 @@ namespace Project
             db.Colors.Remove(color);
             db.SaveChanges();
         }
-
         internal async Task DeleteMaterial(Material material)
         {
             db.Materials.Remove(material);
@@ -353,6 +321,13 @@ namespace Project
             ExitThread();
         }
 
+        internal void SendToCut(Product product)
+        {
+            product.Sewing = null;
+            db.SaveChanges();
+        }
+
+        #region "forms"
         public T CreateForm<T>() where T : Form
         {
             var form = host.Services.GetRequiredService<T>();
@@ -390,8 +365,8 @@ namespace Project
             switch (employee.Role)
             {
                 case Role.Директор: return CreateForm<DirectorForm>();
-                //case Role.DESIGNER: return CreateForm<DesignerForm>();
-                default: throw new NotImplementedException("not implemented");
+                case Role.Дизайнер: return CreateForm<DesignerForm>();
+                default: return CreateForm<ProductionForm>();
             }
         }
 
@@ -420,6 +395,6 @@ namespace Project
         {
             ShowForm<MaterialListForm>();
         }
-
+        #endregion
     }
 }

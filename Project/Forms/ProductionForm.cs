@@ -423,5 +423,20 @@ namespace Project
                 LoadContent();
             }
         }
+
+        private void send_to_cut(object sender, EventArgs e)
+        {
+            var index = sewing_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                context.SendToCut(Sewing[index]);
+                LoadContent();
+            }
+        }
+
+        private void send_to_sewing(object sender, EventArgs e)
+        {
+
+        }
     }
 }
