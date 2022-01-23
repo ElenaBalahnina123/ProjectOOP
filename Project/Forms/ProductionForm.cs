@@ -53,10 +53,19 @@ namespace Project
             Debug.WriteLine("total products count: " + allProducts);
 
             sketches_list_box.DataSource = null;
+            sketches_list_box.SelectedIndex = -1;
+
             blueprint_list_box.DataSource = null;
+            blueprint_list_box.SelectedIndex = -1;
+
             cutting_list_box.DataSource = null;
+            cutting_list_box.SelectedIndex = -1;
+
             sewing_list_box.DataSource = null;
+            sewing_list_box.SelectedIndex = -1;
+
             ready_list_box.DataSource = null;
+            ready_list_box.SelectedIndex = -1;
 
             IEnumerable<IGrouping<Stage, Product>> staged = allProducts.GroupBy(p => p.GetStage());
             foreach (var st in staged)
@@ -298,12 +307,12 @@ namespace Project
             // TODO: удалить
         }
 
-        private async void sewing_menu_item_click_quality_control_passed(object sender, EventArgs e)
+        private void sewing_menu_item_click_quality_control_passed(object sender, EventArgs e)
         {
             var index = sewing_list_box.SelectedIndex;
             if (index != ListBox.NoMatches)
             {
-                await context.EditSewing(Cutting[index]);
+                context.QualityControlPassed(Sewing[index]);
                 LoadContent();
             }
         }

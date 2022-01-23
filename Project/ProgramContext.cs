@@ -176,15 +176,15 @@ namespace Project
             Debug.WriteLine("changes saved");*/
         }
 
-        internal async Task EditSewing(Product product  )
+        internal async Task EditSewing(Product product)
         {
-            var sewing = await CreateForm<SewingEditorForm>().EditSewingAsync(product);
+            var sewing = await ShowForm<SewingEditorForm>().EditSewingAsync(product);
             if (sewing == null)
             {
                 Debug.WriteLine("sewing edit cancelled");
                 return;
             }
-            //Debug.WriteLine("sewing edit complete, saving");
+            Debug.WriteLine("sewing not null");
             product.Sewing = sewing;
             db.SaveChanges();
 
@@ -199,6 +199,12 @@ namespace Project
             Debug.WriteLine("saving changes");
             db.SaveChanges();
             Debug.WriteLine("changes saved");*/
+        }
+
+        internal void QualityControlPassed(Product product)
+        {
+            product.QaPassed = true;
+            db.SaveChanges();
         }
 
         internal async Task ConvertFromSketchToBlueprint(Product product)

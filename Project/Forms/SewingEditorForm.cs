@@ -1,9 +1,8 @@
-﻿using ProjectOop.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,103 +14,23 @@ namespace Project.Forms
 
         public EventHandler<Sewing> OnSewingEditor;
         private List<Employee> Employees;
-        public SewingEditorForm(AppDbContext db)
+
+        private readonly AppDbContext db;
+
+        public SewingEditorForm(AppDbContext dbContext)
         {
+            db = dbContext;
             InitializeComponent();
-            Employees = (from e in db.Employees select e).ToList();
         }
 
-        /*public SewingEditorForm SetSewing(Sewing initialSewing)
+        private async void SewingEditorForm_Load(object sender, EventArgs e)
         {
-            InitialSewing = initialSewing;
+            Employees = await db.Employees.ToListAsync();
 
-            employee_combobox.Text = initialSewing.Author.ToString();
-            dateTimePicker1.Value = initialSewing.CreationDate;
-            return this;
-        }*/
-
-        public async Task<Sewing> EditSewingAsync(Product product, bool showModal = true, bool closeForm = true)
-        {
-            if(product.Sewing != null)
-            {
-                InitialSewing = product.Sewing;
-                employee_combobox.Text = InitialSewing.Author.ToString();
-                dateTimePicker1.Value = InitialSewing.CreationDate;
-            }
-
-            var tcs = new TaskCompletionSource<Sewing?>();
-
-            var formClosed = false;
-            var gotResult = false;
-
-            FormClosed += (_, _) =>
-            {
-                if (formClosed) return;
-                formClosed = true;
-                if (!gotResult)
-                {
-                    tcs.SetResult(null);
-                }
-            };
-            OnSewingEditor += (_, sewing) =>
-            {
-                if (gotResult) return;
-                gotResult = true;
-                tcs.SetResult(sewing);
-            };
-
-            if (showModal)
-            {
-                ShowDialog();
-            }
-
-            var sewing = await tcs.Task;
-
-            if (!formClosed && closeForm)
-            {
-                Close();
-            }
-            return sewing;
+            employee_combobox.DataSource = Employees.ConvertAll(employees => employees.Surname + " " + employees.Name);
         }
 
-
-        /*public static async Task<Sewing?> GetSewingAsync(ProgramContext context, Sewing initialSewing = null)
-        {
-            var form = context.CreateForm<SewingEditorForm>();
-            Debug.WriteLine("form created");
-
-            form.SetSewing(initialSewing);
-
-            var tcs = new TaskCompletionSource<Sewing?>();
-
-            var formClosed = false;
-            var gotResult = false;
-
-            form.FormClosed += (_, _) =>
-            {
-                if (formClosed) return;
-                formClosed = true;
-                tcs.SetResult(null);
-            };
-            form.OnSewingEditor += (_, sewing) =>
-            {
-                if (gotResult) return;
-                gotResult = true;
-                tcs.SetResult(sewing);
-            };
-
-            form.Show();
-
-            var sewing = await tcs.Task;
-
-            if (!formClosed)
-            {
-                form.Close();
-            }
-            return sewing;
-        }*/
-
-        private void save_btn_Click(object sender, EventArgs e)
+        private void save_btn_Click_1(object sender, EventArgs e)
         {
             if (employee_combobox.SelectedIndex == -1)
             {
@@ -130,8 +49,6 @@ namespace Project.Forms
                 MessageBox.Show("Неверная дата");
                 return;
             }
-
-
 
             Sewing result;
             if (InitialSewing != null)
@@ -153,17 +70,53 @@ namespace Project.Forms
                 };
             };
 
-            OnSewingEditor.Invoke(this, result);
+            OnSewingEditor?.Invoke(this, result);
             Close();
         }
-        private void SewingEditorForm_Load(object sender, EventArgs e)
+
+        public async Task<Sewing> EditSewingAsync(Product product)
         {
-            employee_combobox.DataSource = Employees.ConvertAll(employees => employees.Surname + " " + employees.Name);
+            if (product.Sewing != null)
+            {
+                InitialSewing = product.Sewing;
+                employee_combobox.Text = InitialSewing.Author.ToString();
+                dateTimePicker1.Value = InitialSewing.CreationDate;
+            }
+
+            var tcs = new TaskCompletionSource<Sewing?>();
+
+            var formClosed = false;
+            var gotResult = false;
+
+            FormClosed += (_, _) =>
+            {
+                Debug.WriteLine("form closed");
+                if (formClosed) return;
+                formClosed = true;
+                if (!gotResult)
+                {
+                    gotResult = true;
+                    tcs.SetResult(null);
+                }
+            };
+            OnSewingEditor += (_, sewing) =>
+            {
+                Debug.WriteLine("got result");
+                if (gotResult) return;
+                gotResult = true;
+                tcs.SetResult(sewing);
+            };
+
+            Debug.WriteLine("await sewing");
+            var sewing = await tcs.Task;
+            Debug.WriteLine("got sewing");
+
+            if (!formClosed)
+            {
+                Close();
+            }
+            return sewing;
         }
 
-        private void save_btn_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

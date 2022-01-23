@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProjectOop
@@ -162,8 +164,16 @@ namespace ProjectOop
                 else return Stage.READY;
             }
 
-            public static async Task RemoveFromDb(this Product product, AppDbContext db)
+            public static async Task RemoveFromDb(this Product initialProduct, AppDbContext db)
             {
+                var product = await db.Products
+                    .Where(p => p.ID == initialProduct.ID)
+                    .Include(p => p.Sketch)
+                    .Include(p => p.Blueprint.Materials)
+                    .Include(p => p.Cut)
+                    .Include(p => p.Sewing)
+                    .FirstOrDefaultAsync();
+
                 if (product.Sketch != null)
                 {
                     db.Remove(product.Sketch);
