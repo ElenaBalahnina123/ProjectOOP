@@ -43,6 +43,7 @@ namespace Project
             this.btn_edit_colors.TabIndex = 0;
             this.btn_edit_colors.Text = "Редактировать цвета";
             this.btn_edit_colors.UseVisualStyleBackColor = true;
+            this.btn_edit_colors.Click += new System.EventHandler(this.btn_edit_colors_Click);
             // 
             // btn_edit_materials
             // 
@@ -53,6 +54,7 @@ namespace Project
             this.btn_edit_materials.TabIndex = 1;
             this.btn_edit_materials.Text = "Редактировать материалы";
             this.btn_edit_materials.UseVisualStyleBackColor = true;
+            this.btn_edit_materials.Click += new System.EventHandler(this.btn_edit_materials_Click);
             // 
             // btn_production
             // 
@@ -63,6 +65,7 @@ namespace Project
             this.btn_production.TabIndex = 2;
             this.btn_production.Text = "Производство";
             this.btn_production.UseVisualStyleBackColor = true;
+            this.btn_production.Click += new System.EventHandler(this.btn_production_Click);
             // 
             // DesignerForm
             // 
