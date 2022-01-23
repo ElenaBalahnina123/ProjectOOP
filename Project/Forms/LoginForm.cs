@@ -36,7 +36,7 @@ namespace Project
                 return;
             }
 
-            await dbContext.Warmup();
+ 
 
             programState.ShowMainForm(employee);
             Close();

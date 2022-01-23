@@ -4,37 +4,37 @@ using System.Threading.Tasks;
 
 public class AppDbContext : DbContext
 {
+
+    /// <summary>
+    /// Запросы в базу данных
+    /// </summary>
     public DbSet<Employee> Employees { get; set; }
     public DbSet<ModelColor> Colors { get; set; }
-
     public DbSet<Sketch> Sketches { get; set; }
-
     public DbSet<Blueprint> Blueprints { get; set; }
-
     public DbSet<Cut> Cuts { get; set; }
-
     public DbSet<Sewing> Sewings { get; set; }
-
     public DbSet<Product> Products { get; set; }
-
     public DbSet<Material> Materials { get; set; }
-
     public DbSet<MaterialInBlueprint> MaterialInBlueprints { get; set; }
 
+
+    /// <summary>
+    /// Гарантирует, что база данных для контекста существует.
+    /// Если он существует, никаких действий не предпринимается.
+    /// Если он не существует, создается база данных и вся ее схема. 
+    /// Если база данных существует, то не предпринимается никаких усилий 
+    /// для обеспечения ее совместимости с моделью для этого контекста.
+    /// </summary>
     public AppDbContext()
-    {
+    {    
         Database.EnsureCreated();
     }
 
     /// <summary>
-    /// Метод выполняет подгрузку всего содержимого из БД
+    /// Метод для настройки базы данных и других параметров, которые будут использоваться в контексте
     /// </summary>
-    /// <returns></returns>
-    public async Task Warmup()
-    {
-
-    }
-
+    /// <param name="optionsBuilder"></param>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var host = "127.0.0.1";

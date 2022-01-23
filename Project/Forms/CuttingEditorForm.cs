@@ -156,7 +156,7 @@ namespace Project.Forms
 
         private void CuttingEditorForm_Load(object sender, EventArgs e)
         {
-            employee_combobox.DataSource = Employees.ConvertAll(employees => employees.Surname + " " + employees.Name);
+            employee_combobox.DataSource = Employees.ConvertAll(employees => employees.Name + " " + employees.Surname);
         }
     }
 }

@@ -46,6 +46,7 @@ namespace Project
                     .AddTransient<CuttingEditorForm>()
                     .AddTransient<BlueprintEditorForm>()
                     .AddTransient<MaterialsSelectorForm>()
+                    .AddTransient<DesignerForm>()
                 ).Build();
 
             host.StartAsync();

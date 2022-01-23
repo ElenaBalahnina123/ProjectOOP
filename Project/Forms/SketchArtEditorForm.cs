@@ -90,7 +90,7 @@ namespace Project.Forms
 
         private void SketchArtEditorForm_Load(object sender, EventArgs e)
         {
-            comboBox1.DataSource = Employees.ConvertAll(employees => employees.Surname + " " + employees.Name);
+            comboBox1.DataSource = Employees.ConvertAll(employees => employees.Name + " " + employees.Surname);
         }
 
         public SketchArtEditorForm SetSketch(Sketch initialSketch)

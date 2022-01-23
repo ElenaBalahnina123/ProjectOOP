@@ -17,7 +17,6 @@ namespace ProjectOop
             Дизайнер, // модельек, стадии художественного и технологического эскизов
             Технолог // технолог, контроль качества
         }
-
         public enum WearSize
         {
             XS,
@@ -31,15 +30,15 @@ namespace ProjectOop
         public class Employee // сотрудник
         {
             public int ID { get; set; }
-            public string Login { get; set; }
-            public string Password { get; set; }
-            [Required] [MaxLength(50)] public string Surname { get; set; } // фамилия 
-            [Required] [MaxLength(50)] public string Name { get; set; } // имя
+          
+            [Required] [MaxLength(50)] public string Name { get; set; } // фамилия 
+            [Required] [MaxLength(50)] public string Surname { get; set; } // имя
             [MaxLength(50)] public string Patronymic { get; set; } // отчество
             [Required] public DateTime DeviceDate { get; set; } // дата устройства
             [Required] public string Salary { get; set; } //оклад
-
-            public Role Role { get; set; }
+            [Required] public string Login { get; set; }
+            [Required] public string Password { get; set; }
+            [Required] public Role Role { get; set; }
         }
 
         public class Material // материал
@@ -55,8 +54,8 @@ namespace ProjectOop
         public class ModelColor
         {
             public int ID { get; set; }
-            public string RgbValue { get; set; }
-            public string TextName { get; set; }
+            [Required] public string RgbValue { get; set; }
+            [Required] public string TextName { get; set; }
 
 
         }
@@ -67,22 +66,22 @@ namespace ProjectOop
             [Required] public string Name { get; set; }
 
 
-            public string FileLocation { get; set; }
+            [Required] public string FileLocation { get; set; }
 
-            public Employee Author { get; set; }
+            [Required] public Employee Author { get; set; }
 
-            public DateTime CreationDate { get; set; }
+            [Required] public DateTime CreationDate { get; set; }
         }
 
         public class Blueprint
         {
             public int ID { get; set; }
 
-            public WearSize Size { get; set; }
+            [Required] public WearSize Size { get; set; }
 
             public List<MaterialInBlueprint> Materials { get; set; }
 
-            public DateTime CreationDate { get; set; }
+            [Required] public DateTime CreationDate { get; set; }
 
         }
 
@@ -101,18 +100,18 @@ namespace ProjectOop
         {
             public int ID { get; set; }
 
-            public Employee Author { get; set; }
+            [Required] public Employee Author { get; set; }
 
-            public DateTime CreationDate { get; set; }
+            [Required] public DateTime CreationDate { get; set; }
         }
 
         public class Sewing
         {
             public int ID { get; set; }
 
-            public Employee Author { get; set; }
+            [Required] public Employee Author { get; set; }
 
-            public DateTime CreationDate { get; set; }
+            [Required] public DateTime CreationDate { get; set; }
         }
 
         public class Product

@@ -13,6 +13,10 @@ namespace Project
     {
 
         private Blueprint? InitialBlueprint;
+
+        /// <summary>
+        /// Метод, который будет обрабатывать событие, когда событие предоставляет данные.
+        /// </summary>
         public EventHandler<Blueprint> OnBlueprintEditor;
 
         /// <summary>

@@ -27,7 +27,7 @@ namespace Project.Forms
         {
             Employees = await db.Employees.ToListAsync();
 
-            employee_combobox.DataSource = Employees.ConvertAll(employees => employees.Surname + " " + employees.Name);
+            employee_combobox.DataSource = Employees.ConvertAll(employees => employees.Name + " " + employees.Surname);
         }
 
         private void save_btn_Click_1(object sender, EventArgs e)

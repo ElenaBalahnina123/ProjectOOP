@@ -83,8 +83,8 @@ namespace Project
                 result = new Employee()
                 {
                     ID = InitialEmployee.ID,
-                    Name = trimmedFirstName,
-                    Surname = trimmedLastName,
+                    Surname = trimmedFirstName,
+                    Name = trimmedLastName,
                     Patronymic = trimmedMiddleName,
                     DeviceDate = dateDevice,
                     Salary = trimmedSalary,
@@ -97,8 +97,8 @@ namespace Project
             {
                 result = new Employee()
                 {
-                    Name = trimmedFirstName,
-                    Surname = trimmedLastName,
+                    Surname = trimmedFirstName,
+                    Name = trimmedLastName,
                     Patronymic = trimmedMiddleName,
                     DeviceDate = dateDevice,
                     Salary = trimmedSalary,
@@ -115,8 +115,8 @@ namespace Project
         public EmployeeEditorForm SetEmployee(Employee initialEmployee)
         {
             InitialEmployee = initialEmployee;
-            textBox1.Text = initialEmployee.Name;
-            textBox2.Text = initialEmployee.Surname;
+            textBox1.Text = initialEmployee.Surname;
+            textBox2.Text = initialEmployee.Name;
             textBox3.Text = initialEmployee.Patronymic;
             dateTimePicker1.Value = initialEmployee.DeviceDate;
             textBox5.Text = initialEmployee.Salary.ToString();
@@ -124,7 +124,7 @@ namespace Project
             login_box.Text = initialEmployee.Login;
 
             comboBox_role.SelectedIndex = roles.IndexOf(initialEmployee.Role);
-            
+
             return this;
         }
 
@@ -168,7 +168,7 @@ namespace Project
 
         private void EmployeeEditorForm_Load(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
