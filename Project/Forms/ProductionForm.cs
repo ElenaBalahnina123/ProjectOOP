@@ -32,6 +32,25 @@ namespace Project
 
         private async void ProductionForm_Load(object sender, EventArgs e)
         {
+            switch (context.employee.Role)
+            {
+                case Role.DIRECTOR:
+                    close_product_menu_item.Visible = true;
+                    break;
+                case Role.SEAMSTRESS:
+                    close_product_menu_item.Visible = false;
+                    break;
+                case Role.CUTTER:
+                    close_product_menu_item.Visible = false;
+                    break;
+                case Role.DESIGNER:
+                    close_product_menu_item.Visible = false;
+                    break;
+                case Role.TECHNOLOGIST:
+                    close_product_menu_item.Visible = false;
+                    break;
+            }
+
             LoadContent();
         }
 

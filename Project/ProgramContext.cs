@@ -54,7 +54,6 @@ namespace Project
 
             OnStart();
         }
-
         public Employee employee { get; private set; }
         public ModelColor color { get; private set; }
         public Material material { get; private set; }

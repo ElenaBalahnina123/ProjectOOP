@@ -63,7 +63,7 @@ namespace Project
             this.утилизироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.контрольКачестваПройденToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ready_context_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.завершитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.close_product_menu_item = new System.Windows.Forms.ToolStripMenuItem();
             this.sketch_group.SuspendLayout();
             this.blueprint_box.SuspendLayout();
             this.cut_box.SuspendLayout();
@@ -300,19 +300,19 @@ namespace Project
             this.deleteToolStripMenuItem3,
             this.контрольКачестваToolStripMenuItem});
             this.sewing_context_menu.Name = "sewing_context_menu";
-            this.sewing_context_menu.Size = new System.Drawing.Size(241, 133);
+            this.sewing_context_menu.Size = new System.Drawing.Size(239, 100);
             // 
             // editToolStripMenuItem3
             // 
             this.editToolStripMenuItem3.Name = "editToolStripMenuItem3";
-            this.editToolStripMenuItem3.Size = new System.Drawing.Size(240, 32);
+            this.editToolStripMenuItem3.Size = new System.Drawing.Size(238, 32);
             this.editToolStripMenuItem3.Text = "Edit";
             this.editToolStripMenuItem3.Click += new System.EventHandler(this.edit_sewing_ToolStripMenuItem3_Click);
             // 
             // deleteToolStripMenuItem3
             // 
             this.deleteToolStripMenuItem3.Name = "deleteToolStripMenuItem3";
-            this.deleteToolStripMenuItem3.Size = new System.Drawing.Size(240, 32);
+            this.deleteToolStripMenuItem3.Size = new System.Drawing.Size(238, 32);
             this.deleteToolStripMenuItem3.Text = "Delete";
             this.deleteToolStripMenuItem3.Click += new System.EventHandler(this.delete_sewing_ToolStripMenuItem3_Click);
             // 
@@ -323,7 +323,7 @@ namespace Project
             this.утилизироватьToolStripMenuItem,
             this.контрольКачестваПройденToolStripMenuItem});
             this.контрольКачестваToolStripMenuItem.Name = "контрольКачестваToolStripMenuItem";
-            this.контрольКачестваToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.контрольКачестваToolStripMenuItem.Size = new System.Drawing.Size(238, 32);
             this.контрольКачестваToolStripMenuItem.Text = "Контроль качества";
             // 
             // отправитьНаДоработкуToolStripMenuItem
@@ -365,16 +365,16 @@ namespace Project
             // 
             this.ready_context_menu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.ready_context_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.завершитьToolStripMenuItem});
+            this.close_product_menu_item});
             this.ready_context_menu.Name = "ready_context_menu";
-            this.ready_context_menu.Size = new System.Drawing.Size(174, 36);
+            this.ready_context_menu.Size = new System.Drawing.Size(241, 69);
             // 
-            // завершитьToolStripMenuItem
+            // close_product_menu_item
             // 
-            this.завершитьToolStripMenuItem.Name = "завершитьToolStripMenuItem";
-            this.завершитьToolStripMenuItem.Size = new System.Drawing.Size(173, 32);
-            this.завершитьToolStripMenuItem.Text = "Завершить";
-            this.завершитьToolStripMenuItem.Click += new System.EventHandler(this.delete_ready_ToolStripMenuItem_Click);
+            this.close_product_menu_item.Name = "close_product_menu_item";
+            this.close_product_menu_item.Size = new System.Drawing.Size(240, 32);
+            this.close_product_menu_item.Text = "Завершить";
+            this.close_product_menu_item.Click += new System.EventHandler(this.delete_ready_ToolStripMenuItem_Click);
             // 
             // ProductionForm
             // 
@@ -431,7 +431,7 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem3;
         private System.Windows.Forms.ContextMenuStrip ready_context_menu;
-        private System.Windows.Forms.ToolStripMenuItem завершитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem close_product_menu_item;
         private System.Windows.Forms.ToolStripMenuItem создатьТехническийЭскизToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem добавитьРаскройToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem контрольКачестваToolStripMenuItem;
