@@ -62,6 +62,7 @@ namespace Project
         private async Task SetInitialProduct(Product product)
         {
             var fetchedProduct = await db.Products.Where(p => p.ID == product.ID)
+                // Говорим фрейму, какие связанные сущности ему нужно подгружать
                 .Include(p => p.Sketch)
                 .Include(p => p.Blueprint.Materials)
                 .FirstAsync();
@@ -123,12 +124,6 @@ namespace Project
 
             return await AwaitBlueprintOrClose(showModal, closeForm);
         }
-
-        private void look_sketch_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void RefreshBlueprintToMaterialLinks(Blueprint blueprint)
         {

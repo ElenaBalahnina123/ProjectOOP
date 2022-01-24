@@ -12,21 +12,14 @@ namespace Project
         {
             this.programState = programState;
             InitializeComponent();
-            Debug.WriteLine("components DirectorForm initialized");
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //var form = host.Services.GetRequiredService<ListEmployee>();
-            programState.ShowEmployerList();
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
             programState.ShowProductionList();
         }
-
-
 
         private void btn_edit_colors_Click(object sender, EventArgs e)
         {
@@ -41,6 +34,11 @@ namespace Project
         private void button3_Click(object sender, EventArgs e)
         {
             programState.ShowForm<BlueprintEditorForm>();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            programState.ShowEmployerList();
         }
     }
 }

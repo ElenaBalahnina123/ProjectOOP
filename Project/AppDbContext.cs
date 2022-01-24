@@ -2,7 +2,11 @@
 using ProjectOop.Entities;
 using System.Threading.Tasks;
 
-// DbContext может использоваться для запроса и сохранения экземпляров сущностей
+
+
+/// <summary>
+/// DbContext может использоваться для запроса и сохранения экземпляров сущностей
+/// </summary>
 public class AppDbContext : DbContext
 {
     /// Запросы в базу данных

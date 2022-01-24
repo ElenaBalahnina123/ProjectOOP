@@ -140,6 +140,7 @@ namespace Project
 
             Debug.WriteLine("total products count: " + allProducts);
 
+            // переход от одного этапа к другому
             sketches_list_box.DataSource = null;
             sketches_list_box.SelectedIndex = -1;
 

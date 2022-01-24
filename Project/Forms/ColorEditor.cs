@@ -103,40 +103,6 @@ namespace Project
             return color;
         }
 
-        public static async Task<ModelColor?> GetColorAsync(ProgramContext context, ModelColor initialColor = null)
-        {
-            var form = context.CreateForm<ColorEditor>();
-            Debug.WriteLine("form created");
-
-            form.SetColor(initialColor);
-
-            var tcs = new TaskCompletionSource<ModelColor?>();
-
-            var formClosed = false;
-            var gotResult = false;
-
-            form.FormClosed += (_, _) =>
-            {
-                if (formClosed) return;
-                formClosed = true;
-                tcs.SetResult(null);
-            };
-            form.OnColorEditor += (_, color) =>
-            {
-                if (gotResult) return;
-                gotResult = true;
-                tcs.SetResult(color);
-            };
-
-            form.Show();
-
-            var color = await tcs.Task;
-
-            if (!formClosed)
-            {
-                form.Close();
-            }
-            return color;
-        }
+       
     }
 }

@@ -23,6 +23,8 @@ namespace Project
             var login = textBox1.Text;
             var password = textBox2.Text;
 
+            //подгружаем данные о сотрудниках
+
             var employee = await Task.Run(() => (from emp in dbContext.Employees where emp.Login == login select emp).FirstOrDefault());
 
             if (employee == null)

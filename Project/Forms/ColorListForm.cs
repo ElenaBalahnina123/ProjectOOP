@@ -28,6 +28,11 @@ namespace Project
             loadColorList();
         }
 
+
+        /// <summary>
+        /// Загрузка списка из базы данных и вывод в список имя и значение RGB
+        /// </summary>
+        /// <returns></returns>
         private async Task loadColorList()
         {
             colors = await Task.Run(() => (from c in db.Colors select c).ToList());
@@ -37,6 +42,12 @@ namespace Project
                 colors_list.DataSource = items;
             });
         }
+
+        /// <summary>
+        /// Кнопка в меню "редактировать". Нажимаем на индекс из списка и редактируем. Затем загружаем список
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var index = colors_list.SelectedIndex;
@@ -50,7 +61,11 @@ namespace Project
                 await loadColorList();
             }
         }
-
+        /// <summary>
+        /// Удаление из меню
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var index = colors_list.SelectedIndex;
@@ -63,6 +78,11 @@ namespace Project
             }
         }
 
+        /// <summary>
+        /// Нажимаем на элемент из списка правой кнопкой мыши и появляется контекстное меню. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ColorListForm_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)

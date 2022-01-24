@@ -94,7 +94,7 @@ namespace Project
                     Role = selectedRole
                 };
             }
-            else // else
+            else 
             {
                 result = new Employee()
                 {
