@@ -54,7 +54,7 @@ namespace Project.Forms
                 {
                     ID = InitialMaterial.ID,
                     Name = trimmedName,
-                    color = selectedColor
+                    Сolor = selectedColor
                 };
             }
             else
@@ -62,7 +62,7 @@ namespace Project.Forms
                 result = new Material()
                 {
                     Name = trimmedName,
-                    color = selectedColor
+                    Сolor = selectedColor
                 };
             };
             OnMaterialEditor?.Invoke(this, result);
@@ -73,7 +73,7 @@ namespace Project.Forms
         {
             InitialMaterial = initialMaterial;
             material_name.Text = initialMaterial.Name;
-            comboBox_color.Text = initialMaterial.color.ToString();
+            comboBox_color.Text = initialMaterial.Сolor.ToString();
 
             return this;
         }

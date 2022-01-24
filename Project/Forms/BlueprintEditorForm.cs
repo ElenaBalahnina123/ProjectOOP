@@ -49,7 +49,7 @@ namespace Project
             }
 
             return await db.MaterialInBlueprints.Where(m => m.Blueprint.ID == blueprintId)
-                .Include(m => m.material.color)
+                .Include(m => m.material.Сolor)
                 .Select(m => m.material)
                 .ToListAsync();
         }
@@ -70,7 +70,7 @@ namespace Project
 
             // материалы, которые были выбраны для этого чертежа ранее
             SelectedMaterials = await GetSavedMaterialsForBlueprint(fetchedProduct.Blueprint?.ID);
-            selected_materials_list_box.DataSource = SelectedMaterials.ConvertAll(material => material.Name + " " + material.color.TextName);
+            selected_materials_list_box.DataSource = SelectedMaterials.ConvertAll(material => material.Name + " " + material.Сolor.TextName);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Project
             }
 
             SelectedMaterials = list;
-            selected_materials_list_box.DataSource = SelectedMaterials.ConvertAll(material => material.Name + " " + material.color.TextName);
+            selected_materials_list_box.DataSource = SelectedMaterials.ConvertAll(material => material.Name + " " + material.Сolor.TextName);
         }
 
         private void save_btn_Click(object sender, EventArgs e)

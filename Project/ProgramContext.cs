@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace Project
 {
+    //ApplicationContext указывает контекстную информацию о потоке приложения
     public class ProgramContext : ApplicationContext
     {
 
@@ -24,7 +25,7 @@ namespace Project
 
         private readonly AppDbContext db;
 
-        public ProgramContext()
+        public ProgramContext()  //???
         {
             host = Host.CreateDefaultBuilder()
                 .ConfigureServices((_, services) =>
@@ -39,7 +40,7 @@ namespace Project
                     .AddTransient<DirectorForm>()
                     .AddTransient<EmployeeEditorForm>()
                     .AddSingleton<AppDbContext>()
-                    .AddSingleton(this)
+                    .AddSingleton(this) 
                     .AddTransient<DesignerForm>()
                     .AddTransient<SketchArtEditorForm>()
                     .AddTransient<SewingEditorForm>()
@@ -51,6 +52,7 @@ namespace Project
 
             host.StartAsync();
 
+            //Получить запрос от сервера
             db = host.Services.GetRequiredService<AppDbContext>();
 
             OnStart();
@@ -59,6 +61,7 @@ namespace Project
         public ModelColor color { get; private set; }
         public Material material { get; private set; }
 
+        //internal: компоненты класса или структуры доступен из любого места кода в той же сборке, однако он недоступен для других программ и сборок.
         internal async Task EditEmployee(Employee employee)
         {
             var e = await CreateForm<EmployeeEditorForm>().SetEmployee(employee).EmployeeAsync(showModal: true);
@@ -69,13 +72,16 @@ namespace Project
             }
             Debug.WriteLine("employee edit complete, saving");
 
-            var existing = await db.Employees.FindAsync(e.ID);
+            //FindAsync находит сущность с заданными значениями первичного ключа. Если сущность с заданными
+            //значениями первичного ключа отслеживается контекстом, то она возвращается немедленно,
+            //без запроса к базе данных. В противном случае делается запрос к базе данных.
+            var existing = await db.Employees.FindAsync(e.ID);  ///???
             if (existing == null)
             {
                 Debug.WriteLine("cannot find employee in db, return");
                 return;
             }
-
+            //Запись обеспечивает доступ к информации об отслеживании изменений и операциям для объекта.
             db.Entry(existing).CurrentValues.SetValues(e);
             Debug.WriteLine("saving changes");
             db.SaveChanges();
@@ -189,10 +195,11 @@ namespace Project
 
             if (blueprint == null) return;
 
-
+            //создался технический эскиз
             db.Blueprints.Add(blueprint);
             db.SaveChanges();
 
+            //в продукт записан технический эскиз
             db.Attach(product);
             product.Blueprint = blueprint;
             db.SaveChanges();
@@ -254,26 +261,26 @@ namespace Project
 
         private void OnStart()
         {
+            // проверяем всех сотрудников в базе данных. Если есть хоть один сотрудник, открываем форму входа. Если нет, показываем форму для добавления информации о сотруднике
             if (db.Employees.Any())
             {
-                Debug.WriteLine("has accounts, show login form");
                 ShowForm<LoginForm>();
             }
             else
             {
                 Debug.WriteLine("users not found, show editor form");
 
-                exitAllowed = false;
+                exitAllowed = false;  //???
                 var editorForm = ShowForm<EmployeeEditorForm>();
 
                 var readyCalled = false;
 
                 editorForm.OnEmployeeReady += (sender, employee) =>
                 {
-                    readyCalled = true;
+                    readyCalled = true;  //???
                     exitAllowed = true;
 
-                    employee.Role = Role.Директор;
+                    employee.Role = Role.DIRECTOR;
                     db.Employees.Add(employee);
                     db.SaveChanges();
                     ShowMainForm(employee);
@@ -365,8 +372,8 @@ namespace Project
             this.employee = employee;
             switch (employee.Role)
             {
-                case Role.Директор: return CreateForm<DirectorForm>();
-                case Role.Дизайнер: return CreateForm<DesignerForm>();
+                case Role.DIRECTOR: return CreateForm<DirectorForm>();
+                case Role.DESIGNER: return CreateForm<DesignerForm>();
                 default: return CreateForm<ProductionForm>();
             }
         }

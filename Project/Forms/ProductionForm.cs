@@ -26,7 +26,7 @@ namespace Project
             InitializeComponent();
             role = context.employee.Role;
 
-            button_add_sketch.Visible = role == Role.Дизайнер || role == Role.Директор;
+            button_add_sketch.Visible = role == Role.DESIGNER || role == Role.DIRECTOR;
             this.db = db;
         }
 
@@ -34,7 +34,7 @@ namespace Project
         {
             switch (context.employee.Role)
             {
-                case Role.Директор:
+                case Role.DIRECTOR:
                     edit_sketch.Visible = true;
                     delete_sketch.Visible = true;
                     to_blueprint_sketch_context_MenuItem.Visible = true;
@@ -54,7 +54,7 @@ namespace Project
                     close_product_menu_item.Visible = true;
                     break;
 
-                case Role.Швея:
+                case Role.SEWER:
 
                     edit_sketch.Visible = false;
                     delete_sketch.Visible = false;
@@ -70,13 +70,13 @@ namespace Project
 
                     edit_sewing.Visible = true;
                     delete_sewing.Visible = true;
-                    qual_ToolStripMenuItem.Visible = false;
+                    qual_ToolStripMenuItem.Visible = true;
 
                     close_product_menu_item.Visible = false;
                     break;
 
 
-                case Role.Раскройщик:
+                case Role.CUTTER:
                     edit_sketch.Visible = false;
                     delete_sketch.Visible = false;
                     to_blueprint_sketch_context_MenuItem.Visible = false;
@@ -96,7 +96,7 @@ namespace Project
                     close_product_menu_item.Visible = false;
                     break;
 
-                case Role.Дизайнер:
+                case Role.DESIGNER:
 
                     edit_sketch.Visible = true;
                     delete_sketch.Visible = true;
@@ -117,26 +117,7 @@ namespace Project
                     close_product_menu_item.Visible = false;
                     break;
 
-                case Role.Технолог:
-
-                    edit_sketch.Visible = false;
-                    delete_sketch.Visible = false;
-                    to_blueprint_sketch_context_MenuItem.Visible = false;
-
-                    edit_blueprint.Visible = false;
-                    delete_blueprint.Visible = false;
-                    add_cutting_ToolStripMenuItem.Visible = false;
-
-                    edit_cutting.Visible = false;
-                    delete_cutting.Visible = false;
-                    add_sewing_ToolStripMenuItem.Visible = false;
-
-                    edit_sewing.Visible = false;
-                    delete_sewing.Visible = false;
-                    qual_ToolStripMenuItem.Visible = true;
-
-                    close_product_menu_item.Visible = false;
-                    break;
+               
             }
 
             LoadContent();

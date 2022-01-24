@@ -11,6 +11,7 @@ namespace Project
     {
         private Employee? InitialEmployee;
 
+        // EventHandler представляет метод, который будет обрабатывать событие, когда событие предоставляет данные
         public EventHandler<Employee> OnEmployeeReady;
 
         private readonly List<Role> roles;

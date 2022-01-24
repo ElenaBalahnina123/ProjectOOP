@@ -26,10 +26,10 @@ namespace Project
         private async Task loadMaterialList()
         {
             materials = await db.Materials // загружаем все материалы
-                .Include(m => m.color) // метод Include позволяет подгрузить связанный с материалом цвет
+                .Include(m => m.Сolor) // метод Include позволяет подгрузить связанный с материалом цвет
                 .ToListAsync();
 
-            var items = materials.ConvertAll(m => m.Name + " " + m.color.TextName);
+            var items = materials.ConvertAll(m => m.Name + " " + m.Сolor.TextName);
             listBox1.Invoke((MethodInvoker)delegate
             {
                 listBox1.DataSource = items;

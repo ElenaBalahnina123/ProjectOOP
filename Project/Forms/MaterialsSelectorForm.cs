@@ -29,13 +29,13 @@ namespace Project.Forms
         private async void AddMaterials_Load(object sender, EventArgs e)
         {
             materials = await db.Materials
-                .Include(material => material.color)
+                .Include(material => material.Сolor)
                 .ToListAsync();
 
             foreach (var material in materials)
             {
                 materials_checked_list_box.Items.Add(
-                    item: material.Name + " " + material.color.TextName,
+                    item: material.Name + " " + material.Сolor.TextName,
                     isChecked: previousSelectedMaterialIds.Contains(material.ID)
                     );
             }

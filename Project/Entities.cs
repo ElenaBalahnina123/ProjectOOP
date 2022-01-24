@@ -9,13 +9,14 @@ namespace ProjectOop
 {
     namespace Entities // сущности
     {
+
+        //Перечисление
         public enum Role
         {
-            Директор, // директор, может всё
-            Швея, // швея, стадия пошива
-            Раскройщик, // раскройщик, стадия раскроя
-            Дизайнер, // модельек, стадии художественного и технологического эскизов
-            Технолог // технолог, контроль качества
+            DIRECTOR, //может всё
+            SEWER, //стадия пошива
+            CUTTER, //стадия раскроя
+            DESIGNER, //стадии художественного и технологического эскизов
         }
         public enum WearSize
         {
@@ -30,14 +31,15 @@ namespace ProjectOop
         public class Employee // сотрудник
         {
             public int ID { get; set; }
-          
-            [Required] [MaxLength(50)] public string Name { get; set; } // фамилия 
-            [Required] [MaxLength(50)] public string Surname { get; set; } // имя
+
+            //Required - не может быть null
+            [Required] [MaxLength(50)] public string Surname { get; set; } // фамилия
+            [Required] [MaxLength(50)] public string Name { get; set; } // имя 
             [MaxLength(50)] public string Patronymic { get; set; } // отчество
             [Required] public DateTime DeviceDate { get; set; } // дата устройства
             [Required] public string Salary { get; set; } //оклад
-            [Required] public string Login { get; set; }
-            [Required] public string Password { get; set; }
+            [Required] [MaxLength(15)]  public string Login { get; set; }
+            [Required] [MaxLength(15)] public string Password { get; set; }
             [Required] public Role Role { get; set; }
         }
 
@@ -46,7 +48,7 @@ namespace ProjectOop
             public int ID { get; set; }
             [Required] public string Name { get; set; }
 
-            public ModelColor color { get; set; }
+            public ModelColor Сolor { get; set; }
 
 
         }
@@ -64,7 +66,6 @@ namespace ProjectOop
         {
             public int ID { get; set; }
             [Required] public string Name { get; set; }
-
 
             [Required] public string FileLocation { get; set; }
 
@@ -144,8 +145,7 @@ namespace ProjectOop
         {
             /// <summary>
             /// Продукт должен быть загружен вместе со связанными сущностями
-            /// 
-            /// https://docs.microsoft.com/ru-ru/ef/ef6/querying/related-data
+            /// Получение этапа
             /// </summary>
             /// <param name="product"></param>
             /// <returns></returns>
@@ -163,8 +163,10 @@ namespace ProjectOop
                 else return Stage.READY;
             }
 
+            // Асинхронность позволяет вынести отдельные задачи из основного потока в специальные асинхронные методы или блоки кода
             public static async Task RemoveFromDb(this Product initialProduct, AppDbContext db)
             {
+                //await ставит на паузу текущий метод, ожидая выполнения задачи
                 var product = await db.Products
                     .Where(p => p.ID == initialProduct.ID)
                     .Include(p => p.Sketch)
