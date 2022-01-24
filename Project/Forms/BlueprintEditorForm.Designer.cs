@@ -119,7 +119,7 @@ namespace Project
             // size_combo_box
             // 
             this.size_combo_box.FormattingEnabled = true;
-            this.size_combo_box.Location = new System.Drawing.Point(22, 283);
+            this.size_combo_box.Location = new System.Drawing.Point(25, 276);
             this.size_combo_box.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.size_combo_box.Name = "size_combo_box";
             this.size_combo_box.Size = new System.Drawing.Size(269, 28);
