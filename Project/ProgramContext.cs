@@ -11,26 +11,39 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    //ApplicationContext указывает контекстную информацию о потоке приложения
+    /// <summary>
+    /// Класс хранит в себе информацию о состоянии приложения, такую как список открытых форм, текущий пользователь и тд.
+    /// </summary>
     public class ProgramContext : ApplicationContext
     {
-
+        /// <summary>
+        /// IHost - контейнер зависимостей. 
+        /// Инкапсулирует внутри себя логику создания и хранения экземпляров классов.
+        /// </summary>
         private readonly IHost host;
 
         private readonly List<Form> formsRegistry = new();
 
+        /// <summary>
+        /// Флаг того, что в данный момент можно выполнять выход из программы
+        /// </summary>
         private bool exitAllowed = true;
 
+        /// <summary>
+        /// Флаг того, что в данный момент выполняется завершение программы
+        /// </summary>
         private bool disposing = false;
 
-        private readonly AppDbContext db;
-
-        public ProgramContext()  //???
+        public ProgramContext() 
         {
+            // Настраиваем контейнер зависимостей
             host = Host.CreateDefaultBuilder()
                 .ConfigureServices((_, services) =>
                     services
-                    .AddTransient<LoginForm>()
+                    .AddSingleton<AppDbContext>()  // AddSingleton говорит контейнеру, что экземпляр AppDbContext должен быть создан только один раз
+                    .AddSingleton(this) // добавляем текущий экземпляр ProgramContext в контейнер в виде синглтона, чтобы его можно было подставить в нужные места
+                                        // (например в конструкторы, если там указан ProgramContext)
+                    .AddTransient<LoginForm>() // AddTransient говорит контейнеру, что на каждый запрос зависимости указанного типа нужно создавать новый экземпляр
                     .AddTransient<ProductionForm>()
                     .AddTransient<EmployeeListForm>()
                     .AddTransient<MaterialListForm>()
@@ -39,8 +52,6 @@ namespace Project
                     .AddTransient<ColorEditor>()
                     .AddTransient<DirectorForm>()
                     .AddTransient<EmployeeEditorForm>()
-                    .AddSingleton<AppDbContext>()
-                    .AddSingleton(this) 
                     .AddTransient<DesignerForm>()
                     .AddTransient<SketchArtEditorForm>()
                     .AddTransient<SewingEditorForm>()
@@ -52,15 +63,15 @@ namespace Project
 
             host.StartAsync();
 
-            //Получить запрос от сервера
-            db = host.Services.GetRequiredService<AppDbContext>();
-
             OnStart();
         }
-        public Employee employee { get; private set; }
-        public ModelColor color { get; private set; }
-        public Material material { get; private set; }
 
+        /// <summary>
+        /// Пользователь, который авторизован на данный момент в программе
+        /// </summary>
+        public Employee employee { get; private set; }
+
+        // уберите. Про internal лучше рассказать если спросят. То же самое что писать в комментах что такое int и bool. Лучше добавить что именно делает метод EditEmployee
         //internal: компоненты класса или структуры доступен из любого места кода в той же сборке, однако он недоступен для других программ и сборок.
         internal async Task EditEmployee(Employee employee)
         {
@@ -75,16 +86,16 @@ namespace Project
             //FindAsync находит сущность с заданными значениями первичного ключа. Если сущность с заданными
             //значениями первичного ключа отслеживается контекстом, то она возвращается немедленно,
             //без запроса к базе данных. В противном случае делается запрос к базе данных.
-            var existing = await db.Employees.FindAsync(e.ID);  ///???
+            var existing = await host.Services.GetRequiredService<AppDbContext>().Employees.FindAsync(e.ID);  ///???
             if (existing == null)
             {
-                Debug.WriteLine("cannot find employee in db, return");
+                Debug.WriteLine("cannot find employee in host.Services.GetRequiredService<AppDbContext>(), return");
                 return;
             }
             //Запись обеспечивает доступ к информации об отслеживании изменений и операциям для объекта.
-            db.Entry(existing).CurrentValues.SetValues(e);
+            host.Services.GetRequiredService<AppDbContext>().Entry(existing).CurrentValues.SetValues(e);
             Debug.WriteLine("saving changes");
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
             Debug.WriteLine("changes saved");
         }
         internal async Task EditColor(ModelColor color)
@@ -97,16 +108,16 @@ namespace Project
             }
             Debug.WriteLine("color edit complete, saving");
 
-            var existing = await db.Colors.FindAsync(c.ID);
+            var existing = await host.Services.GetRequiredService<AppDbContext>().Colors.FindAsync(c.ID);
             if (existing == null)
             {
-                Debug.WriteLine("cannot find colors in db, return");
+                Debug.WriteLine("cannot find colors in host.Services.GetRequiredService<AppDbContext>(), return");
                 return;
             }
 
-            db.Entry(existing).CurrentValues.SetValues(c);
+            host.Services.GetRequiredService<AppDbContext>().Entry(existing).CurrentValues.SetValues(c);
             Debug.WriteLine("saving changes");
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
             Debug.WriteLine("changes saved");
         }
 
@@ -120,16 +131,16 @@ namespace Project
             }
             Debug.WriteLine("material edit complete, saving");
 
-            var existing = await db.Materials.FindAsync(c.ID);
+            var existing = await host.Services.GetRequiredService<AppDbContext>().Materials.FindAsync(c.ID);
             if (existing == null)
             {
-                Debug.WriteLine("cannot find material in db, return");
+                Debug.WriteLine("cannot find material in host.Services.GetRequiredService<AppDbContext>(), return");
                 return;
             }
 
-            db.Entry(existing).CurrentValues.SetValues(c);
+            host.Services.GetRequiredService<AppDbContext>().Entry(existing).CurrentValues.SetValues(c);
             Debug.WriteLine("saving changes");
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
             Debug.WriteLine("changes saved");
         }
 
@@ -143,16 +154,16 @@ namespace Project
             }
             Debug.WriteLine("sketch edit complete, saving");
 
-            var existing = await db.Sketches.FindAsync(s.ID);
+            var existing = await host.Services.GetRequiredService<AppDbContext>().Sketches.FindAsync(s.ID);
             if (existing == null)
             {
-                Debug.WriteLine("cannot find sketch in db, return");
+                Debug.WriteLine("cannot find sketch in host.Services.GetRequiredService<AppDbContext>(), return");
                 return;
             }
 
-            db.Entry(existing).CurrentValues.SetValues(s);
+            host.Services.GetRequiredService<AppDbContext>().Entry(existing).CurrentValues.SetValues(s);
             Debug.WriteLine("saving changes");
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
             Debug.WriteLine("changes saved");
         }
 
@@ -165,7 +176,7 @@ namespace Project
                 return;
             }
             product.Cut = cut;
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
         }
 
         internal async Task EditSewing(Product product)
@@ -178,13 +189,13 @@ namespace Project
             }
             Debug.WriteLine("sewing not null");
             product.Sewing = sewing;
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
         }
 
         internal void QualityControlPassed(Product product)
         {
             product.QaPassed = true;
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
         }
 
         internal async Task ConvertFromSketchToBlueprint(Product product)
@@ -196,13 +207,13 @@ namespace Project
             if (blueprint == null) return;
 
             //создался технический эскиз
-            db.Blueprints.Add(blueprint);
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().Blueprints.Add(blueprint);
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
 
             //в продукт записан технический эскиз
-            db.Attach(product);
+            host.Services.GetRequiredService<AppDbContext>().Attach(product);
             product.Blueprint = blueprint;
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
         }
 
         internal async Task AddNewEmployee()
@@ -211,9 +222,9 @@ namespace Project
 
             if (employee == null) return;
 
-            db.Employees.Add(employee);
+            host.Services.GetRequiredService<AppDbContext>().Employees.Add(employee);
 
-            await db.SaveChangesAsync();
+            await host.Services.GetRequiredService<AppDbContext>().SaveChangesAsync();
         }
 
         internal async Task EditBlueprint(Product product)
@@ -227,9 +238,9 @@ namespace Project
 
             if (color == null) return;
 
-            db.Colors.Add(color);
+            host.Services.GetRequiredService<AppDbContext>().Colors.Add(color);
 
-            await db.SaveChangesAsync();
+            await host.Services.GetRequiredService<AppDbContext>().SaveChangesAsync();
         }
 
         internal async Task CreateSketchAndProduct()
@@ -238,14 +249,14 @@ namespace Project
 
             if (sketch == null) return;
 
-            db.Sketches.Add(sketch);
+            host.Services.GetRequiredService<AppDbContext>().Sketches.Add(sketch);
 
-            db.Products.Add(new Product()
+            host.Services.GetRequiredService<AppDbContext>().Products.Add(new Product()
             {
                 Sketch = sketch
             });
 
-            await db.SaveChangesAsync();
+            await host.Services.GetRequiredService<AppDbContext>().SaveChangesAsync();
         }
 
         internal async Task AddNewMaterial()
@@ -254,15 +265,15 @@ namespace Project
 
             if (material == null) return;
 
-            db.Materials.Add(material);
+            host.Services.GetRequiredService<AppDbContext>().Materials.Add(material);
 
-            await db.SaveChangesAsync();
+            await host.Services.GetRequiredService<AppDbContext>().SaveChangesAsync();
         }
 
         private void OnStart()
         {
             // проверяем всех сотрудников в базе данных. Если есть хоть один сотрудник, открываем форму входа. Если нет, показываем форму для добавления информации о сотруднике
-            if (db.Employees.Any())
+            if (host.Services.GetRequiredService<AppDbContext>().Employees.Any())
             {
                 ShowForm<LoginForm>();
             }
@@ -270,25 +281,32 @@ namespace Project
             {
                 Debug.WriteLine("users not found, show editor form");
 
-                exitAllowed = false;  //???
+                // C помощью булевых флагов обрабатываем сценарий, когда в программе не зарегистрирован ни один пользователь
+                // а редактор пользователей был закрыт без сохранения.
+                // Программа реализована таким образом, чтобы можно было открыать сразу несколько окон,
+                // и чтобы программа завершалась после закрытия последнего открытого окна
+                // флаг exitAllowed, установленный в false позволяет не выполнять выход из программы после закрытия формы редактора пользователей.
+                // данный сценарий нужен для первоначального запуска программы
+
+                exitAllowed = false;
                 var editorForm = ShowForm<EmployeeEditorForm>();
 
-                var readyCalled = false;
+                var OnEmployeeReadyHasBeenCalled = false;
 
                 editorForm.OnEmployeeReady += (sender, employee) =>
                 {
-                    readyCalled = true;  //???
+                    OnEmployeeReadyHasBeenCalled = true;
                     exitAllowed = true;
 
                     employee.Role = Role.DIRECTOR;
-                    db.Employees.Add(employee);
-                    db.SaveChanges();
+                    host.Services.GetRequiredService<AppDbContext>().Employees.Add(employee);
+                    host.Services.GetRequiredService<AppDbContext>().SaveChanges();
                     ShowMainForm(employee);
                     ((Form)sender).Close();
                 };
                 editorForm.FormClosed += (_, args) =>
                 {
-                    if (!readyCalled)
+                    if (!OnEmployeeReadyHasBeenCalled)
                     {
                         exitAllowed = true;
                         MessageBox.Show("Требуется хотя бы один пользователь");
@@ -301,24 +319,24 @@ namespace Project
 
         internal async Task DeleteEmployee(Employee employee)
         {
-            db.Employees.Remove(employee);
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().Employees.Remove(employee);
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
         }
 
         internal async Task DeleteSketch(Sketch sketch)
         {
-            db.Sketches.Remove(sketch);
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().Sketches.Remove(sketch);
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
         }
         internal async Task DeleteColor(ModelColor color)
         {
-            db.Colors.Remove(color);
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().Colors.Remove(color);
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
         }
         internal async Task DeleteMaterial(Material material)
         {
-            db.Materials.Remove(material);
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().Materials.Remove(material);
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
         }
         private void ExitProgram()
         {
@@ -332,7 +350,7 @@ namespace Project
         internal void SendToCut(Product product)
         {
             product.Sewing = null;
-            db.SaveChanges();
+            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
         }
 
         #region "forms"

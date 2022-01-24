@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 // DbContext может использоваться для запроса и сохранения экземпляров сущностей
 public class AppDbContext : DbContext
 {
-
-  
     /// Запросы в базу данных
     public DbSet<Employee> Employees { get; set; }
     public DbSet<ModelColor> Colors { get; set; }
@@ -18,15 +16,11 @@ public class AppDbContext : DbContext
     public DbSet<Material> Materials { get; set; }
     public DbSet<MaterialInBlueprint> MaterialInBlueprints { get; set; }
 
-
-    /// <summary>
-    /// Гарантирует, что база данных для контекста существует.
-    /// Если он существует, никаких действий не предпринимается.
-    /// Если он не существует, создается база данных и вся ее схема. 
-    /// </summary>
     public AppDbContext()
-    {    
-        
+    {
+        // Гарантирует, что база данных для контекста существует.
+        // Если он существует, никаких действий не предпринимается.
+        // Если он не существует, создается база данных и вся ее схема.
         Database.EnsureCreated();
     }
 
