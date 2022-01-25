@@ -1,38 +1,37 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectOop.Entities;
+using System.Threading.Tasks;
 
+
+
+/// <summary>
+/// DbContext может использоваться для запроса и сохранения экземпляров сущностей
+/// </summary>
 public class AppDbContext : DbContext
 {
-
-    public DbSet<Article> Articles { get; set; } // артикул
-    public DbSet<Subdivision> Divisions { get; set; } // подразделения
-    public DbSet<Employee> Employees { get; set; } // сотрудники
-    public DbSet<FinishesProductWarehouse> Finishes_product_warehouses { get; set; } // склад готовой продукции
-    public DbSet<MaterialCutting> Material_cuttings { get; set; } // материал для раскроя
-    public DbSet<MaterialForSketch> Material_for_sketchs { get; set; } // материал для эскиза
-    public DbSet<Position> Posts { get; set; } // должность
-    public DbSet<Product> Products { get; set; } // товар
-    public DbSet<ProductDelivery> Product_Deliverys { get; set; } //поставка товара
-    public DbSet<ProductOnWarehouse> Product_in_warehouses { get; set; } // товар на складе
-    public DbSet<RawMaterialPuchaseTransaction> Raw_material_puchase_transactions { get; set; } // транзакция закупки сырья
-    public DbSet<RawMaterialWarehouse> Raw_material_warehouses { get; set; } // cклад сырья и материалов
-    public DbSet<RawMaterialItem> Row_stocks { get; set; }
-    public DbSet<Shop> Shops { get; set; } // магазин
-    public DbSet<ShopEmployeer> Shop_Emloyeers { get; set; } // сотрудник-магазин
-    public DbSet<Sketch> Sketchs { get; set; } //Эскиз
-    public DbSet<SketchMaterialization> Sketch_Materializations { get; set; } // Материализация эскиза
-    public DbSet<Supplier> Suppliers { get; set; } // Поставщик
-    public DbSet<GoodsDelivery> The_goods_deliverys { get; set; } //товар в поставке
-    public DbSet<TransactionContents> Transaction_Contentss { get; set; } // Содержимое транзакции
-    public DbSet<ResourceRequestHistoryItem> ResourceRequestHistoryItems { get; set; } // История запросов сырья
-    public DbSet<ResourceRequestItem> ResourceRequestItems { get; set; } //Содержимое запроса сырья
+    /// Запросы в базу данных
+    public DbSet<Employee> Employees { get; set; }
     public DbSet<ModelColor> Colors { get; set; }
+    public DbSet<Sketch> Sketches { get; set; }
+    public DbSet<Blueprint> Blueprints { get; set; }
+    public DbSet<Cut> Cuts { get; set; }
+    public DbSet<Sewing> Sewings { get; set; }
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Material> Materials { get; set; }
+
 
     public AppDbContext()
     {
+        // Гарантирует, что база данных для контекста существует.
+        // Если он существует, никаких действий не предпринимается.
+        // Если он не существует, создается база данных и вся ее схема.
         Database.EnsureCreated();
     }
 
+    /// <summary>
+    /// Метод для настройки базы данных и других параметров
+    /// </summary>
+    /// <param name="optionsBuilder"></param>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var host = "127.0.0.1";
@@ -43,30 +42,20 @@ public class AppDbContext : DbContext
         optionsBuilder.UseNpgsql($"Host={host};Port={port};Database={databaseName};Username={username};Password={password}");
     }
 
+    /// <summary>
+    /// modelBuilder определяет форму ваших сущностей, отношения между ними и как они сопоставляются с базой данных. ID уникальны
+    /// </summary>
+    /// <param name="modelBuilder"></param>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Article>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<Subdivision>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Employee>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<FinishesProductWarehouse>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<MaterialCutting>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<MaterialForSketch>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<Position>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<Product>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<ProductDelivery>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<ProductOnWarehouse>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<RawMaterialPuchaseTransaction>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<RawMaterialWarehouse>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<RawMaterialItem>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<Shop>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<ShopEmployeer>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<Sketch>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<SketchMaterialization>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<Supplier>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<GoodsDelivery>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<TransactionContents>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<ResourceRequestHistoryItem>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<ResourceRequestItem>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<ModelColor>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Material>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Sketch>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Blueprint>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Cut>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Sewing>().HasIndex(e => e.ID).IsUnique();
+        modelBuilder.Entity<Product>().HasIndex(e => e.ID).IsUnique();
+        //modelBuilder.Entity<MaterialInBlueprint>().HasIndex(e => e.ID).IsUnique();
     }
 }
