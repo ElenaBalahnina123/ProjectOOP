@@ -154,16 +154,18 @@ namespace Project
             }
             Debug.WriteLine("sketch edit complete, saving");
 
-            var existing = await host.Services.GetRequiredService<AppDbContext>().Sketches.FindAsync(s.ID);
+            var db = host.Services.GetRequiredService<AppDbContext>();
+
+            var existing = await db.Sketches.FindAsync(s.ID);
             if (existing == null)
             {
-                Debug.WriteLine("cannot find sketch in host.Services.GetRequiredService<AppDbContext>(), return");
+                Debug.WriteLine("cannot find sketch in db, return");
                 return;
             }
 
-            host.Services.GetRequiredService<AppDbContext>().Entry(existing).CurrentValues.SetValues(s);
+            db.Entry(existing).CurrentValues.SetValues(s);
             Debug.WriteLine("saving changes");
-            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
+            db.SaveChanges();
             Debug.WriteLine("changes saved");
         }
 
