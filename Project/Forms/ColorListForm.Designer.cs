@@ -35,28 +35,34 @@ namespace Project
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_add_new
             // 
-            this.btn_add_new.Location = new System.Drawing.Point(344, 7);
-            this.btn_add_new.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btn_add_new.BackColor = System.Drawing.Color.White;
+            this.btn_add_new.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_add_new.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_add_new.Location = new System.Drawing.Point(83, 435);
+            this.btn_add_new.Margin = new System.Windows.Forms.Padding(1);
             this.btn_add_new.Name = "btn_add_new";
-            this.btn_add_new.Size = new System.Drawing.Size(209, 20);
+            this.btn_add_new.Size = new System.Drawing.Size(239, 25);
             this.btn_add_new.TabIndex = 0;
             this.btn_add_new.Text = "Добавить новый цвет";
-            this.btn_add_new.UseVisualStyleBackColor = true;
+            this.btn_add_new.UseVisualStyleBackColor = false;
             this.btn_add_new.Click += new System.EventHandler(this.btn_add_new_Click);
             // 
             // colors_list
             // 
+            this.colors_list.BackColor = System.Drawing.Color.White;
+            this.colors_list.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.colors_list.FormattingEnabled = true;
-            this.colors_list.ItemHeight = 15;
-            this.colors_list.Location = new System.Drawing.Point(8, 7);
-            this.colors_list.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.colors_list.ItemHeight = 14;
+            this.colors_list.Location = new System.Drawing.Point(9, 33);
+            this.colors_list.Margin = new System.Windows.Forms.Padding(2);
             this.colors_list.Name = "colors_list";
-            this.colors_list.Size = new System.Drawing.Size(333, 439);
+            this.colors_list.Size = new System.Drawing.Size(380, 382);
             this.colors_list.TabIndex = 1;
             this.colors_list.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ColorListForm_MouseDown);
             // 
@@ -83,20 +89,33 @@ namespace Project
             this.deleteToolStripMenuItem.Text = "Удалить";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(9, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 14);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Цвет:";
+            // 
             // ColorListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(560, 515);
+            this.BackColor = System.Drawing.Color.Bisque;
+            this.ClientSize = new System.Drawing.Size(405, 481);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.colors_list);
             this.Controls.Add(this.btn_add_new);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "ColorListForm";
             this.Text = "ColorListForm";
             this.Load += new System.EventHandler(this.ColorListForm_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -108,5 +127,6 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.Label label1;
     }
 }

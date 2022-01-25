@@ -207,5 +207,10 @@ namespace Project
             OnBlueprintEditor?.Invoke(this, result);
             Close();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

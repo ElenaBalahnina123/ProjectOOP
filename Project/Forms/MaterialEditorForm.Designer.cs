@@ -38,57 +38,61 @@ namespace Project.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(158, 145);
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(105, 143);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(88, 31);
             this.button1.TabIndex = 0;
             this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 9);
+            this.label1.Location = new System.Drawing.Point(27, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 15);
+            this.label1.Size = new System.Drawing.Size(148, 14);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Название материала";
+            this.label1.Text = "Название материала:";
             // 
             // material_name
             // 
-            this.material_name.Location = new System.Drawing.Point(24, 31);
+            this.material_name.Location = new System.Drawing.Point(27, 44);
             this.material_name.Name = "material_name";
-            this.material_name.Size = new System.Drawing.Size(209, 23);
+            this.material_name.Size = new System.Drawing.Size(238, 22);
             this.material_name.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 67);
+            this.label2.Location = new System.Drawing.Point(27, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 15);
+            this.label2.Size = new System.Drawing.Size(43, 14);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Цвет";
+            this.label2.Text = "Цвет:";
             // 
             // comboBox_color
             // 
             this.comboBox_color.FormattingEnabled = true;
-            this.comboBox_color.Location = new System.Drawing.Point(24, 95);
+            this.comboBox_color.Location = new System.Drawing.Point(27, 102);
             this.comboBox_color.Name = "comboBox_color";
-            this.comboBox_color.Size = new System.Drawing.Size(209, 23);
+            this.comboBox_color.Size = new System.Drawing.Size(238, 22);
             this.comboBox_color.TabIndex = 4;
             // 
             // MaterialEditorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(274, 199);
+            this.BackColor = System.Drawing.Color.Bisque;
+            this.ClientSize = new System.Drawing.Size(313, 186);
             this.Controls.Add(this.comboBox_color);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.material_name);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "MaterialEditorForm";
             this.Text = "MaterialEditorForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MaterialEditorForm_FormClosed);
