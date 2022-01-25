@@ -171,7 +171,7 @@ namespace Project
 
         internal async Task EditCutting(Product product)
         {
-            var cut = await CreateForm<CuttingEditorForm>().SetCutting(product.Cut).CutAsync(showModal: true);
+            var cut = await CreateForm<CuttingEditorForm>().EditCutAsync(product.Cut,showModal: true);
             if (cut == null)
             {
                 Debug.WriteLine("cutting edit cancelled");
@@ -183,7 +183,7 @@ namespace Project
 
         internal async Task EditSewing(Product product)
         {
-            var sewing = await ShowForm<SewingEditorForm>().EditSewingAsync(product);
+            var sewing = await ShowForm<SewingEditorForm>().EditSewingAsync(product.Sewing, showModal:true);
             if (sewing == null)
             {
                 Debug.WriteLine("sewing edit cancelled");

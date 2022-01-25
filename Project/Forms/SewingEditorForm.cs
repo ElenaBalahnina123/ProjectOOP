@@ -50,37 +50,28 @@ namespace Project.Forms
                 return;
             }
 
-            Sewing result;
-            if (InitialSewing != null)
-            {
-                result = new Sewing()
-                {
-                    ID = InitialSewing.ID,
-                    Author = selectedEmployee,
-                    CreationDate = dateDevice,
-
-                };
-            }
-            else
-            {
-                result = new Sewing()
-                {
-                    Author = selectedEmployee,
-                    CreationDate = dateDevice,
-                };
-            };
+            Sewing result = InitialSewing ?? new Sewing();
+            result.CreationDate = dateDevice;
+            result.Author = selectedEmployee;
 
             OnSewingEditor?.Invoke(this, result);
             Close();
         }
 
-        public async Task<Sewing> EditSewingAsync(Product product)
+        public async Task<Sewing> EditSewingAsync(Sewing editingSewing, bool showModal = false, bool closeForm = true)
         {
-            if (product.Sewing != null)
+            var stringItems = Employees.ConvertAll(employees => employees.Name + " " + employees.Surname);
+
+            employee_combobox.DataSource = stringItems;
+
+            if (editingSewing != null)
             {
-                InitialSewing = product.Sewing;
-                employee_combobox.Text = InitialSewing.Author.ToString();
-                dateTimePicker1.Value = InitialSewing.CreationDate;
+                InitialSewing = editingSewing;
+
+                var DisplayEmployeeName = editingSewing.Author.Name + " " + editingSewing.Author.Surname;
+
+                employee_combobox.SelectedIndex = stringItems.IndexOf(DisplayEmployeeName);
+                dateTimePicker1.Value = editingSewing.CreationDate;
             }
 
             var tcs = new TaskCompletionSource<Sewing?>();
@@ -90,33 +81,33 @@ namespace Project.Forms
 
             FormClosed += (_, _) =>
             {
-                Debug.WriteLine("form closed");
                 if (formClosed) return;
                 formClosed = true;
                 if (!gotResult)
                 {
-                    gotResult = true;
                     tcs.SetResult(null);
                 }
             };
             OnSewingEditor += (_, sewing) =>
             {
-                Debug.WriteLine("got result");
                 if (gotResult) return;
                 gotResult = true;
                 tcs.SetResult(sewing);
             };
 
-            Debug.WriteLine("await sewing");
-            var sewing = await tcs.Task;
-            Debug.WriteLine("got sewing");
+            if (showModal)
+            {
+                ShowDialog();
+            }
 
-            if (!formClosed)
+            var cut = await tcs.Task;
+
+            if (!formClosed && closeForm)
             {
                 Close();
             }
-            return sewing;
-        }
+            return cut;
 
+        }
     }
 }

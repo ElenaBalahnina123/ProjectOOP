@@ -43,15 +43,26 @@ namespace Project
         /// <returns></returns>
         private async Task<List<Material>> GetSavedMaterialsForBlueprint(int? blueprintId)
         {
-            if (blueprintId == null)
+            if (blueprintId == null) return new List<Material>();
+
+            return db.Blueprints.Where(b => b.ID == blueprintId)
+                .Include(b => b.Materials)
+                .Select(b => b.Materials)
+                .FirstOrDefault()
+                .ToList();
+
+            //return new List<Material>(fromDb);
+                
+
+            /*if (blueprintId == null)
             {
                 return new List<Material>();
             }
 
             return await db.MaterialInBlueprints.Where(m => m.Blueprint.ID == blueprintId)
-                .Include(m => m.material.Сolor)
+                *//*.Include(m => m.material.Сolor)*//*
                 .Select(m => m.material)
-                .ToListAsync();
+                .ToListAsync();*/
         }
 
         /// <summary>
@@ -64,7 +75,7 @@ namespace Project
             var fetchedProduct = await db.Products.Where(p => p.ID == product.ID)
                 // Говорим фрейму, какие связанные сущности ему нужно подгружать
                 .Include(p => p.Sketch)
-                .Include(p => p.Blueprint.Materials)
+                .Include(p => p.Blueprint)
                 .FirstAsync();
 
             name_sketch.Text = fetchedProduct.Sketch.Name;
@@ -129,15 +140,15 @@ namespace Project
         {
             if (blueprint.Materials?.Any() == true) // Удаляем старую информацию
             {
-                db.RemoveRange(blueprint.Materials.FindAll(m => m.ID != 0));
+                blueprint.Materials = null;
                 db.SaveChanges();
             }
 
-            blueprint.Materials = SelectedMaterials.ConvertAll(material => new MaterialInBlueprint()
+            blueprint.Materials = SelectedMaterials/*.ConvertAll(material => new MaterialInBlueprint()
             {
                 Blueprint = blueprint,
                 material = material
-            });
+            })*/;
         }
 
         private void BlueprintEditorForm_Load(object sender, EventArgs e)
