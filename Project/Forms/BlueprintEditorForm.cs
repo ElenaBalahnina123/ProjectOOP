@@ -51,18 +51,7 @@ namespace Project
                 .FirstOrDefault()
                 .ToList();
 
-            //return new List<Material>(fromDb);
-                
-
-            /*if (blueprintId == null)
-            {
-                return new List<Material>();
-            }
-
-            return await db.MaterialInBlueprints.Where(m => m.Blueprint.ID == blueprintId)
-                *//*.Include(m => m.material.Сolor)*//*
-                .Select(m => m.material)
-                .ToListAsync();*/
+           
         }
 
         /// <summary>
@@ -144,11 +133,7 @@ namespace Project
                 db.SaveChanges();
             }
 
-            blueprint.Materials = SelectedMaterials/*.ConvertAll(material => new MaterialInBlueprint()
-            {
-                Blueprint = blueprint,
-                material = material
-            })*/;
+            blueprint.Materials = SelectedMaterials;
         }
 
         private void BlueprintEditorForm_Load(object sender, EventArgs e)
@@ -197,7 +182,7 @@ namespace Project
                     ID = InitialBlueprint.ID,
                     Size = selectedSize,
 
-                    CreationDate = dateDevice, // возможно стоит перенести в вариант когда чертежа раньше не существовало?
+                    CreationDate = dateDevice, 
                 };
             }
             else

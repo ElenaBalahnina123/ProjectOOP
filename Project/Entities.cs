@@ -83,17 +83,6 @@ namespace ProjectOop
             [Required] public DateTime CreationDate { get; set; }
         }
 
-
-
-        /*public class MaterialInBlueprint
-        {
-            public int ID { get; set; }
-
-            public Blueprint Blueprint;
-
-            public Material material;
-        }*/
-
         public class Cut
         {
             public int ID { get; set; }
@@ -178,10 +167,6 @@ namespace ProjectOop
                 }
                 if (product.Blueprint != null)
                 {
-                    /*foreach (MaterialInBlueprint m in product.Blueprint.Materials)
-                    {
-                        db.Remove(m);
-                    }*/
 
                     db.Remove(product.Blueprint);
                 }

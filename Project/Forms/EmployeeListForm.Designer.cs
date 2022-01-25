@@ -46,7 +46,7 @@ namespace Project
             this.listBox1.ItemHeight = 14;
             this.listBox1.Location = new System.Drawing.Point(14, 32);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(425, 354);
+            this.listBox1.Size = new System.Drawing.Size(567, 354);
             this.listBox1.TabIndex = 0;
             this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDown);
             // 
@@ -54,7 +54,7 @@ namespace Project
             // 
             this.add_employee.BackColor = System.Drawing.Color.White;
             this.add_employee.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.add_employee.Location = new System.Drawing.Point(125, 401);
+            this.add_employee.Location = new System.Drawing.Point(176, 401);
             this.add_employee.Name = "add_employee";
             this.add_employee.Size = new System.Drawing.Size(197, 30);
             this.add_employee.TabIndex = 1;
@@ -99,7 +99,7 @@ namespace Project
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(462, 443);
+            this.ClientSize = new System.Drawing.Size(593, 443);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.add_employee);
             this.Controls.Add(this.listBox1);
