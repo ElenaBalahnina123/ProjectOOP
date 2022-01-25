@@ -183,7 +183,7 @@ namespace Project
 
         internal async Task EditSewing(Product product)
         {
-            var sewing = await ShowForm<SewingEditorForm>().EditSewingAsync(product.Sewing, showModal:true);
+            var sewing = await CreateForm<SewingEditorForm>().EditSewingAsync(product.Sewing, showModal:true);
             if (sewing == null)
             {
                 Debug.WriteLine("sewing edit cancelled");

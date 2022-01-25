@@ -3,6 +3,7 @@ using ProjectOop.Entities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,12 +22,7 @@ namespace Project.Forms
         {
             db = dbContext;
             InitializeComponent();
-        }
-
-        private async void SewingEditorForm_Load(object sender, EventArgs e)
-        {
-            Employees = await db.Employees.ToListAsync();
-
+            Employees = db.Employees.ToList();
             employee_combobox.DataSource = Employees.ConvertAll(employees => employees.Name + " " + employees.Surname);
         }
 
