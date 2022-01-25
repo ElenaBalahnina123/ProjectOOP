@@ -33,35 +33,36 @@ namespace Project.Forms
             this.save_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // checkedListBox1
+            // materials_checked_list_box
             // 
             this.materials_checked_list_box.FormattingEnabled = true;
-            this.materials_checked_list_box.Location = new System.Drawing.Point(30, 35);
-            this.materials_checked_list_box.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.materials_checked_list_box.Name = "checkedListBox1";
-            this.materials_checked_list_box.Size = new System.Drawing.Size(378, 480);
+            this.materials_checked_list_box.Location = new System.Drawing.Point(24, 20);
+            this.materials_checked_list_box.Name = "materials_checked_list_box";
+            this.materials_checked_list_box.Size = new System.Drawing.Size(303, 259);
             this.materials_checked_list_box.TabIndex = 0;
             // 
             // save_btn
             // 
-            this.save_btn.Location = new System.Drawing.Point(303, 562);
-            this.save_btn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.save_btn.BackColor = System.Drawing.Color.White;
+            this.save_btn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.save_btn.Location = new System.Drawing.Point(126, 298);
             this.save_btn.Name = "save_btn";
-            this.save_btn.Size = new System.Drawing.Size(107, 38);
+            this.save_btn.Size = new System.Drawing.Size(90, 25);
             this.save_btn.TabIndex = 1;
             this.save_btn.Text = "Готово";
-            this.save_btn.UseVisualStyleBackColor = true;
+            this.save_btn.UseVisualStyleBackColor = false;
             this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
             // 
-            // AddMaterials
+            // MaterialsSelectorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 667);
+            this.BackColor = System.Drawing.Color.Bisque;
+            this.ClientSize = new System.Drawing.Size(374, 346);
             this.Controls.Add(this.save_btn);
             this.Controls.Add(this.materials_checked_list_box);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "AddMaterials";
+            this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Name = "MaterialsSelectorForm";
             this.Text = "AddMaterials";
             this.Load += new System.EventHandler(this.AddMaterials_Load);
             this.ResumeLayout(false);

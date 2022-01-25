@@ -70,42 +70,7 @@ namespace Project.Forms
         }
 
 
-        public static async Task<Cut?> GetCutAsync(ProgramContext context, Cut initialCut = null)
-        {
-            var form = context.CreateForm<CuttingEditorForm>();
-            Debug.WriteLine("form created");
-
-            form.SetCutting(initialCut);
-
-            var tcs = new TaskCompletionSource<Cut?>();
-
-            var formClosed = false;
-            var gotResult = false;
-
-            form.FormClosed += (_, _) =>
-            {
-                if (formClosed) return;
-                formClosed = true;
-                tcs.SetResult(null);
-            };
-            form.OnCutEditor += (_, cut) =>
-            {
-                if (gotResult) return;
-                gotResult = true;
-                tcs.SetResult(cut);
-            };
-
-            form.Show();
-
-            var cut = await tcs.Task;
-
-            if (!formClosed)
-            {
-                form.Close();
-            }
-            return cut;
-        }
-
+        
         private void save_btn_Click(object sender, EventArgs e)
         {
             if (employee_combobox.SelectedIndex == -1)

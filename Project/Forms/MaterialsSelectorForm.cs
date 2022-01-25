@@ -26,6 +26,7 @@ namespace Project.Forms
             InitializeComponent();
         }
 
+        // загрузка материалов и цветов
         private async void AddMaterials_Load(object sender, EventArgs e)
         {
             materials = await db.Materials

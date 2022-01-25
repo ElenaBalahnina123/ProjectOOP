@@ -86,7 +86,7 @@ namespace Project
             //FindAsync находит сущность с заданными значениями первичного ключа. Если сущность с заданными
             //значениями первичного ключа отслеживается контекстом, то она возвращается немедленно,
             //без запроса к базе данных. В противном случае делается запрос к базе данных.
-            var existing = await host.Services.GetRequiredService<AppDbContext>().Employees.FindAsync(e.ID);  ///???
+            var existing = await host.Services.GetRequiredService<AppDbContext>().Employees.FindAsync(e.ID);
             if (existing == null)
             {
                 Debug.WriteLine("cannot find employee in host.Services.GetRequiredService<AppDbContext>(), return");
@@ -285,7 +285,7 @@ namespace Project
 
                 // C помощью булевых флагов обрабатываем сценарий, когда в программе не зарегистрирован ни один пользователь
                 // а редактор пользователей был закрыт без сохранения.
-                // Программа реализована таким образом, чтобы можно было открыать сразу несколько окон,
+                // Программа реализована таким образом, чтобы можно было открывать сразу несколько окон,
                 // и чтобы программа завершалась после закрытия последнего открытого окна
                 // флаг exitAllowed, установленный в false позволяет не выполнять выход из программы после закрытия формы редактора пользователей.
                 // данный сценарий нужен для первоначального запуска программы
@@ -373,20 +373,14 @@ namespace Project
             }
         }
 
-        public T ShowFormModal<T>() where T : Form
-        {
-            var form = CreateForm<T>();
-            form.ShowDialog();
-            return form;
-        }
-
+       // T - универсальный параметр. Метод создает и показывает форму
         public T ShowForm<T>() where T : Form
         {
             var form = CreateForm<T>();
             form.Show();
             return form;
         }
-
+        // Проверка роли и создание формы в зависимости от роли
         private Form CreateMainForm(Employee employee)
         {
             this.employee = employee;
