@@ -391,9 +391,15 @@ namespace Project
             }
         }
 
-        private void sewing_menu_item_click_utilize(object sender, EventArgs e)
+        private async void sewing_menu_item_click_utilize(object sender, EventArgs e)
         {
-            // TODO: удалить
+            var index = sewing_list_box.SelectedIndex;
+            if (index != ListBox.NoMatches)
+            {
+                var product = Sewing[index];
+                await product.RemoveFromDb(db);
+                LoadContent();
+            }
         }
 
         private void sewing_menu_item_click_quality_control_passed(object sender, EventArgs e)

@@ -71,7 +71,7 @@ namespace Project
         /// </summary>
         public Employee employee { get; private set; }
 
-        // уберите. Про internal лучше рассказать если спросят. То же самое что писать в комментах что такое int и bool. Лучше добавить что именно делает метод EditEmployee
+        
         //internal: компоненты класса или структуры доступен из любого места кода в той же сборке, однако он недоступен для других программ и сборок.
         internal async Task EditEmployee(Employee employee)
         {
