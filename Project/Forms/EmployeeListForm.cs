@@ -35,7 +35,7 @@ namespace Project
         private async Task loadEmployeeList()
         {
             employees = await Task.Run(() => (from e in db.Employees select e).ToList());
-            var items = employees.ConvertAll(e => e.Name + "   " + e.Surname + "   " + e.Patronymic + "   "+e.Salary + "   " + e.Login + "   " + e.Password + "   " + e.Role);
+            var items = employees.ConvertAll(e => e.Surname + "   " + e.Name + "   " + e.Patronymic+ "   " + e.Role + "   "+e.Salary + "   " + e.DeviceDate + "   "+ e.Login + "   " + e.Password );
             listBox1.Invoke((MethodInvoker)delegate
             {
                 listBox1.DataSource = items;
