@@ -105,5 +105,10 @@ namespace Project.Forms
             return cut;
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -38,7 +38,7 @@ public class AppDbContext : DbContext
         var port = "5432";
         var databaseName = "ProjectOOP";
         var username = "postgres";
-        var password = "1234";
+        var password = "4545";
         optionsBuilder.UseNpgsql($"Host={host};Port={port};Database={databaseName};Username={username};Password={password}");
     }
 

@@ -41,9 +41,10 @@ namespace Project.Forms
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 14);
+            this.label3.Size = new System.Drawing.Size(47, 14);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Автор:";
+            this.label3.Text = "Швея:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // employee_combobox
             // 

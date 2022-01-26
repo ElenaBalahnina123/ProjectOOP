@@ -29,7 +29,7 @@ namespace Project
                 .Include(m => m.Сolor) // метод Include позволяет подгрузить связанный с материалом цвет
                 .ToListAsync();
 
-            var items = materials.ConvertAll(m => m.Name + " " + m.Сolor.TextName);
+            var items = materials.ConvertAll(m => m.Name + "   " + m.Сolor.TextName);
             listBox1.Invoke((MethodInvoker)delegate
             {
                 listBox1.DataSource = items;

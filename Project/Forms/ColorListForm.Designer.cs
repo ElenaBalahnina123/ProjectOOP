@@ -36,6 +36,8 @@ namespace Project
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,10 +46,10 @@ namespace Project
             this.btn_add_new.BackColor = System.Drawing.Color.White;
             this.btn_add_new.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_add_new.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_add_new.Location = new System.Drawing.Point(83, 435);
+            this.btn_add_new.Location = new System.Drawing.Point(9, 264);
             this.btn_add_new.Margin = new System.Windows.Forms.Padding(1);
             this.btn_add_new.Name = "btn_add_new";
-            this.btn_add_new.Size = new System.Drawing.Size(239, 25);
+            this.btn_add_new.Size = new System.Drawing.Size(169, 25);
             this.btn_add_new.TabIndex = 0;
             this.btn_add_new.Text = "Добавить новый цвет";
             this.btn_add_new.UseVisualStyleBackColor = false;
@@ -59,10 +61,10 @@ namespace Project
             this.colors_list.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.colors_list.FormattingEnabled = true;
             this.colors_list.ItemHeight = 14;
-            this.colors_list.Location = new System.Drawing.Point(9, 33);
+            this.colors_list.Location = new System.Drawing.Point(9, 58);
             this.colors_list.Margin = new System.Windows.Forms.Padding(2);
             this.colors_list.Name = "colors_list";
-            this.colors_list.Size = new System.Drawing.Size(380, 382);
+            this.colors_list.Size = new System.Drawing.Size(168, 186);
             this.colors_list.TabIndex = 1;
             this.colors_list.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ColorListForm_MouseDown);
             // 
@@ -93,18 +95,38 @@ namespace Project
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(9, 18);
+            this.label1.Location = new System.Drawing.Point(9, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 14);
             this.label1.TabIndex = 2;
             this.label1.Text = "Цвет:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 14);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Название";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(84, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 14);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "RGB";
             // 
             // ColorListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(405, 481);
+            this.ClientSize = new System.Drawing.Size(188, 311);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.colors_list);
             this.Controls.Add(this.btn_add_new);
@@ -128,5 +150,7 @@ namespace Project
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

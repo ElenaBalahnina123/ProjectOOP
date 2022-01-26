@@ -42,9 +42,9 @@ namespace Project.Forms
             this.label3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(14, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 14);
+            this.label3.Size = new System.Drawing.Size(92, 14);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Разработчик:";
+            this.label3.Text = "Раскройщик:";
             // 
             // employee_combobox
             // 
