@@ -50,7 +50,7 @@ namespace ProjectOop
 
             public ModelColor Сolor { get; set; }
 
-
+            public ICollection<Blueprint> RelatedBlueprints { get; set; }
         }
 
         public class ModelColor
@@ -58,8 +58,6 @@ namespace ProjectOop
             public int ID { get; set; }
             [Required] public string RgbValue { get; set; }
             [Required] public string TextName { get; set; }
-
-
         }
 
         public class Sketch
@@ -80,21 +78,9 @@ namespace ProjectOop
 
             [Required] public WearSize Size { get; set; }
 
-            public List<MaterialInBlueprint> Materials { get; set; }
+            public ICollection<Material> Materials { get; set; }
 
             [Required] public DateTime CreationDate { get; set; }
-
-        }
-
-
-
-        public class MaterialInBlueprint
-        {
-            public int ID { get; set; }
-
-            public Blueprint Blueprint;
-
-            public Material material;
         }
 
         public class Cut
@@ -181,10 +167,6 @@ namespace ProjectOop
                 }
                 if (product.Blueprint != null)
                 {
-                    foreach (MaterialInBlueprint m in product.Blueprint.Materials)
-                    {
-                        db.Remove(m);
-                    }
 
                     db.Remove(product.Blueprint);
                 }

@@ -18,7 +18,7 @@ public class AppDbContext : DbContext
     public DbSet<Sewing> Sewings { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Material> Materials { get; set; }
-    public DbSet<MaterialInBlueprint> MaterialInBlueprints { get; set; }
+
 
     public AppDbContext()
     {
@@ -38,7 +38,7 @@ public class AppDbContext : DbContext
         var port = "5432";
         var databaseName = "ProjectOOP";
         var username = "postgres";
-        var password = "4545";
+        var password = "1234";
         optionsBuilder.UseNpgsql($"Host={host};Port={port};Database={databaseName};Username={username};Password={password}");
     }
 
@@ -56,6 +56,6 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Cut>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Sewing>().HasIndex(e => e.ID).IsUnique();
         modelBuilder.Entity<Product>().HasIndex(e => e.ID).IsUnique();
-        modelBuilder.Entity<MaterialInBlueprint>().HasIndex(e => e.ID).IsUnique();
+        //modelBuilder.Entity<MaterialInBlueprint>().HasIndex(e => e.ID).IsUnique();
     }
 }

@@ -95,7 +95,6 @@ namespace Project.Forms
             this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "SewingEditorForm";
             this.Text = "SewingEditorForm";
-            this.Load += new System.EventHandler(this.SewingEditorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

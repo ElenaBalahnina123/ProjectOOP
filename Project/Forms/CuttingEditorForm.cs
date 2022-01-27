@@ -21,19 +21,22 @@ namespace Project.Forms
             Employees = (from e in db.Employees select e).ToList();
         }
 
-        public CuttingEditorForm SetCutting(Cut? initialCut)
+        public async Task<Cut> EditCutAsync(Cut editingCut, bool showModal = false, bool closeForm = true)
         {
-            if (initialCut == null) return this;
+            var stringItems = Employees.ConvertAll(employees => employees.Name + " " + employees.Surname);
 
-            InitialCutting = initialCut;
+            employee_combobox.DataSource = stringItems;
 
-            employee_combobox.Text = initialCut.Author.ToString();
-            dateTimePicker1.Value = initialCut.CreationDate;
-            return this;
-        }
+            if (editingCut != null)
+            {
+                InitialCutting = editingCut;
 
-        public async Task<Cut> CutAsync(bool showModal = false, bool closeForm = true)
-        {
+                var DisplayEmployeeName = editingCut.Author.Name + " " + editingCut.Author.Surname;
+
+                employee_combobox.SelectedIndex = stringItems.IndexOf(DisplayEmployeeName);
+                dateTimePicker1.Value = editingCut.CreationDate;
+            }
+
             var tcs = new TaskCompletionSource<Cut?>();
 
             var formClosed = false;
@@ -68,8 +71,6 @@ namespace Project.Forms
             }
             return cut;
         }
-
-
         
         private void save_btn_Click(object sender, EventArgs e)
         {
@@ -94,34 +95,18 @@ namespace Project.Forms
             }
 
 
+            Cut result = InitialCutting ?? new Cut();
+            result.CreationDate = dateDevice;
+            result.Author = selectedEmployee;
 
-            Cut result;
-            if (InitialCutting != null)
-            {
-                result = new Cut()
-                {
-                    ID = InitialCutting.ID,
-                    Author = selectedEmployee,
-                    CreationDate = dateDevice,
-
-                };
-            }
-            else
-            {
-                result = new Cut()
-                {
-                    Author = selectedEmployee,
-                    CreationDate = dateDevice,
-                };
-            };
-
+ 
             OnCutEditor.Invoke(this, result);
             Close();
         }
 
         private void CuttingEditorForm_Load(object sender, EventArgs e)
         {
-            employee_combobox.DataSource = Employees.ConvertAll(employees => employees.Name + " " + employees.Surname);
+            
         }
     }
 }

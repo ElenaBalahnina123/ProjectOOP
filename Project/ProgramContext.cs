@@ -154,22 +154,24 @@ namespace Project
             }
             Debug.WriteLine("sketch edit complete, saving");
 
-            var existing = await host.Services.GetRequiredService<AppDbContext>().Sketches.FindAsync(s.ID);
+            var db = host.Services.GetRequiredService<AppDbContext>();
+
+            var existing = await db.Sketches.FindAsync(s.ID);
             if (existing == null)
             {
-                Debug.WriteLine("cannot find sketch in host.Services.GetRequiredService<AppDbContext>(), return");
+                Debug.WriteLine("cannot find sketch in db, return");
                 return;
             }
 
-            host.Services.GetRequiredService<AppDbContext>().Entry(existing).CurrentValues.SetValues(s);
+            db.Entry(existing).CurrentValues.SetValues(s);
             Debug.WriteLine("saving changes");
-            host.Services.GetRequiredService<AppDbContext>().SaveChanges();
+            db.SaveChanges();
             Debug.WriteLine("changes saved");
         }
 
         internal async Task EditCutting(Product product)
         {
-            var cut = await CreateForm<CuttingEditorForm>().SetCutting(product.Cut).CutAsync(showModal: true);
+            var cut = await CreateForm<CuttingEditorForm>().EditCutAsync(product.Cut,showModal: true);
             if (cut == null)
             {
                 Debug.WriteLine("cutting edit cancelled");
@@ -181,7 +183,7 @@ namespace Project
 
         internal async Task EditSewing(Product product)
         {
-            var sewing = await ShowForm<SewingEditorForm>().EditSewingAsync(product);
+            var sewing = await CreateForm<SewingEditorForm>().EditSewingAsync(product.Sewing, showModal:true);
             if (sewing == null)
             {
                 Debug.WriteLine("sewing edit cancelled");
